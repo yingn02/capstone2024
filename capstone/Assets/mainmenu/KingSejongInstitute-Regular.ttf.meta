@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e97c4333a97370149a118f6c3a628f96
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - KingSejongInstitute
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a550c918ee7f78841bb941d5d651dbb7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
