@@ -8,22 +8,22 @@ public class bowControl : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject bow;
-    public InputActionReference grabAction;
+    public InputActionReference leftGrabAction;
     public GameObject leftController;
 
     private bool isGrabbing = false;
 
     void OnEnable()
     {
-        grabAction.action.performed += GrabPerformed;
-        grabAction.action.canceled += GrabCanceled;
-        grabAction.action.Enable();
+        leftGrabAction.action.performed += GrabPerformed;
+        leftGrabAction.action.canceled += GrabCanceled;
+        leftGrabAction.action.Enable();
     }
 
     void OnDisable()
     {
-        grabAction.action.performed -= GrabPerformed;
-        grabAction.action.Disable();
+        leftGrabAction.action.performed -= GrabPerformed;
+        leftGrabAction.action.Disable();
     }
 
     void GrabPerformed(InputAction.CallbackContext context)
