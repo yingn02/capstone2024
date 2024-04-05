@@ -28,13 +28,11 @@ public class bowControl : MonoBehaviour
 
     void GrabPerformed(InputAction.CallbackContext context)
     {
-        Debug.Log("grabstart");
         isGrabbing = true;
         RemoveControllerModel();
     }
     void GrabCanceled(InputAction.CallbackContext context)
     {
-        Debug.Log("grabend");
         isGrabbing = false;
         RestoreControllerModel();
     }

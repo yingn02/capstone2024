@@ -7,36 +7,26 @@ using UnityEngine.InputSystem;
 public class grabPoint : MonoBehaviour
 {
     public arrowControl ArrowControl;
-    public InputActionReference rightGrabAction;
 
+    public GameObject rightController;
     private bool isGrabbing = false;
 
     private Vector3 startPosition;
-    void OnEnable()
-    {
-        rightGrabAction.action.performed += GrabPerformed;
-        rightGrabAction.action.canceled += GrabCanceled;
-        rightGrabAction.action.Enable();
-    }
+    private Vector3 startControllerPosition;
 
-    void OnDisable()
-    {
-        rightGrabAction.action.performed -= GrabPerformed;
-        rightGrabAction.action.Disable();
-    }
-
-    void GrabPerformed(InputAction.CallbackContext context)
+    public void grabPerformed()
     {
         Debug.Log("rightstart");
         isGrabbing = true;
         startPosition = this.gameObject.transform.position;
+        startControllerPosition = rightController.transform.position;
     }
-    void GrabCanceled(InputAction.CallbackContext context)
+    public void grabCanceled()
     {
         Debug.Log("rightend");
         isGrabbing = false;
         calculateDistance();
-       
+
     }
     void calculateDistance()
     {
@@ -54,6 +44,10 @@ public class grabPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isGrabbing)
+        {
+            transform.position = new Vector3(startPosition.x, startPosition.y, 
+                startPosition.z + rightController.transform.position.z - startControllerPosition.z);
+        }
     }
 }
