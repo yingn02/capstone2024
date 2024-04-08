@@ -8,11 +8,12 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class arrowControl : MonoBehaviour
 {
     private bool shoot = false;
-    public GameObject grabPoint;
+    private Transform grabPoint;
     // Start is called before the first frame update
     void Start()
     {
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Arrow"), LayerMask.NameToLayer("Arrow"));
+        grabPoint = GameObject.Find("midPointGrabObject").transform;
     }
 
     // Update is called once per frame
@@ -20,7 +21,8 @@ public class arrowControl : MonoBehaviour
     {
         if (!shoot)
         {
-            transform.position = grabPoint.transform.position;
+            if (grabPoint != null) { transform.position = grabPoint.position; transform.rotation = grabPoint.rotation; }
+            
             transform.Translate(new Vector3(0f, 0, 0), Space.World);
         }
     }
@@ -28,7 +30,7 @@ public class arrowControl : MonoBehaviour
     {
         Debug.Log("shoot");
         shoot = true;
-        GetComponent<Rigidbody>().AddForce(transform.right * 3000f * zdiff, ForceMode.Force);
+        GetComponent<Rigidbody>().AddForce(transform.right * 4000f * zdiff, ForceMode.Force);
         GetComponent<Rigidbody>().useGravity = true;
     }
     private void OnCollisionEnter(UnityEngine.Collision collision)
@@ -43,4 +45,5 @@ public class arrowControl : MonoBehaviour
             rb.freezeRotation = true;
         }
     }
+
 }

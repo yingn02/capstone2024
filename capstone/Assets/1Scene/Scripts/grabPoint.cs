@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,11 @@ public class grabPoint : MonoBehaviour
 
     private Vector3 startPosition;
     private Vector3 startControllerPosition;
+
+    public Transform bowpoint;
+    public Transform bowpoint2;
+
+    public bowControl bow;
 
     public void grabPerformed()
     {
@@ -30,10 +36,20 @@ public class grabPoint : MonoBehaviour
     }
     void calculateDistance()
     {
-        float zdiff = startPosition.z - this.gameObject.transform.position.z;
-        ArrowControl.fire(zdiff);
+        float distanceMoved = Vector3.Distance(rightController.transform.position, startControllerPosition);
+        ArrowControl.fire(distanceMoved);
+        bow.haveArrow = false;
     }
 
+    public void reloadArrow(GameObject arrow)
+    {
+        ArrowControl = arrow.GetComponent<arrowControl>();
+        transform.position = bowpoint2.position;
+        startPosition = bowpoint2.position;
+        startControllerPosition = rightController.transform.position;
+        transform.rotation = bowpoint2.rotation;
+        calculatePosition();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +60,19 @@ public class grabPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isGrabbing)
+        if (isGrabbing)
         {
-            transform.position = new Vector3(startPosition.x, startPosition.y, 
-                startPosition.z + rightController.transform.position.z - startControllerPosition.z);
+            calculatePosition();
         }
+    }
+    void calculatePosition()
+    {
+        Vector3 lineDirection = (bowpoint.position - startPosition).normalized;
+        Vector3 controllerMovement = rightController.transform.position - startControllerPosition;
+
+        float movementProjection = Vector3.Dot(controllerMovement, lineDirection);
+
+        Vector3 newPosition = startPosition + lineDirection * movementProjection;
+        transform.position = newPosition;
     }
 }

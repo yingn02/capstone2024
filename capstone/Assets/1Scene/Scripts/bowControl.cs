@@ -10,8 +10,13 @@ public class bowControl : MonoBehaviour
     public GameObject bow;
     public InputActionReference leftGrabAction;
     public GameObject leftController;
+    public GameObject arrowPrefab;
+    public GameObject arrowPoint;
+    public grabPoint grabpoint;
 
     private bool isGrabbing = false;
+    public bool haveArrow = true;
+
 
     void OnEnable()
     {
@@ -70,6 +75,27 @@ public class bowControl : MonoBehaviour
         if (isGrabbing)
         {
             MoveBowToControllerPosition();
+        }
+        if (!haveArrow)
+        {
+            Invoke("reloadArrow", 2f);
+            haveArrow = true;
+        }
+        
+    }
+    void reloadArrow()
+    {
+        if (arrowPrefab != null && arrowPoint != null)
+        {
+            GameObject arrow = Instantiate(arrowPrefab, arrowPoint.transform.position,
+                arrowPoint.transform.rotation);
+            grabpoint.reloadArrow(arrow);
+
+            //haveArrow = true;
+        }
+        else
+        {
+            Debug.LogWarning("arrowPrefab 또는 arrowPoint가 설정되지 않았습니다.");
         }
     }
 }
