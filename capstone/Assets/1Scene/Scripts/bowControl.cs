@@ -6,8 +6,6 @@ using UnityEngine.InputSystem.XR;
 
 public class bowControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject bow;
     public InputActionReference leftGrabAction;
     public GameObject leftController;
     public GameObject arrowPrefab;
@@ -15,8 +13,10 @@ public class bowControl : MonoBehaviour
     public grabPoint grabpoint;
 
     private bool isGrabbing = false;
-    public bool haveArrow = true;
+    public bool haveArrow = false;
+    private GameObject arrow;
 
+    public bool player = true;
 
     void OnEnable()
     {
@@ -43,8 +43,8 @@ public class bowControl : MonoBehaviour
     }
     void MoveBowToControllerPosition()
     {
-        bow.transform.position = leftController.transform.position;
-        bow.transform.rotation = leftController.transform.rotation;
+        this.transform.position = leftController.transform.position;
+        this.transform.rotation = leftController.transform.rotation;
     }
 
     void RemoveControllerModel()
@@ -72,26 +72,26 @@ public class bowControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGrabbing)
+        if (isGrabbing && player)
         {
             MoveBowToControllerPosition();
         }
-        if (!haveArrow)
+        /*if (!haveArrow)
         {
             Invoke("reloadArrow", 2f);
             haveArrow = true;
-        }
+        }*/
         
     }
-    void reloadArrow()
+    public void reloadArrow()
     {
         if (arrowPrefab != null && arrowPoint != null)
         {
-            GameObject arrow = Instantiate(arrowPrefab, arrowPoint.transform.position,
+            arrow = Instantiate(arrowPrefab, arrowPoint.transform.position,
                 arrowPoint.transform.rotation);
+            arrow.transform.parent = arrowPoint.transform;
             grabpoint.reloadArrow(arrow);
-
-            //haveArrow = true;
+            haveArrow = true;
         }
         else
         {
