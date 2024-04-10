@@ -359,6 +359,11 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &160241501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8582709517412543291, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+  m_PrefabInstance: {fileID: 1791654655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &172515570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1565,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2397425259038431700, guid: fa5ef3b56cfeb4f4ba855cdf2610a578, type: 3}
   m_PrefabInstance: {fileID: 581011036}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &660856570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660856571}
+  m_Layer: 0
+  m_Name: PlayerArrows
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &660856571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660856570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9722803, y: 2.873185, z: 36.60956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &687656844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,6 +1629,11 @@ Transform:
   - {fileID: 1651568158}
   m_Father: {fileID: 2108899352}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &687867185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8582709517412543291, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+  m_PrefabInstance: {fileID: 4468445325022002931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &692935904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6327,9 +6368,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: bowPoint
+      value: 
+      objectReference: {fileID: 160241501}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: haveArrow
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: arrowPoint
+      value: 
+      objectReference: {fileID: 1961561192}
     - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: leftController
       value: 
@@ -6824,6 +6873,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1961561192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1961561193}
+  m_Layer: 0
+  m_Name: OpponentArrows
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961561193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961561192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9722803, y: 2.873185, z: 36.60956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2085236114
 GameObject:
   m_ObjectHideFlags: 0
@@ -7180,9 +7260,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 810582889}
     - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: bowPoint
+      value: 
+      objectReference: {fileID: 687867185}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: haveArrow
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: arrowPoint
+      value: 
+      objectReference: {fileID: 660856570}
     - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: leftController
       value: 
@@ -7207,3 +7295,5 @@ SceneRoots:
   - {fileID: 4468445325022002931}
   - {fileID: 1791654655}
   - {fileID: 1829368041}
+  - {fileID: 660856571}
+  - {fileID: 1961561193}

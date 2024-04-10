@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     }
     public void calculateScore()
     {
+        currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
+
         Debug.Log("End of Turn " + currentTurn);
         if (playerTurn)
         {

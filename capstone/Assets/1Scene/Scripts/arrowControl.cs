@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 using UnityEditor.Rendering;
 using UnityEngine;
 using static System.Net.WebRequestMethods;
@@ -9,7 +10,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class arrowControl : MonoBehaviour
 {
 
-    private float speed = 5000f;
+    private float speed = 7000f;
     public int score = 0;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class arrowControl : MonoBehaviour
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.freezeRotation = true;
+        this.transform.parent = null;
     }
 
 }
