@@ -10,15 +10,17 @@ public class GameManager : MonoBehaviour
     public bowControl playerBowControl;
     public bowControl opponentBowControl;
 
-
     private bowControl currentBowControl;
     private grabPoint currentGrabPoint;
+
+    public GameObject ScoreBoard; //점수판 UI 스크립트
 
     private int playerPoint, opponentPoint, playerSet, opponentSet = 0;
     private int currentTurn = 1;
     private int currentSet = 1;
     private int setLimit = 1; //1세트 게임
     public bool playerTurn = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,10 @@ public class GameManager : MonoBehaviour
             opponentPoint = opponentPoint + currentGrabPoint.ArrowControl.score;
             Debug.Log("Opponent: " + opponentPoint);
         }
+
+        ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //점수판 UI 턴 점수 갱신
+        ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint); //점수판 UI 턴 점수 총점 갱신
+
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
 
