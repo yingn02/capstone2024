@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         currentBowControl = playerBowControl;
         currentGrabPoint = currentBowControl.grabpoint;
         currentBowControl.reloadArrow();
+        ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //점수판 UI 현재 세트 표시
+        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//점수판 UI 누구의 턴인지 표시
     }
 
     // Update is called once per frame
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
         }
 
         ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //점수판 UI 턴 점수 갱신
-        ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint); //점수판 UI 턴 점수 총점 갱신
+        ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint, currentTurn); //점수판 UI 턴 점수 총점 갱신
 
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
@@ -70,6 +72,8 @@ public class GameManager : MonoBehaviour
             currentSet++;
             playerPoint = 0;
             opponentPoint = 0;
+            ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //점수판 UI 현재 세트 표시
+            ScoreBoard.GetComponent<writeScore>().write_set_score(playerSet, opponentSet); //점수판 UI 세트 점수 표시
 
             if (currentSet > setLimit)
             {
@@ -83,8 +87,9 @@ public class GameManager : MonoBehaviour
         }
         
         changePlayers();
+        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//점수판 UI 누구의 턴인지 표시
 
-        
+
     }
     private void changePlayers()
     {

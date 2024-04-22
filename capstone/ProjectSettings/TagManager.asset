@@ -7,6 +7,7 @@ TagManager:
   - Anchor
   - Target
   - Line
+  - EnemyTarget
   layers:
   - Default
   - TransparentFX
