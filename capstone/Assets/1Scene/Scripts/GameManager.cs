@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private int playerPoint, opponentPoint, playerSet, opponentSet = 0;
     private int currentTurn = 1;
     private int currentSet = 1;
-    private int setLimit = 1; //1세트 게임
+    private int setLimit = 3; //1세트 게임
     public bool playerTurn = true;
 
     // Start is called before the first frame update

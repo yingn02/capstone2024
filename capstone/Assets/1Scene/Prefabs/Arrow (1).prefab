@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3832096838206316593}
   m_Layer: 6
   m_Name: Arrow (1)
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef106ddfd34d9a40a2c5005ea109aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabPoint: {fileID: 0}
+  score: 0
 --- !u!54 &4264733300691621152
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Target
   - Line
   - EnemyTarget
+  - Arrow
   layers:
   - Default
   - TransparentFX
