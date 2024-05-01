@@ -35,12 +35,12 @@ public class bowControl : MonoBehaviour
     void GrabPerformed(InputAction.CallbackContext context)
     {
         isGrabbing = true;
-        RemoveControllerModel();
+        //RemoveControllerModel();
     }
     void GrabCanceled(InputAction.CallbackContext context)
     {
         isGrabbing = false;
-        RestoreControllerModel();
+        //RestoreControllerModel();
     }
     void MoveBowToControllerPosition()
     {
@@ -96,7 +96,7 @@ public class bowControl : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("arrowPrefab ¶Ç´Â bowPoint°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("arrowPrefab ë˜ëŠ” bowPointê°€ ì„¤ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
         }
     }
 }

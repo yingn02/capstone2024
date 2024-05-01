@@ -16,33 +16,54 @@ public class grabPoint : MonoBehaviour
 
     private Vector3 startPosition;
     private Vector3 startControllerPosition;
+    Vector3 newLineDirection;
+    Vector3 newPosition;
 
     public Transform bowpoint;
     public Transform bowpoint2;
 
-    public bowControl bow;
+    public GameObject Bow;
+    private bowControl bow;
     private GameManager gameManager;
-    
+
+    private bool shot = false;
+
+    void Start()
+    {
+        //ArrowControl = arrow.gameObject.AddComponent<arrowControl>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        bow = Bow.GetComponent<bowControl>();
+    }
 
     public void grabPerformed()
     {
         //Debug.Log("rightstart");
         isGrabbing = true;
-        startPosition = this.gameObject.transform.position;
-        startControllerPosition = rightController.transform.position;
+        if (!shot)
+        {
+            startPosition = this.gameObject.transform.position;
+            startControllerPosition = rightController.transform.position;
+        }
+
     }
     public void grabCanceled()
     {
+
         //Debug.Log("rightend");
         isGrabbing = false;
-        float distanceMoved = Vector3.Distance(rightController.transform.position, startControllerPosition);
-        shootArrow(distanceMoved);
+        if (!shot)
+        {
+            float distanceMoved = Vector3.Distance(newPosition, bowpoint.position);
+            Debug.Log(distanceMoved);
+            shootArrow(distanceMoved);
+        }
 
     }
-    
+
 
     public void reloadArrow(GameObject arrow)
     {
+        shot = false;
         this.arrow = arrow;
         ArrowControl = arrow.GetComponent<arrowControl>();
         transform.position = bowpoint2.position;
@@ -53,18 +74,15 @@ public class grabPoint : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        //ArrowControl = arrow.gameObject.AddComponent<arrowControl>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
+
     public void invokeArrow()
     {
         shootArrow(Random.Range(0.01f, 6f));
     }
     void shootArrow(float distanceMoved)
     {
-        ArrowControl.fire(distanceMoved);
+        shot = true;
+        ArrowControl.fire(distanceMoved, (bowpoint.position - bowpoint2.position).normalized);
         gameManager.Invoke("calculateScore", 2);
         bow.haveArrow = false;
     }
@@ -72,23 +90,26 @@ public class grabPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGrabbing)
+        newLineDirection = (bowpoint.position - bowpoint2.position).normalized;
+        if (isGrabbing && !shot)
         {
             calculatePosition();
         }
     }
     void calculatePosition()
     {
-        Vector3 lineDirection = (bowpoint.position - startPosition).normalized;
+
+
         Vector3 controllerMovement = rightController.transform.position - startControllerPosition;
 
-        float movementProjection = Vector3.Dot(controllerMovement, lineDirection);
+        float movementProjection = Vector3.Dot(controllerMovement, newLineDirection);
 
-        Vector3 newPosition = startPosition + lineDirection * movementProjection;
+        newPosition = bowpoint2.position + newLineDirection * movementProjection;
         transform.position = newPosition;
-        
 
         arrow.transform.position = this.transform.position;
-        arrow.transform.rotation = this.transform.rotation;
+        arrow.transform.rotation = Bow.transform.rotation;
+
+        arrow.transform.Rotate(0, -90, 0);
     }
 }

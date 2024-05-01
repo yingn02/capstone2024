@@ -2845,11 +2845,6 @@ Transform:
   - {fileID: 1651568158}
   m_Father: {fileID: 2108899352}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &687867185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8582709517412543291, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
-  m_PrefabInstance: {fileID: 4468445325022002931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &692935904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7907,7 +7902,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
   m_PrefabInstance: {fileID: 1791654655}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2137383870}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55e75d156d6343f41972aec50437cc58, type: 3}
@@ -8835,6 +8830,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1912750385589055340, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: Bow
+      value: 
+      objectReference: {fileID: 2137383870}
+    - target: {fileID: 1912750385589055340, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: arrow
       value: 
       objectReference: {fileID: 0}
@@ -9723,6 +9722,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129416892}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2137383870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6257635424294974122, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+  m_PrefabInstance: {fileID: 1791654655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4468445325022002931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9731,14 +9735,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1912750385589055340, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
-      propertyPath: arrow
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912750385589055340, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
-      propertyPath: ArrowControl
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1912750385589055340, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: rightController
       value: 
@@ -9792,14 +9788,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 810582889}
     - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
-      propertyPath: bowPoint
-      value: 
-      objectReference: {fileID: 687867185}
-    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
-      propertyPath: haveArrow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: arrowPoint
       value: 
       objectReference: {fileID: 660856570}
@@ -9808,8 +9796,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1032089591}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1882227448317623845, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}

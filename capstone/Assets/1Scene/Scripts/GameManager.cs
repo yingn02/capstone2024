@@ -13,12 +13,13 @@ public class GameManager : MonoBehaviour
     private bowControl currentBowControl;
     private grabPoint currentGrabPoint;
 
-    public GameObject ScoreBoard; //Á¡¼öÆÇ UI ½ºÅ©¸³Æ®
+    public GameObject ScoreBoard; //ì ìˆ˜íŒ UI ìŠ¤í¬ë¦½íŠ¸
 
     private int playerPoint, opponentPoint, playerSet, opponentSet = 0;
     private int currentTurn = 1;
     private int currentSet = 1;
-    private int setLimit = 3; //1¼¼Æ® °ÔÀÓ
+    private int currentStage = 1;
+    private int setLimit = 3; 
     public bool playerTurn = true;
 
     // Start is called before the first frame update
@@ -26,12 +27,12 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-
+        Debug.Log("Start of Stage 1");
         currentBowControl = playerBowControl;
         currentGrabPoint = currentBowControl.grabpoint;
         currentBowControl.reloadArrow();
-        ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //Á¡¼öÆÇ UI ÇöÀç ¼¼Æ® Ç¥½Ã
-        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//Á¡¼öÆÇ UI ´©±¸ÀÇ ÅÏÀÎÁö Ç¥½Ã
+        ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //ì ìˆ˜íŒ UI í˜„ì¬ ì„¸íŠ¸ í‘œì‹œ
+        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//ì ìˆ˜íŒ UI ëˆ„êµ¬ì˜ í„´ì¸ì§€ í‘œì‹œ
     }
 
     // Update is called once per frame
@@ -55,15 +56,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("Opponent: " + opponentPoint);
         }
 
-        ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //Á¡¼öÆÇ UI ÅÏ Á¡¼ö °»½Å
-        ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint, currentTurn); //Á¡¼öÆÇ UI ÅÏ Á¡¼ö ÃÑÁ¡ °»½Å
+        ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //ì ìˆ˜íŒ UI í„´ ì ìˆ˜ ê°±ì‹ 
+        ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint, currentTurn); //ì ìˆ˜íŒ UI í„´ ì ìˆ˜ ì´ì  ê°±ì‹ 
 
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
 
         if (currentTurn > 6)
         {
-            Debug.Log("End of Set " + currentSet+", "+playerPoint+" : "+opponentPoint);
+            Debug.Log("End of Set " + currentSet + ", " + playerPoint + " : " + opponentPoint);
             if (playerPoint > opponentPoint) playerSet++;
             else if (playerPoint < opponentPoint) opponentSet++;
             else Debug.Log("Draw");
@@ -72,28 +73,51 @@ public class GameManager : MonoBehaviour
             currentSet++;
             playerPoint = 0;
             opponentPoint = 0;
-            ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //Á¡¼öÆÇ UI ÇöÀç ¼¼Æ® Ç¥½Ã
-            ScoreBoard.GetComponent<writeScore>().write_set_score(playerSet, opponentSet); //Á¡¼öÆÇ UI ¼¼Æ® Á¡¼ö Ç¥½Ã
+            ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //ì ìˆ˜íŒ UI í˜„ì¬ ì„¸íŠ¸ í‘œì‹œ
+            ScoreBoard.GetComponent<writeScore>().write_set_score(playerSet, opponentSet); //ì ìˆ˜íŒ UI ì„¸íŠ¸ ì ìˆ˜ í‘œì‹œ
 
             if (currentSet > setLimit)
             {
                 Debug.Log("Game Over, Set score - Player : " + playerSet + " Opponent : " + opponentSet);
-                if (playerSet > opponentSet) Debug.Log("You Win!");
-                else if (playerSet < opponentSet) Debug.Log("You Lose..");
-                else Debug.Log("Draw");
+                if (playerSet > opponentSet)
+                {
+                    Debug.Log("You Win!");
+                    nextStage();
+                }
+                else if (playerSet < opponentSet)
+                {
+                    Debug.Log("You Lose..");
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Debug.Log("Draw");
+                    Time.timeScale = 0;
+                }
+
                 return;
             }
             else Debug.Log("Current Set score - Player : " + playerSet + " Opponent : " + opponentSet);
         }
+    
         
         changePlayers();
-        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//Á¡¼öÆÇ UI ´©±¸ÀÇ ÅÏÀÎÁö Ç¥½Ã
+        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//ì ìˆ˜íŒ UI ëˆ„êµ¬ì˜ í„´ì¸ì§€ í‘œì‹œ
 
 
     }
+    private void nextStage()
+    {
+        Debug.Log("Start of Stage " + (++currentStage));
+        playerSet = 0;
+        opponentSet = 0;
+        currentSet = 1;
+        changePlayers();
+    }
     private void changePlayers()
     {
-        if (playerTurn) {
+        if (playerTurn)
+        {
             currentBowControl = opponentBowControl;
             playerTurn = false;
             opponentBowControl.grabpoint.Invoke("invokeArrow", 2);

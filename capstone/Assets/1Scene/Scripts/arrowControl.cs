@@ -13,7 +13,7 @@ public class arrowControl : MonoBehaviour
     private float speed = 7000f;
     public int score = 0;
 
-    public changeWind ChangeWind; //Ç³Çâ ½ºÅ©¸³Æ®
+    public changeWind ChangeWind; //í’í–¥ ìŠ¤í¬ë¦½íŠ¸
 
     // Start is called before the first frame update
     void Start()
@@ -27,40 +27,41 @@ public class arrowControl : MonoBehaviour
     {
 
     }
-    public void fire(float diff)
+    public void fire(float diff, Vector3 dir)
     {
         Debug.Log("shoot");
-
-        GetComponent<Rigidbody>().AddForce(ChangeWind.windVector * 100.0f, ForceMode.Force); //È­»ìÀÌ Ç³ÇâÀÇ ¿µÇâÀ» ¹ŞÀ½
-        GetComponent<Rigidbody>().AddForce(transform.right * speed * diff, ForceMode.Force); //È­»ìÀÌ ³ª¾Æ°¡´Â Èû
+        GetComponent<Rigidbody>().AddForce(ChangeWind.windVector * 100.0f, ForceMode.Force); //í™”ì‚´ì´ í’í–¥ì˜ ì˜í–¥ì„ ë°›ìŒ
+        GetComponent<Rigidbody>().AddForce(dir * speed * diff, ForceMode.Force); //í™”ì‚´ì´ ë‚˜ì•„ê°€ëŠ” í˜
         GetComponent<Rigidbody>().useGravity = true;
     }
     private void OnCollisionEnter(UnityEngine.Collision collision)
     {
-        if (collision.gameObject.tag == "Target") {
-            //È­»ìÀÌ Á¢ÃËÇÑ ÁöÁ¡ÀÇ À§Ä¡¸¦ °¡Á®¿À±â
+        if (collision.gameObject.tag == "Target")
+        {
+            //í™”ì‚´ì´ ì ‘ì´‰í•œ ì§€ì ì˜ ìœ„ì¹˜ë¥¼ ê°€ì ¸ì˜¤ê¸°
             Vector3 contactPoint = collision.contacts[0].point;
 
-            // °ú³á Áß½É
+            // ê³¼ë… ì¤‘ì‹¬
             Vector3 targetCenter = new Vector3(0.0f, 2.0f, 35.0f);
 
-            // °ú³á Áß½É°ú Á¢ÃË ÁöÁ¡ »çÀÌÀÇ °Å¸®¸¦ °è»êÇÏ¿© Á¡¼ö¸¦ ¾÷µ¥ÀÌÆ®
+            // ê³¼ë… ì¤‘ì‹¬ê³¼ ì ‘ì´‰ ì§€ì  ì‚¬ì´ì˜ ê±°ë¦¬ë¥¼ ê³„ì‚°í•˜ì—¬ ì ìˆ˜ë¥¼ ì—…ë°ì´íŠ¸
             float distance = Vector3.Distance(contactPoint, targetCenter);
 
-            //Á¡¼ö °è»ê
-            score = CalculateScore(distance);  
+            //ì ìˆ˜ ê³„ì‚°
+            score = CalculateScore(distance);
         }
-        else if (collision.gameObject.tag == "EnemyTarget") {
-            //È­»ìÀÌ Á¢ÃËÇÑ ÁöÁ¡ÀÇ À§Ä¡¸¦ °¡Á®¿À±â
+        else if (collision.gameObject.tag == "EnemyTarget")
+        {
+            //í™”ì‚´ì´ ì ‘ì´‰í•œ ì§€ì ì˜ ìœ„ì¹˜ë¥¼ ê°€ì ¸ì˜¤ê¸°
             Vector3 contactPoint = collision.contacts[0].point;
 
-            // °ú³á Áß½É
+            // ê³¼ë… ì¤‘ì‹¬
             Vector3 targetCenter = new Vector3(5.8f, 2.0f, 35.0f);
 
-            // °ú³á Áß½É°ú Á¢ÃË ÁöÁ¡ »çÀÌÀÇ °Å¸®¸¦ °è»êÇÏ¿© Á¡¼ö¸¦ ¾÷µ¥ÀÌÆ®
+            // ê³¼ë… ì¤‘ì‹¬ê³¼ ì ‘ì´‰ ì§€ì  ì‚¬ì´ì˜ ê±°ë¦¬ë¥¼ ê³„ì‚°í•˜ì—¬ ì ìˆ˜ë¥¼ ì—…ë°ì´íŠ¸
             float distance = Vector3.Distance(contactPoint, targetCenter);
 
-            //Á¡¼ö °è»ê
+            //ì ìˆ˜ ê³„ì‚°
             score = CalculateScore(distance);
         }
 
@@ -70,9 +71,10 @@ public class arrowControl : MonoBehaviour
         this.transform.parent = null;
     }
 
-    
-    private int CalculateScore(float distance) {// °Å¸®¿¡ µû¶ó Á¡¼ö¸¦ °è»êÇÏ´Â ¸Ş¼­µå
-        // °Å¸®¿¡ µû¸¥ Á¡¼ö °è»ê, Áß½É°ú °¡±î¿ï¼ö·Ï ³ôÀº Á¡¼ö
+
+    private int CalculateScore(float distance)
+    {// ê±°ë¦¬ì— ë”°ë¼ ì ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” ë©”ì„œë“œ
+        // ê±°ë¦¬ì— ë”°ë¥¸ ì ìˆ˜ ê³„ì‚°, ì¤‘ì‹¬ê³¼ ê°€ê¹Œìš¸ìˆ˜ë¡ ë†’ì€ ì ìˆ˜
         if (distance <= 0.11f) return 10;
         else if (distance <= 0.21f) return 9;
         else if (distance <= 0.31f) return 8;
@@ -85,5 +87,5 @@ public class arrowControl : MonoBehaviour
         else if (distance <= 0.98f) return 1;
         else return 0;
     }
-    
+
 }
