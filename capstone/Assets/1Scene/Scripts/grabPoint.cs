@@ -28,17 +28,22 @@ public class grabPoint : MonoBehaviour
 
     private bool shot = false;
 
+    AudioSource bowSnd;//활 시위 당기는 효과음
+
+
     void Start()
     {
         //ArrowControl = arrow.gameObject.AddComponent<arrowControl>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         bow = Bow.GetComponent<bowControl>();
+        bowSnd = GameObject.Find("bowSnd").GetComponent<AudioSource>();
     }
 
     public void grabPerformed()
     {
         //Debug.Log("rightstart");
         isGrabbing = true;
+        bowSnd.Play();
         if (!shot)
         {
             startPosition = this.gameObject.transform.position;
@@ -79,7 +84,7 @@ public class grabPoint : MonoBehaviour
     {
         shootArrow(Random.Range(0.01f, 6f));
     }
-    void shootArrow(float distanceMoved)
+    public void shootArrow(float distanceMoved)
     {
         shot = true;
         ArrowControl.fire(distanceMoved, (bowpoint.position - bowpoint2.position).normalized);

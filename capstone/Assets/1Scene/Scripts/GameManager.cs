@@ -14,12 +14,13 @@ public class GameManager : MonoBehaviour
     private grabPoint currentGrabPoint;
 
     public GameObject ScoreBoard; //점수판 UI 스크립트
+    public GameObject ViewResult; //승리/패배 등 UI 스크립트
 
     private int playerPoint, opponentPoint, playerSet, opponentSet = 0;
     private int currentTurn = 1;
     private int currentSet = 1;
     private int currentStage = 1;
-    private int setLimit = 3; 
+    private int setLimit = 3;
     public bool playerTurn = true;
 
     // Start is called before the first frame update
@@ -31,14 +32,15 @@ public class GameManager : MonoBehaviour
         currentBowControl = playerBowControl;
         currentGrabPoint = currentBowControl.grabpoint;
         currentBowControl.reloadArrow();
+        ScoreBoard.GetComponent<writeScore>().write_stage(currentStage);//점수판 UI 현재 스테이지 표시
         ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //점수판 UI 현재 세트 표시
-        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//점수판 UI 누구의 턴인지 표시
+        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//점수판 UI 누구의 턴인지 표시  
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void calculateScore()
     {
@@ -81,16 +83,19 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Game Over, Set score - Player : " + playerSet + " Opponent : " + opponentSet);
                 if (playerSet > opponentSet)
                 {
+                    ViewResult.GetComponent<viewResult>().viewVictory(); //승리 UI
                     Debug.Log("You Win!");
                     nextStage();
                 }
                 else if (playerSet < opponentSet)
                 {
+                    ViewResult.GetComponent<viewResult>().viewDefeat(); //패배 UI
                     Debug.Log("You Lose..");
                     Time.timeScale = 0;
                 }
                 else
                 {
+                    ViewResult.GetComponent<viewResult>().viewDraw(); //무승부 UI
                     Debug.Log("Draw");
                     Time.timeScale = 0;
                 }
@@ -99,8 +104,8 @@ public class GameManager : MonoBehaviour
             }
             else Debug.Log("Current Set score - Player : " + playerSet + " Opponent : " + opponentSet);
         }
-    
-        
+
+
         changePlayers();
         ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//점수판 UI 누구의 턴인지 표시
 
@@ -113,7 +118,19 @@ public class GameManager : MonoBehaviour
         opponentSet = 0;
         currentSet = 1;
         changePlayers();
+        StartCoroutine(WaitAndClearAll()); //모든 것을 새스테이지에 맞게 초기화
     }
+
+    public IEnumerator WaitAndClearAll()
+    {
+        yield return new WaitForSeconds(2); //2초 대기
+        ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //점수판 UI 현재 세트 표시
+        ScoreBoard.GetComponent<writeScore>().write_set_score(playerSet, opponentSet); //점수판 UI 세트 점수 표시
+        ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn); //점수판 UI 누구의 턴인지 표시
+        ScoreBoard.GetComponent<writeScore>().write_stage(currentStage);//점수판 UI 현재 스테이지 표시
+        ViewResult.GetComponent<viewResult>().viewNothing();//승패UI 초기화
+    }
+
     private void changePlayers()
     {
         if (playerTurn)

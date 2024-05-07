@@ -14,12 +14,16 @@ public class arrowControl : MonoBehaviour
     public int score = 0;
 
     public changeWind ChangeWind; //풍향 스크립트
+    AudioSource arrowSnd; // 화살 발사 효과음
+    AudioSource yellSnd; //고득점 함성 효과음
 
     // Start is called before the first frame update
     void Start()
     {
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Arrow"), LayerMask.NameToLayer("Arrow"));
         ChangeWind = GameObject.Find("changeWind").GetComponent<changeWind>();
+        arrowSnd = GameObject.Find("arrowSnd").GetComponent<AudioSource>();
+        yellSnd = GameObject.Find("yellSnd").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,8 +31,10 @@ public class arrowControl : MonoBehaviour
     {
 
     }
+
     public void fire(float diff, Vector3 dir)
     {
+        arrowSnd.Play();
         Debug.Log("shoot");
         GetComponent<Rigidbody>().AddForce(ChangeWind.windVector * 100.0f, ForceMode.Force); //화살이 풍향의 영향을 받음
         GetComponent<Rigidbody>().AddForce(dir * speed * diff, ForceMode.Force); //화살이 나아가는 힘
@@ -75,9 +81,9 @@ public class arrowControl : MonoBehaviour
     private int CalculateScore(float distance)
     {// 거리에 따라 점수를 계산하는 메서드
         // 거리에 따른 점수 계산, 중심과 가까울수록 높은 점수
-        if (distance <= 0.11f) return 10;
-        else if (distance <= 0.21f) return 9;
-        else if (distance <= 0.31f) return 8;
+        if (distance <= 0.11f) { yellSnd.Play(); return 10; }
+        else if (distance <= 0.21f) { yellSnd.Play(); return 9; }
+        else if (distance <= 0.31f) { yellSnd.Play(); return 8; }
         else if (distance <= 0.4f) return 7;
         else if (distance <= 0.5f) return 6;
         else if (distance <= 0.59f) return 5;
