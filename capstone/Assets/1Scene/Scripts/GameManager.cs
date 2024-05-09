@@ -22,13 +22,16 @@ public class GameManager : MonoBehaviour
     private int currentStage = 1;
     private int setLimit = 3;
     public bool playerTurn = true;
+    public bool practice = false;
 
     // Start is called before the first frame update
     void Start()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-        Debug.Log("Start of Stage 1");
+        if (practice) Debug.Log("Practice Start");
+        else Debug.Log("Start of Stage 1");
+
         currentBowControl = playerBowControl;
         currentGrabPoint = currentBowControl.grabpoint;
         currentBowControl.reloadArrow();
@@ -44,8 +47,10 @@ public class GameManager : MonoBehaviour
     }
     public void calculateScore()
     {
+        //쏘아진 화살을 활의 자식 오브젝트에서 다른 오브젝트의 자식으로 변경
         currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
 
+        //턴 종료시
         Debug.Log("End of Turn " + currentTurn);
         if (playerTurn)
         {
@@ -64,6 +69,7 @@ public class GameManager : MonoBehaviour
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
 
+        //세트 종료시
         if (currentTurn > 6)
         {
             Debug.Log("End of Set " + currentSet + ", " + playerPoint + " : " + opponentPoint);
@@ -78,7 +84,8 @@ public class GameManager : MonoBehaviour
             ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //점수판 UI 현재 세트 표시
             ScoreBoard.GetComponent<writeScore>().write_set_score(playerSet, opponentSet); //점수판 UI 세트 점수 표시
 
-            if (currentSet > setLimit)
+            //스테이지 종료시
+            if (currentSet > setLimit || playerSet >= 2 || opponentSet >= 2)
             {
                 Debug.Log("Game Over, Set score - Player : " + playerSet + " Opponent : " + opponentSet);
                 if (playerSet > opponentSet)
@@ -91,13 +98,15 @@ public class GameManager : MonoBehaviour
                 {
                     ViewResult.GetComponent<viewResult>().viewDefeat(); //패배 UI
                     Debug.Log("You Lose..");
-                    Time.timeScale = 0;
+                    if(practice) nextStage();
+                    else Time.timeScale = 0;
                 }
                 else
                 {
                     ViewResult.GetComponent<viewResult>().viewDraw(); //무승부 UI
                     Debug.Log("Draw");
-                    Time.timeScale = 0;
+                    if (practice) nextStage();
+                    else Time.timeScale = 0;
                 }
 
                 return;
@@ -105,8 +114,8 @@ public class GameManager : MonoBehaviour
             else Debug.Log("Current Set score - Player : " + playerSet + " Opponent : " + opponentSet);
         }
 
-
-        changePlayers();
+        
+        changePlayers();//플레이어 변경
         ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//점수판 UI 누구의 턴인지 표시
 
 

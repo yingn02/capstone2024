@@ -8,9 +8,9 @@ public class bowControl : MonoBehaviour
 {
     public InputActionReference leftGrabAction;
     public GameObject leftController;
-    public GameObject arrowPrefab;
-    public GameObject bowPoint;
-    public GameObject arrowPoint;
+    public GameObject arrowPrefab;//화살 프리팹
+    public GameObject bowPoint;//화살 생성 위치
+    public GameObject arrowPoint;//발사된 화살의 부모로 삼을 오브젝트, GameManager에서 사용됨
     public grabPoint grabpoint;
 
     private bool isGrabbing = false;
@@ -19,6 +19,7 @@ public class bowControl : MonoBehaviour
 
     public bool player = true;
 
+    
     void OnEnable()
     {
         leftGrabAction.action.performed += GrabPerformed;
@@ -26,22 +27,28 @@ public class bowControl : MonoBehaviour
         leftGrabAction.action.Enable();
     }
 
+    
     void OnDisable()
     {
         leftGrabAction.action.performed -= GrabPerformed;
         leftGrabAction.action.Disable();
     }
 
+    //왼쪽 컨트롤러 Grab 시 동작
     void GrabPerformed(InputAction.CallbackContext context)
     {
         isGrabbing = true;
         //RemoveControllerModel();
     }
+
+    //왼쪽 컨트롤러 Grab 해제 시 동작
     void GrabCanceled(InputAction.CallbackContext context)
     {
         isGrabbing = false;
         //RestoreControllerModel();
     }
+
+    //활을 컨트롤러 위치로 설정
     void MoveBowToControllerPosition()
     {
         this.transform.position = leftController.transform.position;
@@ -84,6 +91,8 @@ public class bowControl : MonoBehaviour
         }*/
         
     }
+
+    //재장전
     public void reloadArrow()
     {
         if (arrowPrefab != null && bowPoint != null)
