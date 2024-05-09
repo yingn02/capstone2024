@@ -1222,6 +1222,7 @@ MonoBehaviour:
   bowPoint: {fileID: 8582709517412543291}
   arrowPoint: {fileID: 0}
   grabpoint: {fileID: 1912750385589055340}
+  dynamicMoveProvider: {fileID: 0}
   haveArrow: 0
   player: 1
 --- !u!1 &6268804116313574862
@@ -1372,7 +1373,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2f1a3cd84c226c43aa69d0de9168b19, type: 2}
+  - {fileID: 2100000, guid: 1e4e988554295904498ff46aa35c22e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

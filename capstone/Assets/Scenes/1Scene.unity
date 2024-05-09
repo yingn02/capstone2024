@@ -1999,6 +1999,11 @@ Transform:
   - {fileID: 1164543220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &448627012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3462571325970164595, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 1413267698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &455739836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,6 +2858,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &568579877 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2736478854845186207, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 1413267698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1e8c997df241c1a67045eeac79b41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &581011036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10388,6 +10404,10 @@ PrefabInstance:
       propertyPath: leftController
       value: 
       objectReference: {fileID: 1032089591}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: dynamicMoveProvider
+      value: 
+      objectReference: {fileID: 568579877}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1882227448317623845, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
@@ -11483,13 +11503,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 810582889}
     - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: XROrigin
+      value: 
+      objectReference: {fileID: 448627012}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: arrowPoint
       value: 
       objectReference: {fileID: 660856570}
     - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: moveProvider
+      value: 
+      objectReference: {fileID: 568579877}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: leftController
       value: 
       objectReference: {fileID: 1032089591}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: dynamicMoveProvider
+      value: 
+      objectReference: {fileID: 568579877}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
