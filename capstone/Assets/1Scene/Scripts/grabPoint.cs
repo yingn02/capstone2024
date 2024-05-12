@@ -29,7 +29,7 @@ public class grabPoint : MonoBehaviour
     private bool shot = false;
 
     AudioSource bowSnd;//Ȱ ���� ���� ȿ����
-
+   
 
     void Start()
     {
@@ -78,11 +78,46 @@ public class grabPoint : MonoBehaviour
         calculatePosition();
     }
 
-    // Start is called before the first frame update
 
+
+    bool charging = false;
+    float timer = 0f;
+    float distance;
     public void invokeArrow()
     {
-        shootArrow(Random.Range(0.01f, 6f));
+        bowSnd?.Play();
+        charging = true;
+        distance = Random.Range(0.01f, 6f);
+        //shootArrow(Random.Range(0.01f, 6f));
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (charging)
+        {
+            timer += Time.deltaTime;
+            float moveAmount = Mathf.Lerp(0, distance * -1, timer);
+            transform.position = new Vector3(bowpoint2.position.x, bowpoint2.position.y, bowpoint2.position.z + moveAmount * 0.06f);
+
+            arrow.transform.position = this.transform.position;
+            arrow.transform.rotation = Bow.transform.rotation;
+
+            arrow.transform.Rotate(0, -90, 0);
+
+            if (timer >= 1f)
+            {
+                timer = 0;
+                shootArrow(distance);
+                charging = false;
+                transform.position = bowpoint2.position;
+            }
+        }
+
+        newLineDirection = (bowpoint.position - bowpoint2.position).normalized;
+        if ((isGrabbing && !shot))
+        {
+            calculatePosition();
+        }
     }
     public void shootArrow(float distanceMoved)
     {
@@ -92,15 +127,7 @@ public class grabPoint : MonoBehaviour
         bow.haveArrow = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        newLineDirection = (bowpoint.position - bowpoint2.position).normalized;
-        if (isGrabbing && !shot)
-        {
-            calculatePosition();
-        }
-    }
+
     void calculatePosition()
     {
 

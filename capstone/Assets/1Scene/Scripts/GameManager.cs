@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
             currentBowControl = opponentBowControl;
             playerTurn = false;
             if (practice) calculateScore();
-            else opponentBowControl.grabpoint.Invoke("invokeArrow", 2);
+            else opponentBowControl.grabpoint.Invoke("invokeArrow", 1);
             Debug.Log("Opponent will shoot arrow after 2 seconds");
         }
         else
