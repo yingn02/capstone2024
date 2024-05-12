@@ -28,7 +28,7 @@ public class grabPoint : MonoBehaviour
 
     private bool shot = false;
 
-    AudioSource bowSnd;//È° ½ÃÀ§ ´ç±â´Â È¿°úÀ½
+    AudioSource bowSnd;//È° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½
 
 
     void Start()

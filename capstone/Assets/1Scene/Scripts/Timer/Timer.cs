@@ -9,15 +9,15 @@ public class Timer : MonoBehaviour
     //bool timerActive = false;
     //public Text currentTimeText;
 
-    float currentTime; //½ÇÁ¦ Å¸ÀÌ¸Ó
-    float seeTime; //»ç¿ëÀÚ¿¡°Ô º¸ÀÌ´Â Å¸ÀÌ¸Ó, È­»ìÀÇ Á¡¼ö ÆÇÁ¤½Ã°£ ¶§¹®¿¡, ¸íÁßÇØµµ ¹«È¿°¡ µÇ´Â ¹®Á¦¸¦ °íÄ¡±â À§ÇØ¼­ ÇÊ¿äÇÔ
+    float currentTime; //ì‹¤ì œ íƒ€ì´ë¨¸
+    float seeTime; //ì‚¬ìš©ìì—ê²Œ ë³´ì´ëŠ” íƒ€ì´ë¨¸, í™”ì‚´ì˜ ì ìˆ˜ íŒì •ì‹œê°„ ë•Œë¬¸ì—, ëª…ì¤‘í•´ë„ ë¬´íš¨ê°€ ë˜ëŠ” ë¬¸ì œë¥¼ ê³ ì¹˜ê¸° ìœ„í•´ì„œ í•„ìš”í•¨
     public float startMinutes;
     public TextMeshPro currentTimeText;
-    public bool timer = false; //Å¸ÀÌ¸Ó Àü¿ø
+    public bool timer = false; //íƒ€ì´ë¨¸ ì „ì›
 
-    public GameManager gameManager; //GameManager ½ºÅ©¸³Æ®, ÇÃ·¹ÀÌ¾îÀÇ ÅÏÀ» °¨ÁöÇÏ±â À§ÇÔ
-    AudioSource timerSnd; // Å¸ÀÌ¸Ó ÀÓ¹Ú È¿°úÀ½
-    private bool alarmTriggered = false; // 5ÃÊ ¾Ë¶÷ÀÌ ¿ï¸®°í ÀÖ´Â°¡
+    public GameManager gameManager; //GameManager ìŠ¤í¬ë¦½íŠ¸, í”Œë ˆì´ì–´ì˜ í„´ì„ ê°ì§€í•˜ê¸° ìœ„í•¨
+    AudioSource timerSnd; // íƒ€ì´ë¨¸ ì„ë°• íš¨ê³¼ìŒ
+    private bool alarmTriggered = false; // 5ì´ˆ ì•ŒëŒì´ ìš¸ë¦¬ê³  ìˆëŠ”ê°€
 
     private void Start()
     {
@@ -33,29 +33,37 @@ public class Timer : MonoBehaviour
             currentTime = currentTime - Time.deltaTime;
         }*/
 
-        if (gameManager.playerTurn == true && timer == false) { //ÇÃ·¹ÀÌ¾îÀÇ ÅÏÀÌ¸é, Å¸ÀÌ¸Ó°¡ ²¨Á® ÀÖÀ¸¸é Å²´Ù
-            timer = true; //Å¸ÀÌ¸Ó Àü¿ø ÄÑ±â
-            currentTime = startMinutes;
-            seeTime = startMinutes - 3.0f;
-            alarmTriggered = false;
+        if (!gameManager.practice)
+        {
+            if (gameManager.playerTurn == true && timer == false)
+            { //í”Œë ˆì´ì–´ì˜ í„´ì´ë©´, íƒ€ì´ë¨¸ê°€ êº¼ì ¸ ìˆìœ¼ë©´ í‚¨ë‹¤
+                timer = true; //íƒ€ì´ë¨¸ ì „ì› ì¼œê¸°
+                currentTime = startMinutes;
+                seeTime = startMinutes - 3.0f;
+                alarmTriggered = false;
+            }
+
+            if (gameManager.playerTurn == false)
+            { //í”Œë ˆì´ì–´ì˜ í„´ì´ ì§€ë‚˜ê°€ë©´, ë¬´ì¡°ê±´ íƒ€ì´ë¨¸ë¥¼ ëˆë‹¤
+                timer = false; //íƒ€ì´ë¨¸ ì „ì› ë„ê¸°
+                timerSnd.Stop();
+                //
+            }
         }
 
-        if (gameManager.playerTurn == false) { //ÇÃ·¹ÀÌ¾îÀÇ ÅÏÀÌ Áö³ª°¡¸é, ¹«Á¶°Ç Å¸ÀÌ¸Ó¸¦ ²ö´Ù
-            timer = false; //Å¸ÀÌ¸Ó Àü¿ø ²ô±â
-            timerSnd.Stop();
-            //
-        }
+        
 
         ///////////////////////////////////////////currentTime///////////////////////////////////////////
 
-        if (currentTime > 0 && timer == true) //Å¸ÀÌ¸Ó Àü¿øÀÌ ÄÑÁ® ÀÖÀ» ¶§¸¸ µ¿ÀÛÇÔ
+        if (currentTime > 0 && timer == true) //íƒ€ì´ë¨¸ ì „ì›ì´ ì¼œì ¸ ìˆì„ ë•Œë§Œ ë™ì‘í•¨
         {
             currentTime = currentTime - Time.deltaTime;
 
             if (currentTime <= 0)
             {
-                timer = false; //Å¸ÀÌ¸Ó Àü¿ø ²ô±â
-                gameManager.Invoke("calculateScore", 0.0f); //¹«È¿ Ã³¸® (0Á¡)
+                timer = false; //íƒ€ì´ë¨¸ ì „ì› ë„ê¸°
+                gameManager.timeOut(); // í”Œë ˆì´ì–´ì—ê²Œì„œ í™”ì‚´ì„ ë¹¼ì•—ìŒ
+                gameManager.Invoke("calculateScore", 0.2f); //ë¬´íš¨ ì²˜ë¦¬ (0ì )
                 currentTime = 0;
             }
 
@@ -74,24 +82,24 @@ public class Timer : MonoBehaviour
 
         /////////////////////////////////////////////seeTime/////////////////////////////////////////////
 
-        if (seeTime > 0 && timer == true) //Å¸ÀÌ¸Ó Àü¿øÀÌ ÄÑÁ® ÀÖÀ» ¶§¸¸ µ¿ÀÛÇÔ
+        if (seeTime > 0 && timer == true) //íƒ€ì´ë¨¸ ì „ì›ì´ ì¼œì ¸ ìˆì„ ë•Œë§Œ ë™ì‘í•¨
         {
             seeTime = seeTime - Time.deltaTime;
 
-            if (seeTime <= 5.0f && !alarmTriggered) // 5ÃÊ ÀÌÇÏ·Î ³»·Á°¬°í, ¾Ë¶÷ÀÌ ¾ÆÁ÷ ¿ï¸®Áö ¾Ê¾Ò´Ù¸é
+            if (seeTime <= 5.0f && !alarmTriggered) // 5ì´ˆ ì´í•˜ë¡œ ë‚´ë ¤ê°”ê³ , ì•ŒëŒì´ ì•„ì§ ìš¸ë¦¬ì§€ ì•Šì•˜ë‹¤ë©´
             {
-                timerSnd.Play(); // ¾Ë¶÷ ¼Ò¸® Àç»ı
+                timerSnd.Play(); // ì•ŒëŒ ì†Œë¦¬ ì¬ìƒ
                 alarmTriggered = true;
             }
 
             if (seeTime <= 0)
-            {   
+            {
                 seeTime = 0;
             }
 
             currentTimeText.text = seeTime.ToString("n2");
         }
     }
-    
+
 
 }

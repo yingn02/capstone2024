@@ -45,10 +45,25 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    public void timeOut()
+    {
+        currentGrabPoint.arrow.transform.position = currentBowControl.arrowPoint.transform.position;
+    }
+    void destroyArrows()
+    {
+        GameObject[] arrows = GameObject.FindGameObjectsWithTag("Arrow");
+
+        foreach (GameObject obj in arrows)
+        {
+            Destroy(obj);
+        }
+        
+    }
     public void calculateScore()
     {
         //쏘아진 화살을 활의 자식 오브젝트에서 다른 오브젝트의 자식으로 변경
         currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
+        
 
         //턴 종료시
         Debug.Log("End of Turn " + currentTurn);
@@ -59,6 +74,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if(practice) { currentGrabPoint.ArrowControl.score = 0; }
             opponentPoint = opponentPoint + currentGrabPoint.ArrowControl.score;
             Debug.Log("Opponent: " + opponentPoint);
         }
@@ -73,12 +89,16 @@ public class GameManager : MonoBehaviour
         if (currentTurn > 6)
         {
             Debug.Log("End of Set " + currentSet + ", " + playerPoint + " : " + opponentPoint);
-            if (playerPoint > opponentPoint) playerSet++;
+            if (playerPoint > opponentPoint) if (!practice) playerSet++;
             else if (playerPoint < opponentPoint) opponentSet++;
             else Debug.Log("Draw");
 
+
             currentTurn = 1;
-            currentSet++;
+
+            if(!practice) currentSet++;
+            else destroyArrows(); //연습모드는 1세트마다 화살을 지움
+
             playerPoint = 0;
             opponentPoint = 0;
             ScoreBoard.GetComponent<writeScore>().write_set(currentSet, setLimit); //점수판 UI 현재 세트 표시
@@ -90,23 +110,21 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Game Over, Set score - Player : " + playerSet + " Opponent : " + opponentSet);
                 if (playerSet > opponentSet)
                 {
-                    ViewResult.GetComponent<viewResult>().viewVictory(); //승리 UI
+                    if(!practice) ViewResult.GetComponent<viewResult>().viewVictory(); //승리 UI
                     Debug.Log("You Win!");
                     nextStage();
                 }
                 else if (playerSet < opponentSet)
                 {
-                    ViewResult.GetComponent<viewResult>().viewDefeat(); //패배 UI
                     Debug.Log("You Lose..");
-                    if(practice) nextStage();
-                    else Time.timeScale = 0;
+                    ViewResult.GetComponent<viewResult>().viewDefeat(); //패배 UI
+                    Time.timeScale = 0;
                 }
                 else
                 {
-                    ViewResult.GetComponent<viewResult>().viewDraw(); //무승부 UI
                     Debug.Log("Draw");
-                    if (practice) nextStage();
-                    else Time.timeScale = 0;
+                    ViewResult.GetComponent<viewResult>().viewDraw(); //패배 UI
+                    Time.timeScale = 0;
                 }
 
                 return;
@@ -122,11 +140,12 @@ public class GameManager : MonoBehaviour
     }
     private void nextStage()
     {
-        Debug.Log("Start of Stage " + (++currentStage));
+        if(!practice) Debug.Log("Start of Stage " + (++currentStage));
         playerSet = 0;
         opponentSet = 0;
         currentSet = 1;
         changePlayers();
+        destroyArrows(); // 현재 나와있는 화살 전부 지우기
         StartCoroutine(WaitAndClearAll()); //모든 것을 새스테이지에 맞게 초기화
     }
 
@@ -146,7 +165,8 @@ public class GameManager : MonoBehaviour
         {
             currentBowControl = opponentBowControl;
             playerTurn = false;
-            opponentBowControl.grabpoint.Invoke("invokeArrow", 2);
+            if (practice) calculateScore();
+            else opponentBowControl.grabpoint.Invoke("invokeArrow", 2);
             Debug.Log("Opponent will shoot arrow after 2 seconds");
         }
         else
@@ -154,7 +174,17 @@ public class GameManager : MonoBehaviour
             currentBowControl = playerBowControl;
             playerTurn = true;
         }
+        if (practice) //화살을 안보이게 함
+        {
+            GameObject[] arrows = GameObject.FindGameObjectsWithTag("Arrow");
+            foreach (GameObject obj in arrows)
+            {
+                obj.transform.parent = currentBowControl.arrowPoint.transform;
+                obj.transform.position = currentBowControl.arrowPoint.transform.position;
+            }
+        }
         currentBowControl.reloadArrow();
         currentGrabPoint = currentBowControl.grabpoint;
+        
     }
 }
