@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07052855, g: 0.3536621, b: 0.9699103, a: 1}
+  m_IndirectSpecularColor: {r: 0.07052275, g: 0.35373604, b: 0.97078824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4646,7 +4646,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 52b604968fa8f0f4d934c99970373ca4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.24
+      value: 5.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b604968fa8f0f4d934c99970373ca4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8395,6 +8395,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 239103479429138164, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984668758703903146, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -8589,6 +8593,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760711245992, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498955950260642541, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2871854915827847850, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
@@ -8735,6 +8743,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 75141527}
   m_SourcePrefab: {fileID: 100100000, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+--- !u!114 &1413267699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2736478854845186207, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 1413267698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1e8c997df241c1a67045eeac79b41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417280560
 GameObject:
   m_ObjectHideFlags: 0
@@ -10299,15 +10318,15 @@ PrefabInstance:
       objectReference: {fileID: 75141521}
     - target: {fileID: 3602785969043348842, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.58
+      value: 5.787
       objectReference: {fileID: 0}
     - target: {fileID: 3602785969043348842, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 1.211
       objectReference: {fileID: 0}
     - target: {fileID: 3602785969043348842, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1
+      value: -1.253
       objectReference: {fileID: 0}
     - target: {fileID: 3602785969043348842, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10337,6 +10356,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4820181136029792997, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6257635424294974122, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: m_Name
       value: OpponentBow
@@ -10365,6 +10388,10 @@ PrefabInstance:
       propertyPath: leftController
       value: 
       objectReference: {fileID: 1032089591}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: dynamicMoveProvider
+      value: 
+      objectReference: {fileID: 1413267699}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1882227448317623845, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
@@ -10620,6 +10647,7 @@ MonoBehaviour:
   ScoreBoard: {fileID: 1098795169}
   ViewResult: {fileID: 1951006263}
   playerTurn: 1
+  practice: 0
 --- !u!4 &1829368041
 Transform:
   m_ObjectHideFlags: 0
@@ -11484,6 +11512,10 @@ PrefabInstance:
       propertyPath: leftController
       value: 
       objectReference: {fileID: 1032089591}
+    - target: {fileID: 8365706192414022846, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: dynamicMoveProvider
+      value: 
+      objectReference: {fileID: 1413267699}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11764,7 +11796,6 @@ SceneRoots:
   - {fileID: 1307031169}
   - {fileID: 506157253}
   - {fileID: 4468445325022002931}
-  - {fileID: 1791654655}
   - {fileID: 1829368041}
   - {fileID: 660856571}
   - {fileID: 1961561193}
@@ -11773,4 +11804,5 @@ SceneRoots:
   - {fileID: 389043636}
   - {fileID: 1839326177}
   - {fileID: 812407626}
+  - {fileID: 1791654655}
   - {fileID: 6231481770681636212}

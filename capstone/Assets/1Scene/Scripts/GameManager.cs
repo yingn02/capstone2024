@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         if (currentTurn > 6)
         {
             Debug.Log("End of Set " + currentSet + ", " + playerPoint + " : " + opponentPoint);
-            if (playerPoint > opponentPoint) if (!practice) playerSet++;
+            if (playerPoint > opponentPoint) { if (!practice) playerSet++; }
             else if (playerPoint < opponentPoint) opponentSet++;
             else Debug.Log("Draw");
 
