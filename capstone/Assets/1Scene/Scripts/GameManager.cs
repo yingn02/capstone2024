@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private int currentSet = 1;
     private int currentStage = 1;
     private int setLimit = 3;
+    public Animator enemyAnimator; //enemy의 Animator
     public bool playerTurn = true;
     public bool practice = false;
 
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
         if (practice) Debug.Log("Practice Start");
         else Debug.Log("Start of Stage 1");
+
+        enemyAnimator = GameObject.Find("Enemy").GetComponent<Animator>();
 
         currentBowControl = playerBowControl;
         currentGrabPoint = currentBowControl.grabpoint;
@@ -159,6 +162,10 @@ public class GameManager : MonoBehaviour
         ScoreBoard.GetComponent<writeScore>().write_stage(currentStage);//점수판 UI 현재 스테이지 표시
         ViewResult.GetComponent<viewResult>().viewNothing();//승패UI 초기화
     }
+    void startAnimation()
+    {
+        enemyAnimator.SetTrigger("Draw");
+    }
 
     private void changePlayers()
     {
@@ -167,7 +174,11 @@ public class GameManager : MonoBehaviour
             currentBowControl = opponentBowControl;
             playerTurn = false;
             if (practice) calculateScore();
-            else opponentBowControl.grabpoint.Invoke("invokeArrow", 1);
+            else
+            {
+                opponentBowControl.grabpoint.Invoke("invokeArrow", 1.4f);
+                if (enemyAnimator != null) Invoke("startAnimation", 1); // enemy 모션 출력
+            }
             Debug.Log("Opponent will shoot arrow after 2 seconds");
         }
         else

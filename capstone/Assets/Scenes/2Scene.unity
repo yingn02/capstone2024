@@ -10665,6 +10665,7 @@ MonoBehaviour:
   opponentBowControl: {fileID: 1464716848}
   ScoreBoard: {fileID: 1098795169}
   ViewResult: {fileID: 1951006263}
+  enemyAnimator: {fileID: 0}
   playerTurn: 1
   practice: 1
 --- !u!4 &1829368041

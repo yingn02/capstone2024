@@ -87,7 +87,7 @@ public class grabPoint : MonoBehaviour
     {
         bowSnd?.Play();
         charging = true;
-        distance = Random.Range(0.01f, 6f);
+        distance = Random.Range(0.1f, 6f);
         //shootArrow(Random.Range(0.01f, 6f));
     }
     // Update is called once per frame
@@ -96,7 +96,7 @@ public class grabPoint : MonoBehaviour
         if (charging)
         {
             timer += Time.deltaTime;
-            float moveAmount = Mathf.Lerp(0, distance * -1, timer);
+            float moveAmount = Mathf.Lerp(0, distance * -1.2f, timer);
             transform.position = new Vector3(bowpoint2.position.x, bowpoint2.position.y, bowpoint2.position.z + moveAmount * 0.06f);
 
             arrow.transform.position = this.transform.position;
