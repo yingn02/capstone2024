@@ -144,8 +144,9 @@ public class GameManager : MonoBehaviour
         playerSet = 0;
         opponentSet = 0;
         currentSet = 1;
-        changePlayers();
         destroyArrows(); // 현재 나와있는 화살 전부 지우기
+        changePlayers();
+        
         StartCoroutine(WaitAndClearAll()); //모든 것을 새스테이지에 맞게 초기화
     }
 
