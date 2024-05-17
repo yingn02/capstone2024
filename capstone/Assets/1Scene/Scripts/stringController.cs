@@ -18,7 +18,7 @@ public class stringController : MonoBehaviour
     private Transform midPointGrabObject;
 
     private Transform interactor;
-
+    public bool isEnemy = false;
     private void Awake()
     {
         interactable = midPointGrabObject.GetComponent<XRGrabInteractable>();
@@ -45,7 +45,7 @@ public class stringController : MonoBehaviour
 
     private void Update()
     {
-        if (interactor != null)
+        if (interactor != null || isEnemy)
         {
             bowStringRenderer.CreateString(midPointGrabObject.position);
         }

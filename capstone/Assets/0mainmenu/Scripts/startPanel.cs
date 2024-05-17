@@ -8,6 +8,7 @@ public class startPanel : MonoBehaviour
 {
 
     public GameObject panel;
+    public GameObject skillpanel;
 
     void Start()
     {
@@ -20,6 +21,12 @@ public class startPanel : MonoBehaviour
     }
 
     public void startToggle()
+    {
+        if (this.gameObject.activeSelf) { this.gameObject.SetActive(false); panel.SetActive(true); }
+        else { this.gameObject.SetActive(true); panel.SetActive(false); }
+    }
+
+    public void skillToggle()
     {
         if (this.gameObject.activeSelf) { this.gameObject.SetActive(false); panel.SetActive(true); }
         else { this.gameObject.SetActive(true); panel.SetActive(false); }

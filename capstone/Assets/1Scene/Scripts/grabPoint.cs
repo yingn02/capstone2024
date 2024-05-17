@@ -16,33 +16,59 @@ public class grabPoint : MonoBehaviour
 
     private Vector3 startPosition;
     private Vector3 startControllerPosition;
+    Vector3 newLineDirection;
+    Vector3 newPosition;
 
     public Transform bowpoint;
     public Transform bowpoint2;
 
-    public bowControl bow;
+    public GameObject Bow;
+    private bowControl bow;
     private GameManager gameManager;
-    
+
+    private bool shot = false;
+
+    AudioSource bowSnd;//Ȱ ���� ���� ȿ����
+   
+
+    void Start()
+    {
+        //ArrowControl = arrow.gameObject.AddComponent<arrowControl>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        bow = Bow.GetComponent<bowControl>();
+        bowSnd = GameObject.Find("bowSnd").GetComponent<AudioSource>();
+    }
 
     public void grabPerformed()
     {
         //Debug.Log("rightstart");
         isGrabbing = true;
-        startPosition = this.gameObject.transform.position;
-        startControllerPosition = rightController.transform.position;
+        bowSnd.Play();
+        if (!shot)
+        {
+            startPosition = this.gameObject.transform.position;
+            startControllerPosition = rightController.transform.position;
+        }
+
     }
     public void grabCanceled()
     {
+
         //Debug.Log("rightend");
         isGrabbing = false;
-        float distanceMoved = Vector3.Distance(rightController.transform.position, startControllerPosition);
-        shootArrow(distanceMoved);
+        if (!shot)
+        {
+            float distanceMoved = Vector3.Distance(newPosition, bowpoint.position);
+            Debug.Log(distanceMoved);
+            shootArrow(distanceMoved);
+        }
 
     }
-    
+
 
     public void reloadArrow(GameObject arrow)
     {
+        shot = false;
         this.arrow = arrow;
         ArrowControl = arrow.GetComponent<arrowControl>();
         transform.position = bowpoint2.position;
@@ -52,43 +78,70 @@ public class grabPoint : MonoBehaviour
         calculatePosition();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ArrowControl = arrow.gameObject.AddComponent<arrowControl>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
+
+
+    bool charging = false;
+    float timer = 0f;
+    float distance;
     public void invokeArrow()
     {
-        shootArrow(Random.Range(0.01f, 6f));
+        bowSnd?.Play();
+        charging = true;
+        distance = Random.Range(0.1f, 6f);
+        //shootArrow(Random.Range(0.01f, 6f));
     }
-    void shootArrow(float distanceMoved)
-    {
-        ArrowControl.fire(distanceMoved);
-        gameManager.Invoke("calculateScore", 2);
-        bow.haveArrow = false;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (isGrabbing)
+        if (charging)
+        {
+            timer += Time.deltaTime;
+            float moveAmount = Mathf.Lerp(0, distance * -1.2f, timer);
+            transform.position = new Vector3(bowpoint2.position.x, bowpoint2.position.y, bowpoint2.position.z + moveAmount * 0.06f);
+
+            arrow.transform.position = this.transform.position;
+            arrow.transform.rotation = Bow.transform.rotation;
+
+            arrow.transform.Rotate(0, -90, 0);
+
+            if (timer >= 1f)
+            {
+                timer = 0;
+                shootArrow(distance);
+                charging = false;
+                transform.position = bowpoint2.position;
+            }
+        }
+
+        newLineDirection = (bowpoint.position - bowpoint2.position).normalized;
+        if ((isGrabbing && !shot))
         {
             calculatePosition();
         }
     }
+    public void shootArrow(float distanceMoved)
+    {
+        shot = true;
+        ArrowControl.fire(distanceMoved, (bowpoint.position - bowpoint2.position).normalized);
+        gameManager.Invoke("calculateScore", 2);
+        bow.haveArrow = false;
+    }
+
+
     void calculatePosition()
     {
-        Vector3 lineDirection = (bowpoint.position - startPosition).normalized;
+
+
         Vector3 controllerMovement = rightController.transform.position - startControllerPosition;
 
-        float movementProjection = Vector3.Dot(controllerMovement, lineDirection);
+        float movementProjection = Vector3.Dot(controllerMovement, newLineDirection);
 
-        Vector3 newPosition = startPosition + lineDirection * movementProjection;
+        newPosition = bowpoint2.position + newLineDirection * movementProjection;
         transform.position = newPosition;
-        
 
         arrow.transform.position = this.transform.position;
-        arrow.transform.rotation = this.transform.rotation;
+        arrow.transform.rotation = Bow.transform.rotation;
+
+        arrow.transform.Rotate(0, -90, 0);
     }
 }
