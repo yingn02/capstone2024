@@ -34,17 +34,17 @@ public class SkillPanelManager : MonoBehaviour
 
     public void OnButtonClickA()
     {
-            skillText.text = skillList[0];
+        skillText.text = skillList[0];
     }
 
     public void OnButtonClickB()
     {
-            skillText.text = skillList[1];
+        skillText.text = skillList[1];
     }
 
     public void OnButtonClickC()
     {
-            skillText.text = skillList[2];
+        skillText.text = skillList[2];
     }
 }
 
