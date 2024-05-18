@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject ScoreBoard; //점수판 UI 스크립트
     public GameObject ViewResult; //승리/패배 등 UI 스크립트
+    public GameObject CoolManager; //쿨타임 스크립트
 
     private int playerPoint, opponentPoint, playerSet, opponentSet = 0;
     private int currentTurn = 1;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
 
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
+        CoolManager.GetComponent<CoolManager>().countCool(); //모든 스킬에 대해서, 쿨타일 1턴을 넘긴다. (cool--)
 
         //세트 종료시
         if (currentTurn > 6)

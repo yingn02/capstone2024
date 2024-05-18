@@ -27,19 +27,22 @@ public class SkillManager : MonoBehaviour
         //스킬4
         if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "쿨타임 감소 : 플레이어의 스킬 쿨타임을 1턴 감소시킵니다.")
         {
-            reduceCool.GetComponent<scoreBonus>().execute();
+            reduceCool.GetComponent<reduceCool>().execute(); //스킬 발동
+            reduceCool.GetComponent<reduceCool>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected); //쿨타임 설정
         }
 
         //스킬5
         if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "스킬 무효화 : 적 팀이 발동 중인 스킬을 무효화 합니다.")
         {
             removeSkill.GetComponent<scoreBonus>().execute();
+            removeSkill.GetComponent<scoreBonus>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected);
         }
 
         //스킬6
         if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "점수 보너스 : 1턴 동안 점수를 2배로 얻습니다.") 
         {
             scoreBonus.GetComponent<scoreBonus>().execute();
+            scoreBonus.GetComponent<scoreBonus>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected);
         }
     }
 }
