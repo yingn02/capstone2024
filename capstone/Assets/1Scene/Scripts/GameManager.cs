@@ -33,7 +33,11 @@ public class GameManager : MonoBehaviour
         if (practice) Debug.Log("Practice Start");
         else Debug.Log("Start of Stage 1");
 
-        enemyAnimator = GameObject.Find("Enemy").GetComponent<Animator>();
+        if(GameObject.Find("Enemy") != null)
+        {
+            enemyAnimator = GameObject.Find("Enemy").GetComponent<Animator>();
+        }
+        
 
         currentBowControl = playerBowControl;
         currentGrabPoint = currentBowControl.grabpoint;
