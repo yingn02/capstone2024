@@ -3432,6 +3432,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1450319862995d04f867e139c684a9b3, type: 3}
+--- !u!114 &677292132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3824027931898848588, guid: 1450319862995d04f867e139c684a9b3, type: 3}
+  m_PrefabInstance: {fileID: 677292131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aaf1d9b00a7b27439158f17c953b701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &687656844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4161,6 +4172,54 @@ MonoBehaviour:
   m_MoveObjectOut: 15
   m_DirectionalAnchorRotation: 1
   m_PoseProvider: {fileID: 0}
+--- !u!1 &782968851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 782968853}
+  - component: {fileID: 782968852}
+  m_Layer: 0
+  m_Name: scoreBonus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &782968852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782968851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55becf4abcc7d844f8851f68d4c7e9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 0}
+  skill: 0
+  cool: 0
+  num: 1
+--- !u!4 &782968853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782968851}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &784648845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7226,6 +7285,34 @@ PrefabInstance:
     - target: {fileID: 6654700655226053971, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
       propertyPath: m_Name
       value: GameExplain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998487223176615871, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998487223176615871, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998487223176615871, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 677292132}
+    - target: {fileID: 6998487223176615871, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998487223176615871, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: end_freezing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998487223176615871, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Timer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998487223176615871, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8188534393864333139, guid: 1c79fb1c78c37cd4a8b1485cc77df2df, type: 3}
       propertyPath: m_Pivot.x
@@ -10781,6 +10868,8 @@ MonoBehaviour:
   enemyAnimator: {fileID: 563600570}
   playerTurn: 1
   practice: 1
+  skill: 0
+  count_cool: 0
 --- !u!4 &1829368041
 Transform:
   m_ObjectHideFlags: 0
@@ -11710,3 +11799,4 @@ SceneRoots:
   - {fileID: 1839326177}
   - {fileID: 812407626}
   - {fileID: 1791654655}
+  - {fileID: 782968853}

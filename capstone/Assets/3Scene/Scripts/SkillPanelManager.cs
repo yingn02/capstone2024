@@ -15,11 +15,15 @@ public class SkillPanelManager : MonoBehaviour
     public int selected = 1; //몇번째 스킬이 선택되었는가 (스킬마다 쿨타임이 다르므로, SkillManager 스크립트에서 사용할 변수 필요)
 
     private List<string> skillList = new List<string>(); //스킬텍스트 설정활 리스트
+    public int skill_length = 0; //프로젝트에 있는 스킬의 총 개수
 
     void Start()
     {
         // ButtonSelection에서 선택된 스킬 텍스트 다시 skillList에 저장
         skillList = ButtonSelection.GetSelectedButtonTexts();
+
+        //프로젝트에 있는 스킬의 총 개수 저장, SkillManagerEnemy 스크립트에서 사용됨
+        skill_length = skillList.Count;
 
         // 선택된 스킬 없으면 텍스트 비움
         if (skillList == null || skillList.Count == 0)

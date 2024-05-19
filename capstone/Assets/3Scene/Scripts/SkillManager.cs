@@ -34,8 +34,8 @@ public class SkillManager : MonoBehaviour
         //스킬5
         if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "스킬 무효화 : 적 팀이 발동 중인 스킬을 무효화 합니다.")
         {
-            removeSkill.GetComponent<scoreBonus>().execute();
-            removeSkill.GetComponent<scoreBonus>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected);
+            removeSkill.GetComponent<removeSkill>().execute();
+            removeSkill.GetComponent<removeSkill>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected);
         }
 
         //스킬6

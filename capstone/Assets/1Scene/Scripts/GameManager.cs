@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject ScoreBoard; //점수판 UI 스크립트
     public GameObject ViewResult; //승리/패배 등 UI 스크립트
-    public GameObject CoolManager; //쿨타임 스크립트
 
     private int playerPoint, opponentPoint, playerSet, opponentSet = 0;
     private int currentTurn = 1;
@@ -25,6 +24,10 @@ public class GameManager : MonoBehaviour
     public Animator enemyAnimator; //enemy의 Animator
     public bool playerTurn = true;
     public bool practice = false;
+    public bool skill = false;
+    public bool count_cool = false; //쿨타임을 1턴 넘길 것을 허용하겠는가 (턴이 넘어갈 때 true)
+    public bool count_cool_enemy = false; //적팀의 쿨타임을 1턴 넘길 것을 허용하겠는가 (턴이 넘어갈 때 true)
+    public bool enemy_try_skill = false; //적팀이 스킬을 쓸 것을 허용하겠는가 (적의 턴일 때 true)
 
     // Start is called before the first frame update
     void Start()
@@ -88,10 +91,15 @@ public class GameManager : MonoBehaviour
 
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
-        CoolManager.GetComponent<CoolManager>().countCool(); //모든 스킬에 대해서, 쿨타일 1턴을 넘긴다. (cool--)
+        if (skill) {
+            count_cool = true; //모든 스킬에 대해서, 쿨타임 1턴을 넘긴다. CoolManager 스크립트에서 관리함
+            count_cool_enemy = true; //모든 스킬에 대해서, '적' 쿨타임 1턴을 넘긴다. CoolManagerEnemy 스크립트에서 관리함
+            enemy_try_skill = true; //적팀이 스킬 사용 시도하도록 한다. 단, 적팀의 턴에서만 스킬이 발동된다. SkillManagerEnemy 스크립트에서 관리함
+        }
 
-        //세트 종료시
-        if (currentTurn > 6)
+
+            //세트 종료시
+            if (currentTurn > 6)
         {
             Debug.Log("End of Set " + currentSet + ", " + playerPoint + " : " + opponentPoint);
             if (playerPoint > opponentPoint) { if (!practice) playerSet++; }
@@ -200,5 +208,20 @@ public class GameManager : MonoBehaviour
         currentBowControl.reloadArrow();
         currentGrabPoint = currentBowControl.grabpoint;
         
+    }
+
+    //setSelect 함수는 게임시작 전 세트 수 선택에 대한 것임
+    public void setSelect1() {
+        setLimit = 1;
+    }
+
+    public void setSelect3()
+    {
+        setLimit = 3;
+    }
+
+    public void setSelect5()
+    {
+        setLimit = 51;
     }
 }
