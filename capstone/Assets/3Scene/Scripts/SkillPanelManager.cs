@@ -8,18 +8,18 @@ using System.Collections.Generic;
 public class SkillPanelManager : MonoBehaviour
 {
     public TMP_Text skillText;
-    public Button buttonA; //½ºÅ³1 ¹öÆ°
+    public Button buttonA; //ìŠ¤í‚¬1 ë²„íŠ¼
     public Button buttonB;
     public Button buttonC;
 
-    private List<string> skillList = new List<string>(); //½ºÅ³ÅØ½ºÆ® ¼³Á¤È° ¸®½ºÆ®
+    private List<string> skillList = new List<string>(); //ìŠ¤í‚¬í…ìŠ¤íŠ¸ ì„¤ì •í™œ ë¦¬ìŠ¤íŠ¸
 
     void Start()
     {
-        // ButtonSelection¿¡¼­ ¼±ÅÃµÈ ½ºÅ³ ÅØ½ºÆ® ´Ù½Ã skillList¿¡ ÀúÀå
+        // ButtonSelectionì—ì„œ ì„ íƒëœ ìŠ¤í‚¬ í…ìŠ¤íŠ¸ ë‹¤ì‹œ skillListì— ì €ì¥
         skillList = ButtonSelection.GetSelectedButtonTexts();
 
-        // ¼±ÅÃµÈ ½ºÅ³ ¾øÀ¸¸é ÅØ½ºÆ® ºñ¿ò
+        // ì„ íƒëœ ìŠ¤í‚¬ ì—†ìœ¼ë©´ í…ìŠ¤íŠ¸ ë¹„ì›€
         if (skillList == null || skillList.Count == 0)
         {
             skillText.text = "";
@@ -34,18 +34,16 @@ public class SkillPanelManager : MonoBehaviour
 
     public void OnButtonClickA()
     {
-            skillText.text = skillList[0];
+        skillText.text = skillList[0];
     }
 
     public void OnButtonClickB()
     {
-            skillText.text = skillList[1];
+        skillText.text = skillList[1];
     }
 
     public void OnButtonClickC()
     {
-            skillText.text = skillList[2];
+        skillText.text = skillList[2];
     }
 }
-
-

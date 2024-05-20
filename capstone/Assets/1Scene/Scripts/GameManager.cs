@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
     public Animator enemyAnimator; //enemy의 Animator
     public bool playerTurn = true;
     public bool practice = false;
+    public SkillManager skillManager;
+
+    public string currentSkill = "none";
+    public bool skillActivated = false;
+    public bool skillUsedByPlayer = true;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +73,24 @@ public class GameManager : MonoBehaviour
     }
     public void calculateScore()
     {
+        
+
+        //자신에게 유리한 스킬일 경우
+        if (skillActivated && currentSkill != "none")
+        {
+            //턴 종료시 효과를 해제
+            skillActivated = false;
+            skillManager.disableSkill(currentSkill);
+            currentSkill = "none";
+        }
+        //상대방을 방해하는 스킬일 경우
+        if (!skillActivated && currentSkill != "none")
+        {
+            //다음 턴에 해제됨
+            skillActivated = true;
+        }
+        
+
         //쏘아진 화살을 활의 자식 오브젝트에서 다른 오브젝트의 자식으로 변경
         currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
         

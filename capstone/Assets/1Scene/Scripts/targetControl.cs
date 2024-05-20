@@ -1,22 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 public class targetControl : MonoBehaviour
 {
     public GameObject parent;
     public float multiplier = 1;//과녁 확대/축소 수치 표시
     public Vector3 centerPosition;
+    public bool moving = false;
+    float speed;
+    float range;
+
     AudioSource yellSnd; //고득점 함성 효과음
+
+
     // Start is called before the first frame update
     void Start()
     {
         yellSnd = GameObject.Find("yellSnd").GetComponent<AudioSource>();
+        speed = 0.01f;
+        range = 0.007f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(moving)
+        {
+            float newX = parent.transform.position.x + Mathf.PingPong(Time.time * speed, range * 2) - range;
+            parent.transform.position = new Vector3(newX, parent.transform.position.y, parent.transform.position.z);
+        }
         centerPosition = this.transform.position;
     }
 

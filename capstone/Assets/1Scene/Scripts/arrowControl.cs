@@ -44,6 +44,7 @@ public class arrowControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Target")
         {
+            score = 0;
             targetControl targetcontrol = collision.gameObject.GetComponent<targetControl>();
 
             //화살이 접촉한 지점의 위치를 가져오기
@@ -54,7 +55,7 @@ public class arrowControl : MonoBehaviour
             float distance = Vector3.Distance(contactPoint, targetcontrol.centerPosition);
             Debug.Log(distance);
             //점수 계산
-            score = targetcontrol.CalculateScore(distance);
+            score += targetcontrol.CalculateScore(distance);
         }
 
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
