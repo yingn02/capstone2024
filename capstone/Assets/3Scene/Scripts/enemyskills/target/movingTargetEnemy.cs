@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class removeSkillEnemy : MonoBehaviour
+public class movingTargetEnemy : MonoBehaviour
 {
     public GameObject SkillPanelManagerEnemy; //스킬 패널 스크립트
 
@@ -23,7 +23,7 @@ public class removeSkillEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("스킬 무효화E");
+        Debug.Log("과녁 움직이기E");
         skill = true;
         skill = false;
     }

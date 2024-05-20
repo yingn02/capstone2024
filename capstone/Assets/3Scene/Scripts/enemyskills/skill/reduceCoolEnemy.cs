@@ -9,7 +9,7 @@ public class reduceCoolEnemy : MonoBehaviour
 
     public bool skill = false; //스킬이 발동 중인가?
     public int cool = 0; //쿨타임(턴), 몇 턴을 앞으로 더 기다려야 하는가의 변수
-    public int num = 1; //스킬이 선택되었을 때, 나는 몇번째 스킬인지 정체화, ban() 과 pardon()에서 쓰임
+    public int num = -1; //스킬이 선택되었을 때, 나는 몇번째 스킬인지 정체화, ban() 과 pardon()에서 쓰임
 
     // Start is called before the first frame update
     void Start()

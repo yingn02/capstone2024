@@ -11,7 +11,6 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class arrowControl : MonoBehaviour
 {
     private float speed = 7000f;
-    public int tmp_score = 0;
     public int score = 0;
 
     public changeWind ChangeWind; //풍향 스크립트
@@ -37,7 +36,7 @@ public class arrowControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(scoreBonus.skill);
     }
 
     public void fire(float diff, Vector3 dir)
@@ -89,51 +88,61 @@ public class arrowControl : MonoBehaviour
     private int CalculateScore(float distance) {// 거리에 따라 점수를 계산하는 함수
         // 거리에 따른 점수 계산, 중심과 가까울수록 높은 점수
         if (distance <= 0.11f) {
-            if (scoreBonus.skill == true) { yellSnd.Play(); tmp_score = (10 * 2); scoreBonus.skill = false; } else { yellSnd.Play(); tmp_score = 10; }
-            if (scoreBonusEnemy.skill == true) { yellSnd.Play(); tmp_score = (10 * 2); scoreBonusEnemy.skill = false; } else { yellSnd.Play(); tmp_score = 10; }
+            if (scoreBonus.skill == true) { yellSnd.Play();  scoreBonus.skill = false; return (10 * 2); }
+            else if (scoreBonusEnemy.skill == true) { yellSnd.Play(); scoreBonusEnemy.skill = false; return (10 * 2); }
+            else { yellSnd.Play(); return 10; }
         }
         else if (distance <= 0.21f) {
-            if (scoreBonus.skill == true) { yellSnd.Play(); tmp_score = (9 * 2); scoreBonus.skill = false; } else { yellSnd.Play(); tmp_score = 9; }
-            if (scoreBonusEnemy.skill == true) { yellSnd.Play(); tmp_score = (9 * 2); scoreBonusEnemy.skill = false; } else { yellSnd.Play(); tmp_score = 9; }
+            if (scoreBonus.skill == true) { yellSnd.Play(); scoreBonus.skill = false; return (9 * 2); }
+            else if (scoreBonusEnemy.skill == true) { yellSnd.Play(); scoreBonusEnemy.skill = false; return (9 * 2); }
+            else { yellSnd.Play(); return 9; }
         }
         else if (distance <= 0.31f) {
-            if (scoreBonus.skill == true) { yellSnd.Play(); tmp_score = (8 * 2); scoreBonus.skill = false; } else { yellSnd.Play(); tmp_score = 8; }
-            if (scoreBonusEnemy.skill == true) { yellSnd.Play(); tmp_score = (8 * 2); scoreBonusEnemy.skill = false; } else { yellSnd.Play(); tmp_score = 8; }
+            if (scoreBonus.skill == true) { yellSnd.Play(); scoreBonus.skill = false; return (8 * 2); }
+            else if (scoreBonusEnemy.skill == true) { yellSnd.Play(); scoreBonusEnemy.skill = false; return (8 * 2); }
+            else { yellSnd.Play(); return 8; }
         }
         else if (distance <= 0.4f) {
-            if (scoreBonus.skill == true) { tmp_score = (7 * 2); scoreBonus.skill = false; } else { tmp_score = 7; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = (7 * 2); scoreBonusEnemy.skill = false; } else { tmp_score = 7; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (7 * 2); }
+            else if (scoreBonusEnemy.skill == true) {  scoreBonusEnemy.skill = false; return (7 * 2); }
+            else { return 7; }
         }
         else if (distance <= 0.5f) {
-            if (scoreBonus.skill == true) { tmp_score = (6 * 2); scoreBonus.skill = false; } else { tmp_score = 6; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = (6 * 2); scoreBonusEnemy.skill = false; } else { tmp_score = 6; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (6 * 2); }
+            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (6 * 2); }
+            else { return 6; }
         }
         else if (distance <= 0.59f) {
-            if (scoreBonus.skill == true) { tmp_score = (5 * 2); scoreBonus.skill = false; } else { tmp_score = 5; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = (5 * 2); scoreBonusEnemy.skill = false; } else { tmp_score = 5; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (5 * 2); }
+            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (5 * 2); }
+            else { return 5; }
         }
         else if (distance <= 0.69f) {
-            if (scoreBonus.skill == true) { tmp_score = (4 * 2); scoreBonus.skill = false; } else { tmp_score = 4; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = (4 * 2); scoreBonusEnemy.skill = false; } else { tmp_score = 4; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (4 * 2); }
+            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (4 * 2); }
+            else { return 4; }
         }
         else if (distance <= 0.78f) {
-            if (scoreBonus.skill == true) { tmp_score = (3 * 2); scoreBonus.skill = false; } else { tmp_score = 3; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = (3 * 2); scoreBonusEnemy.skill = false; } else { tmp_score = 3; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (3 * 2); }
+            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (3 * 2); }
+            else { return 3; }
         }
         else if (distance <= 0.88f) {
-            if (scoreBonus.skill == true) { tmp_score = (2 * 2); scoreBonus.skill = false; } else { tmp_score = 2; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = (2 * 2); scoreBonusEnemy.skill = false; } else { tmp_score = 2; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (2 * 2); }
+            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (2 * 2); }
+            else { return 2; }
         }
         else if (distance <= 0.98f) {
-            if (scoreBonus.skill == true) { tmp_score = (1 * 2); scoreBonus.skill = false; } else { tmp_score = 1; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = (1 * 2); scoreBonusEnemy.skill = false; } else { tmp_score = 1; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (1 * 2); }
+            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (1 * 2); }
+            else { return 1; }
         }
         else {
-            if (scoreBonus.skill == true) { tmp_score = 0; scoreBonus.skill = false; } else { tmp_score = 0; }
-            if (scoreBonusEnemy.skill == true) { tmp_score = 0; scoreBonusEnemy.skill = false; } else { tmp_score = 0; }
+            if (scoreBonus.skill == true) { scoreBonus.skill = false; return 0; }
+            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return 0; }
+            else { return 0; }
         }
 
-        return tmp_score;
     }
 
 }

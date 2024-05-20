@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1933940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933941}
+  - component: {fileID: 1933942}
+  m_Layer: 0
+  m_Name: typhoon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1933942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c538f31664dbc8441a5275074eb80326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &15672533
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,11 +200,67 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 802190010}
+  - {fileID: 441376484}
+  - {fileID: 1788857971}
   - {fileID: 658098363}
   - {fileID: 1537711747}
   - {fileID: 1649841166}
+  - {fileID: 615356889}
+  - {fileID: 1213181064}
+  - {fileID: 1715657839}
+  - {fileID: 1333800849}
+  - {fileID: 1933941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &33636498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33636499}
+  - component: {fileID: 33636500}
+  m_Layer: 0
+  m_Name: transparentEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &33636499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33636498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33636500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33636498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bcfb6f9fa87ed9458eeb05fa17f6c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &36486799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,19 +1666,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 263095728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 784648858}
-        m_TargetAssemblyTypeName: SkillButton, Assembly-CSharp
-        m_MethodName: OnButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &263095728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2419,6 +2511,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350046690}
   m_CullTransparentMesh: 1
+--- !u!1 &380107151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 380107152}
+  - component: {fileID: 380107153}
+  m_Layer: 0
+  m_Name: bigTargetEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &380107152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380107151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &380107153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380107151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c930c43c5773ff94cbed89ec6a7eb4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &389043634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,6 +2991,54 @@ Transform:
   - {fileID: 1164543220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &441376483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441376484}
+  - component: {fileID: 441376485}
+  m_Layer: 0
+  m_Name: bigTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &441376484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441376483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &441376485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441376483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e453b2e20e35e2545a8d5cc50505ddb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &455739836
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,6 +3542,54 @@ Transform:
   - {fileID: 835814193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &514473752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514473753}
+  - component: {fileID: 514473754}
+  m_Layer: 0
+  m_Name: movingTargetEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &514473753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514473752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514473754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514473752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c20fa49cc33de44aae2868c7409d1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &520310353
 GameObject:
   m_ObjectHideFlags: 0
@@ -3398,10 +3634,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bde7ae9950e26b44a13d9e5e8d5b7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1829368040}
+  smallTargetEnemy: {fileID: 1339830270}
+  bigTargetEnemy: {fileID: 380107151}
+  movingTargetEnemy: {fileID: 514473752}
   reduceCoolEnemy: {fileID: 690743133}
   removeSkillEnemy: {fileID: 63796880}
   scoreBonusEnemy: {fileID: 598073526}
-  gameManager: {fileID: 1829368040}
+  bigArrowEnemy: {fileID: 672985691}
+  doubleArrowEnemy: {fileID: 2052357827}
+  transparentEnemy: {fileID: 33636498}
+  removeWindEnemy: {fileID: 2018093225}
+  typhoonEnemy: {fileID: 1838568816}
 --- !u!1 &525332302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3431,9 +3675,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1339830271}
+  - {fileID: 380107152}
+  - {fileID: 514473753}
   - {fileID: 690743134}
   - {fileID: 63796881}
   - {fileID: 598073527}
+  - {fileID: 672985692}
+  - {fileID: 2052357828}
+  - {fileID: 33636499}
+  - {fileID: 2018093226}
+  - {fileID: 1838568817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &533168968
@@ -4223,6 +4475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: 
+  SkillPanelManager: {fileID: 1187812783}
 --- !u!4 &568125987
 Transform:
   m_ObjectHideFlags: 0
@@ -4752,6 +5005,54 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &615356888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615356889}
+  - component: {fileID: 615356890}
+  m_Layer: 0
+  m_Name: bigArrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &615356889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615356888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615356890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615356888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b123a79f96f3c499e6f3956941f5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &620019561
 GameObject:
   m_ObjectHideFlags: 0
@@ -4882,9 +5183,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillPanelManager: {fileID: 1187812783}
+  smallTarget: {fileID: 802190009}
+  bigTarget: {fileID: 441376483}
+  movingTarget: {fileID: 1788857970}
   reduceCool: {fileID: 658098362}
   removeSkill: {fileID: 1537711746}
   scoreBonus: {fileID: 1649841165}
+  bigArrow: {fileID: 615356888}
+  doubleArrow: {fileID: 1213181063}
+  transparent: {fileID: 1715657838}
+  removeWind: {fileID: 1333800848}
+  typhoon: {fileID: 1933940}
 --- !u!4 &632459314
 Transform:
   m_ObjectHideFlags: 0
@@ -5114,6 +5423,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &672985691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 672985692}
+  - component: {fileID: 672985693}
+  m_Layer: 0
+  m_Name: bigArrowEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &672985692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672985691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &672985693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672985691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0612ebc6c0d304d9aa264070f55f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1001 &677292131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6717,12 +7074,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef2bfa4c23e88c4a9f5dcaa97024a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallTarget: {fileID: 802190009}
+  bigTarget: {fileID: 441376483}
+  movingTarget: {fileID: 1788857970}
+  reduceCool: {fileID: 658098362}
+  removeSkill: {fileID: 1537711746}
+  scoreBonus: {fileID: 1649841165}
+  bigArrow: {fileID: 615356888}
+  doubleArrow: {fileID: 1213181063}
+  transparent: {fileID: 1715657838}
+  removeWind: {fileID: 1333800848}
+  typhoon: {fileID: 1933940}
   skillText: {fileID: 2074499265}
   buttonA: {fileID: 1070969128}
   buttonB: {fileID: 181208487}
   buttonC: {fileID: 1830205606}
-  selected: 1
-  skill_length: 0
+  selected: 0
+  skillList: []
 --- !u!114 &784648858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6821,6 +7189,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &802190009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802190010}
+  - component: {fileID: 802190011}
+  m_Layer: 0
+  m_Name: smallTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802190010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802190009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802190011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802190009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71519bed6dbbce4cbd1d9efe496e319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &807416410
 GameObject:
   m_ObjectHideFlags: 0
@@ -10990,12 +11406,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef2bfa4c23e88c4a9f5dcaa97024a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallTarget: {fileID: 802190009}
+  bigTarget: {fileID: 441376483}
+  movingTarget: {fileID: 1788857970}
+  reduceCool: {fileID: 658098362}
+  removeSkill: {fileID: 1537711746}
+  scoreBonus: {fileID: 1649841165}
+  bigArrow: {fileID: 615356888}
+  doubleArrow: {fileID: 1213181063}
+  transparent: {fileID: 1715657838}
+  removeWind: {fileID: 1333800848}
+  typhoon: {fileID: 1933940}
   skillText: {fileID: 2074499265}
   buttonA: {fileID: 1070969128}
   buttonB: {fileID: 181208487}
   buttonC: {fileID: 1830205606}
-  selected: 1
-  skill_length: 0
+  selected: 0
+  skillList: []
 --- !u!4 &1187812785
 Transform:
   m_ObjectHideFlags: 0
@@ -11011,6 +11438,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1213181063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213181064}
+  - component: {fileID: 1213181065}
+  m_Layer: 0
+  m_Name: doubleArrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1213181064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213181063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213181065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213181063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8013f8422cb3684bb4ce6b86aa0acfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1001 &1241316599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11260,10 +11735,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd59edbfe003914aa6d966f9cd6f63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1829368040}
+  smallTarget: {fileID: 802190009}
+  bigTarget: {fileID: 441376483}
+  movingTarget: {fileID: 1788857970}
   reduceCool: {fileID: 658098362}
   removeSkill: {fileID: 1537711746}
   scoreBonus: {fileID: 1649841165}
-  gameManager: {fileID: 1829368040}
+  bigArrow: {fileID: 615356888}
+  doubleArrow: {fileID: 1213181063}
+  transparent: {fileID: 1715657838}
+  removeWind: {fileID: 1333800848}
+  typhoon: {fileID: 1933940}
 --- !u!4 &1254527600
 Transform:
   m_ObjectHideFlags: 0
@@ -11507,6 +11990,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317885307}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1333800848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1333800849}
+  - component: {fileID: 1333800850}
+  m_Layer: 0
+  m_Name: removeWind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1333800849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333800848}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1333800850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333800848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c50c810b2157044cb94b4e7d93266fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &1339192626
 GameObject:
   m_ObjectHideFlags: 0
@@ -11592,6 +12123,54 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_Variable: {fileID: 0}
+--- !u!1 &1339830270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1339830271}
+  - component: {fileID: 1339830272}
+  m_Layer: 0
+  m_Name: smallTargetEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1339830271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339830270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1339830272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339830270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8928dc7f5a3bd8b47a81cf1e21bed423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &1340774818
 GameObject:
   m_ObjectHideFlags: 0
@@ -12271,11 +12850,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1829368040}
-  SkillPanelManager: {fileID: 1187812783}
   SkillPanelManagerEnemy: {fileID: 568125985}
+  smallTargetEnemy: {fileID: 1339830270}
+  bigTargetEnemy: {fileID: 380107151}
+  movingTargetEnemy: {fileID: 514473752}
   reduceCoolEnemy: {fileID: 690743133}
   removeSkillEnemy: {fileID: 63796880}
   scoreBonusEnemy: {fileID: 598073526}
+  bigArrowEnemy: {fileID: 672985691}
+  doubleArrowEnemy: {fileID: 2052357827}
+  transparentEnemy: {fileID: 33636498}
+  removeWindEnemy: {fileID: 2018093225}
+  typhoonEnemy: {fileID: 1838568816}
   selected: 0
   press: 0
 --- !u!1 &1364151975
@@ -15257,6 +15843,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2108899352}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1715657838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1715657839}
+  - component: {fileID: 1715657840}
+  m_Layer: 0
+  m_Name: transparent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1715657839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715657838}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1715657840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715657838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2be9828c003fea4a8e01ca40baea9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &1719536234
 GameObject:
   m_ObjectHideFlags: 0
@@ -15647,6 +16281,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1788857970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788857971}
+  - component: {fileID: 1788857972}
+  m_Layer: 0
+  m_Name: movingTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1788857971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788857970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15672534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1788857972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788857970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d873256ef35614a89fcf5f095e4c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManager: {fileID: 1187812783}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1001 &1791654655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16046,6 +16728,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830205604}
   m_CullTransparentMesh: 1
+--- !u!1 &1838568816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1838568817}
+  - component: {fileID: 1838568818}
+  m_Layer: 0
+  m_Name: typhoonEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1838568817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838568816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838568818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838568816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1efb7e0eefd564eabc8009eb02f30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &1839326176
 GameObject:
   m_ObjectHideFlags: 0
@@ -16762,6 +17492,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccefd26256dcce34186b0e2e5e3073f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2018093225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018093226}
+  - component: {fileID: 2018093227}
+  m_Layer: 0
+  m_Name: removeWindEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2018093226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018093225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018093227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018093225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c5c278c2aa1574688008c558a07add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1 &2043660917
 GameObject:
   m_ObjectHideFlags: 0
@@ -16890,6 +17668,54 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2052357827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052357828}
+  - component: {fileID: 2052357829}
+  m_Layer: 0
+  m_Name: doubleArrowEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2052357828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052357827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525332303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052357829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052357827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbbd901e6652fda4d98c9441046843f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillPanelManagerEnemy: {fileID: 568125985}
+  skill: 0
+  cool: 0
+  num: 1
 --- !u!1001 &2072267906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18102,12 +18928,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef2bfa4c23e88c4a9f5dcaa97024a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallTarget: {fileID: 0}
+  bigTarget: {fileID: 0}
+  movingTarget: {fileID: 0}
+  reduceCool: {fileID: 0}
+  removeSkill: {fileID: 0}
+  scoreBonus: {fileID: 0}
+  bigArrow: {fileID: 0}
+  doubleArrow: {fileID: 0}
+  transparent: {fileID: 0}
+  removeWind: {fileID: 0}
+  typhoon: {fileID: 0}
   skillText: {fileID: 233856119}
   buttonA: {fileID: 2101521782}
   buttonB: {fileID: 1509416698}
   buttonC: {fileID: 629929555}
   selected: 1
-  skill_length: 0
+  skillList: []
 --- !u!1001 &7212575307932461686
 PrefabInstance:
   m_ObjectHideFlags: 0
