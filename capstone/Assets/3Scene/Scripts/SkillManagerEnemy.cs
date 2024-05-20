@@ -23,6 +23,8 @@ public class SkillManagerEnemy : MonoBehaviour
 
     public int selected = 0; //적팀이 누르고자 하는 스킬 버튼의 인덱스
     public bool press = false; //스킬 버튼을 누른다
+    public int nextSC = 4; //다음 스테이지의 적팀 스킬 보유 개수
+    public int maxSC = 11; //적팀 스킬 보유 최대 개수
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,25 @@ public class SkillManagerEnemy : MonoBehaviour
                 skillOn();
             }
             gameManager.enemy_try_skill = false;
+        }
+
+        //스테이지 바뀜을 감지하여 스킬 1개 추가를 시도
+        if (gameManager.enemy_add_skill == true) {
+
+            //적팀이 스킬 1개를 더 고른다. (중복X), 그리고 최대 11개까지만 보유 가능
+            while (skills.Count < nextSC && skills.Count < maxSC)
+            {
+                int skill_num = Random.Range(1, 11 + 1); //프로젝트에 있는 것 중에서 어느 스킬을 고를지 결정
+
+                if (!skills.Contains(skill_num))
+                {
+                    skills.Add(skill_num);
+                }
+            }
+            Debug.Log("스테이지가 올라, 적팀이 스킬 하나를 더 가지게 되었습니다. 현재 스킬 수: " + skills.Count);
+            nextSC++;
+
+            gameManager.enemy_add_skill = false;
         }
     }
 

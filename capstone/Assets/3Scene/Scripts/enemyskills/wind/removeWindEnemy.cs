@@ -23,8 +23,8 @@ public class removeWindEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("풍향 제거E");
         skill = true;
+        Debug.Log("풍향 제거E");
         skill = false;
     }
 

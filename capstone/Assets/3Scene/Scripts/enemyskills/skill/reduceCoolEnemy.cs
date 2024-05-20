@@ -24,8 +24,8 @@ public class reduceCoolEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("쿨타임 감소E");
         skill = true;
+        Debug.Log("쿨타임 감소E");
         CoolManagerEnemy.GetComponent<CoolManagerEnemy>().countCoolEnemy(); //모든 스킬에 대해서, 쿨타일 1턴을 넘긴다. (cool--)
         CoolManagerEnemy.GetComponent<CoolManagerEnemy>().countCoolEnemy(); //플레이어의 턴에서는 스킬을 쓰면 안되므로 2번 작성했다
         skill = false;

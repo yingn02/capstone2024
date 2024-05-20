@@ -23,8 +23,8 @@ public class typhoonEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
+        skill = true; 
         Debug.Log("태풍E");
-        skill = true;
         skill = false;
     }
 

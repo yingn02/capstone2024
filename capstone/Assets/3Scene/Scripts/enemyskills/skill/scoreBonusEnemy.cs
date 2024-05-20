@@ -23,8 +23,8 @@ public class scoreBonusEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("스킬 보너스E");
         skill = true;
+        Debug.Log("점수 보너스E");
     }
     public void setCool(int selected) { //쿨타임 설정
         cool = 5; //쿨타임 (적턴을 포함시킨 수, 항상 홀수일 것)

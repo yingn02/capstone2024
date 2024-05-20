@@ -23,8 +23,8 @@ public class removeSkillEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("스킬 무효화E");
         skill = true;
+        Debug.Log("스킬 무효화E");
         skill = false;
     }
 

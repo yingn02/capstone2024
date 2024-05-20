@@ -23,8 +23,8 @@ public class smallTargetEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("과녁 크기 감소E");
         skill = true;
+        Debug.Log("과녁 크기 감소E");
         skill = false;
     }
 

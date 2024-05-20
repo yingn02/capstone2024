@@ -66,7 +66,7 @@ public class SkillPanelManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(selected);
+        
     }
 
     public void OnButtonClickA()

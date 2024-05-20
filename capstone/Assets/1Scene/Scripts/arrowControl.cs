@@ -36,7 +36,7 @@ public class arrowControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(scoreBonus.skill);
+        
     }
 
     public void fire(float diff, Vector3 dir)

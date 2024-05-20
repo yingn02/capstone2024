@@ -23,8 +23,8 @@ public class bigTargetEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("과녁 크기 증가E");
         skill = true;
+        Debug.Log("과녁 크기 증가E");
         skill = false;
     }
 

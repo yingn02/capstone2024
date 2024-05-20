@@ -23,8 +23,8 @@ public class transparentEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("투명 화살과 과녁E");
         skill = true;
+        Debug.Log("투명 화살과 과녁E");
         skill = false;
     }
 

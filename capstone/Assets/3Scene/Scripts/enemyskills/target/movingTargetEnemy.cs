@@ -23,8 +23,8 @@ public class movingTargetEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("과녁 움직이기E");
         skill = true;
+        Debug.Log("과녁 움직이기E");
         skill = false;
     }
 

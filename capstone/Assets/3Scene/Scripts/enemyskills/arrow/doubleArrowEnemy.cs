@@ -23,8 +23,8 @@ public class doubleArrowEnemy : MonoBehaviour
     }
 
     public void execute() { //½ºÅ³ ¹ßµ¿
-        Debug.Log("´õºí¼¦E");
         skill = true;
+        Debug.Log("´õºí¼¦E");
         skill = false;
     }
 

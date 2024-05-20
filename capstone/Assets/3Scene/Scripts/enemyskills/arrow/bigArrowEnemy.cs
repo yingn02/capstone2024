@@ -23,8 +23,8 @@ public class bigArrowEnemy : MonoBehaviour
     }
 
     public void execute() { //스킬 발동
-        Debug.Log("화살 거대화E");
         skill = true;
+        Debug.Log("화살 거대화E");
         skill = false;
     }
 

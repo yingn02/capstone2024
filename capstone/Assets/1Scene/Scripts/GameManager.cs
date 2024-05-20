@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public bool count_cool = false; //쿨타임을 1턴 넘길 것을 허용하겠는가 (턴이 넘어갈 때 true)
     public bool count_cool_enemy = false; //적팀의 쿨타임을 1턴 넘길 것을 허용하겠는가 (턴이 넘어갈 때 true)
     public bool enemy_try_skill = false; //적팀이 스킬을 쓸 것을 허용하겠는가 (적의 턴일 때 true)
+    public bool enemy_add_skill = false; //적팀이 스킬을 하나 더 갖도록 허용하겠는가 (스테이지 넘어갈 때 true)
 
     // Start is called before the first frame update
     void Start()
@@ -154,6 +155,8 @@ public class GameManager : MonoBehaviour
     private void nextStage()
     {
         if(!practice) Debug.Log("Start of Stage " + (++currentStage));
+        if (skill) { enemy_add_skill = true; } //적팀이 스킬을 하나 더 뽑아서 소지한다. SkillManagerEnemy 스크립트에서 관리함
+
         playerSet = 0;
         opponentSet = 0;
         currentSet = 1;
