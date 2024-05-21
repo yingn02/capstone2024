@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class smallTarget : MonoBehaviour
+public class smallTarget : TargetSkill
 {
     public GameObject SkillPanelManager; //스킬 패널 스크립트
+    public GameManager gameManager;
+    public targetControl target;
+    
 
     public bool skill = false; //스킬이 발동 중인가? 
     public int cool = 0; //쿨타임(턴), 몇 턴을 앞으로 더 기다려야 하는가의 변수
@@ -13,7 +16,7 @@ public class smallTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        activeTurns = 2;
     }
 
     // Update is called once per frame
@@ -25,8 +28,21 @@ public class smallTarget : MonoBehaviour
     public void execute()
     { //스킬 발동
         skill = true;
-        Debug.Log("과녁 크기 감소");
+        gameManager.playerTargetSkills.Add(this);
+        target.multiplier = 0.5f;
+        target.parent.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+
+        Debug.Log("상대의 과녁 크기 감소");
+
+
         skill = false;
+    }
+
+    public override void disable()
+    {
+        activeTurns = 2;
+        target.multiplier = 1;
+        target.parent.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public void setCool(int selected, int cool_time)

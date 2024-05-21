@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public bool enemy_try_skill = false; //적팀이 스킬을 쓸 것을 허용하겠는가 (적의 턴일 때 true)
     public bool enemy_add_skill = false; //적팀이 스킬을 하나 더 갖도록 허용하겠는가 (스테이지 넘어갈 때 true)
 
+    public List<TargetSkill> playerTargetSkills; //플레이어가 사용중인 과녁 스킬들
+    public List<TargetSkill> opponentTargetSkills; //상대가 사용중인 과녁 스킬들
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,8 +70,31 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    void deactivateTargetSkills()
+    {
+        for (int i = playerTargetSkills.Count - 1; i >= 0; i--)
+        {
+            if (--playerTargetSkills[i].activeTurns == 0)
+            {
+                playerTargetSkills[i].disable();
+                playerTargetSkills.RemoveAt(i);
+            }
+        }
+
+        for (int i = opponentTargetSkills.Count - 1; i >= 0; i--)
+        {
+            if (--opponentTargetSkills[i].activeTurns == 0)
+            {
+                opponentTargetSkills[i].disable();
+                opponentTargetSkills.RemoveAt(i);
+            }
+        }
+    }
     public void calculateScore()
     {
+        //과녁 스킬들 효과 해제
+        deactivateTargetSkills();
+
         //쏘아진 화살을 활의 자식 오브젝트에서 다른 오브젝트의 자식으로 변경
         currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
         

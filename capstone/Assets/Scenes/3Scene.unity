@@ -2017,10 +2017,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07847cf9af7207a4685b49b23ba9dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   parent: {fileID: 1307031168}
   tmp_score: 0
   multiplier: 1
   centerPosition: {x: 0, y: 0, z: 0}
+  moving: 0
   yellSnd: {fileID: 0}
   scoreBonus: {fileID: 0}
   scoreBonusEnemy: {fileID: 0}
@@ -3055,7 +3057,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e453b2e20e35e2545a8d5cc50505ddb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManager: {fileID: 1187812783}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 297661657}
   skill: 0
   cool: 0
   num: 1
@@ -7256,7 +7261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71519bed6dbbce4cbd1d9efe496e319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManager: {fileID: 1187812783}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 835814197}
   skill: 0
   cool: 0
   num: 1
@@ -7577,10 +7585,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07847cf9af7207a4685b49b23ba9dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   parent: {fileID: 506157252}
   tmp_score: 0
   multiplier: 1
   centerPosition: {x: 0, y: 0, z: 0}
+  moving: 0
   yellSnd: {fileID: 0}
   scoreBonus: {fileID: 0}
   scoreBonusEnemy: {fileID: 0}
@@ -16374,7 +16384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d873256ef35614a89fcf5f095e4c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManager: {fileID: 1187812783}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 835814197}
   skill: 0
   cool: 0
   num: 1
@@ -16634,6 +16647,8 @@ MonoBehaviour:
   count_cool_enemy: 0
   enemy_try_skill: 0
   enemy_add_skill: 0
+  playerTargetSkills: []
+  opponentTargetSkills: []
 --- !u!4 &1829368041
 Transform:
   m_ObjectHideFlags: 0

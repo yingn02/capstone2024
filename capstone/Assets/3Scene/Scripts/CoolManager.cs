@@ -4,46 +4,49 @@ using UnityEngine;
 
 public class CoolManager : MonoBehaviour
 {
-    public GameManager gameManager; //GameManager ½ºÅ©¸³Æ®, ÇÃ·¹ÀÌ¾îÀÇ ÅÏÀ» °¨ÁöÇÏ±â À§ÇÔ
+    public GameManager gameManager; //GameManager ìŠ¤í¬ë¦½íŠ¸, í”Œë ˆì´ì–´ì˜ í„´ì„ ê°ì§€í•˜ê¸° ìœ„í•¨
 
-    public GameObject smallTarget; //½ºÅ³ ½ºÅ©¸³Æ®1 (°ú³á Å©±â °¨¼Ò)
-    public GameObject bigTarget; //½ºÅ³ ½ºÅ©¸³Æ®2 (°ú³á Å©±â Áõ°¡)
-    public GameObject movingTarget; //½ºÅ³ ½ºÅ©¸³Æ®3 (°ú³á ¿òÁ÷ÀÌ±â)
-    public GameObject reduceCool; //½ºÅ³ ½ºÅ©¸³Æ®4 (ÄğÅ¸ÀÓ °¨¼Ò)
-    public GameObject removeSkill; //½ºÅ³ ½ºÅ©¸³Æ®5 (½ºÅ³ ¹«È¿È­)
-    public GameObject scoreBonus; //½ºÅ³ ½ºÅ©¸³Æ®6 (Á¡¼ö º¸³Ê½º)
-    public GameObject bigArrow; //½ºÅ³ ½ºÅ©¸³Æ®7 (È­»ì °Å´ëÈ­)
-    public GameObject doubleArrow; //½ºÅ³ ½ºÅ©¸³Æ®8 (´õºí¼¦)
-    public GameObject transparent; //½ºÅ³ ½ºÅ©¸³Æ®9 (Åõ¸í È­»ì°ú °ú³á)
-    public GameObject removeWind; //½ºÅ³ ½ºÅ©¸³Æ®10 (Ç³Çâ Á¦°Å)
-    public GameObject typhoon; //½ºÅ³ ½ºÅ©¸³Æ®11 (ÅÂÇ³)
+    public GameObject smallTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸1 (ê³¼ë… í¬ê¸° ê°ì†Œ)
+    public GameObject bigTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸2 (ê³¼ë… í¬ê¸° ì¦ê°€)
+    public GameObject movingTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸3 (ê³¼ë… ì›€ì§ì´ê¸°)
+    public GameObject reduceCool; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸4 (ì¿¨íƒ€ì„ ê°ì†Œ)
+    public GameObject removeSkill; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸5 (ìŠ¤í‚¬ ë¬´íš¨í™”)
+    public GameObject scoreBonus; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸6 (ì ìˆ˜ ë³´ë„ˆìŠ¤)
+    public GameObject bigArrow; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸7 (í™”ì‚´ ê±°ëŒ€í™”)
+    public GameObject doubleArrow; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸8 (ë”ë¸”ìƒ·)
+    public GameObject transparent; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸9 (íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë…)
+    public GameObject removeWind; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸10 (í’í–¥ ì œê±°)
+    public GameObject typhoon; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸11 (íƒœí’)
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.skill = true; //½ºÅ³¸ğµåÀÓÀ» GameManager¿¡°Ô ¾Ë¸²
+        gameManager.skill = true; //ìŠ¤í‚¬ëª¨ë“œì„ì„ GameManagerì—ê²Œ ì•Œë¦¼
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ÅÏ °¨ÁöÇÏ¿© ÄğÅ¸ÀÓÀ» ¼¾´Ù
-        if (gameManager.count_cool == true) {
-            countCool(); 
+        //í„´ ê°ì§€í•˜ì—¬ ì¿¨íƒ€ì„ì„ ì„¼ë‹¤
+        if (gameManager.count_cool == true)
+        {
+            countCool();
             gameManager.count_cool = false;
         }
 
         //1
-        if (smallTarget.GetComponent<smallTarget>().cool <= 0 && gameManager.playerTurn == true) {
-            smallTarget.GetComponent<smallTarget>().pardon(); //½ºÅ³ ¼±ÅÃ Çã¿ë
+        if (smallTarget.GetComponent<smallTarget>().cool <= 0 && gameManager.playerTurn == true)
+        {
+            smallTarget.GetComponent<smallTarget>().pardon(); //ìŠ¤í‚¬ ì„ íƒ í—ˆìš©
         }
         else
         {
-            smallTarget.GetComponent<smallTarget>().ban(); //½ºÅ³ ¼±ÅÃ ºñÇã¿ë
+            smallTarget.GetComponent<smallTarget>().ban(); //ìŠ¤í‚¬ ì„ íƒ ë¹„í—ˆìš©
         }
 
         //2
-        if (bigTarget.GetComponent<bigTarget>().cool <= 0 && gameManager.playerTurn == true) {
+        if (bigTarget.GetComponent<bigTarget>().cool <= 0 && gameManager.playerTurn == true)
+        {
             bigTarget.GetComponent<bigTarget>().pardon();
         }
         else
@@ -52,7 +55,8 @@ public class CoolManager : MonoBehaviour
         }
 
         //3
-        if (movingTarget.GetComponent<movingTarget>().cool <= 0 && gameManager.playerTurn == true) {
+        if (movingTarget.GetComponent<movingTarget>().cool <= 0 && gameManager.playerTurn == true)
+        {
             movingTarget.GetComponent<movingTarget>().pardon();
         }
         else
@@ -61,15 +65,18 @@ public class CoolManager : MonoBehaviour
         }
 
         //4
-        if (reduceCool.GetComponent<reduceCool>().cool <= 0 && gameManager.playerTurn == true) {  
-            reduceCool.GetComponent<reduceCool>().pardon(); 
+        if (reduceCool.GetComponent<reduceCool>().cool <= 0 && gameManager.playerTurn == true)
+        {
+            reduceCool.GetComponent<reduceCool>().pardon();
         }
-        else {
-            reduceCool.GetComponent<reduceCool>().ban(); 
+        else
+        {
+            reduceCool.GetComponent<reduceCool>().ban();
         }
 
         //5
-        if (removeSkill.GetComponent<removeSkill>().cool <= 0 && gameManager.playerTurn == true) {
+        if (removeSkill.GetComponent<removeSkill>().cool <= 0 && gameManager.playerTurn == true)
+        {
             removeSkill.GetComponent<removeSkill>().pardon();
         }
         else
@@ -78,15 +85,18 @@ public class CoolManager : MonoBehaviour
         }
 
         //6
-        if (scoreBonus.GetComponent<scoreBonus>().cool <= 0 && gameManager.playerTurn == true) {
+        if (scoreBonus.GetComponent<scoreBonus>().cool <= 0 && gameManager.playerTurn == true)
+        {
             scoreBonus.GetComponent<scoreBonus>().pardon();
         }
-        else {
+        else
+        {
             scoreBonus.GetComponent<scoreBonus>().ban();
         }
 
         //7
-        if (bigArrow.GetComponent<bigArrow>().cool <= 0 && gameManager.playerTurn == true) {
+        if (bigArrow.GetComponent<bigArrow>().cool <= 0 && gameManager.playerTurn == true)
+        {
             bigArrow.GetComponent<bigArrow>().pardon();
         }
         else
@@ -95,7 +105,8 @@ public class CoolManager : MonoBehaviour
         }
 
         //8
-        if (doubleArrow.GetComponent<doubleArrow>().cool <= 0 && gameManager.playerTurn == true) {
+        if (doubleArrow.GetComponent<doubleArrow>().cool <= 0 && gameManager.playerTurn == true)
+        {
             doubleArrow.GetComponent<doubleArrow>().pardon();
         }
         else
@@ -104,7 +115,8 @@ public class CoolManager : MonoBehaviour
         }
 
         //9
-        if (transparent.GetComponent<transparent>().cool <= 0 && gameManager.playerTurn == true) {
+        if (transparent.GetComponent<transparent>().cool <= 0 && gameManager.playerTurn == true)
+        {
             transparent.GetComponent<transparent>().pardon();
         }
         else
@@ -113,7 +125,8 @@ public class CoolManager : MonoBehaviour
         }
 
         //10
-        if (removeWind.GetComponent<removeWind>().cool <= 0 && gameManager.playerTurn == true) {
+        if (removeWind.GetComponent<removeWind>().cool <= 0 && gameManager.playerTurn == true)
+        {
             removeWind.GetComponent<removeWind>().pardon();
         }
         else
@@ -122,7 +135,8 @@ public class CoolManager : MonoBehaviour
         }
 
         //11
-        if (typhoon.GetComponent<typhoon>().cool <= 0 && gameManager.playerTurn == true) {
+        if (typhoon.GetComponent<typhoon>().cool <= 0 && gameManager.playerTurn == true)
+        {
             typhoon.GetComponent<typhoon>().pardon();
         }
         else
@@ -132,7 +146,8 @@ public class CoolManager : MonoBehaviour
 
     }
 
-    public void countCool() { //¸ğµç ½ºÅ³¿¡ ´ëÇØ¼­, ÄğÅ¸ÀÓ 1ÅÏÀ» ³Ñ±ä´Ù. (cool--), (GameManager¿¡¼­ ÀÌ°ÍÀ» ¸ÅÅÏ¸¶´Ù È£Ãâ)
+    public void countCool()
+    { //ëª¨ë“  ìŠ¤í‚¬ì— ëŒ€í•´ì„œ, ì¿¨íƒ€ì„ 1í„´ì„ ë„˜ê¸´ë‹¤. (cool--), (GameManagerì—ì„œ ì´ê²ƒì„ ë§¤í„´ë§ˆë‹¤ í˜¸ì¶œ)
         smallTarget.GetComponent<smallTarget>().cool--; //1
         bigTarget.GetComponent<bigTarget>().cool--; //2
         movingTarget.GetComponent<movingTarget>().cool--; //3

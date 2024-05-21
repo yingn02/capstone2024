@@ -2,39 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bigTarget : MonoBehaviour
+public class bigTarget : TargetSkill
 {
-    public GameObject SkillPanelManager; //½ºÅ³ ÆĞ³Î ½ºÅ©¸³Æ®
+    public GameObject SkillPanelManager; //ìŠ¤í‚¬ íŒ¨ë„ ìŠ¤í¬ë¦½íŠ¸
+    public GameManager gameManager;
+    public targetControl target;
 
-    public bool skill = false; //½ºÅ³ÀÌ ¹ßµ¿ ÁßÀÎ°¡? 
-    public int cool = 0; //ÄğÅ¸ÀÓ(ÅÏ), ¸î ÅÏÀ» ¾ÕÀ¸·Î ´õ ±â´Ù·Á¾ß ÇÏ´Â°¡ÀÇ º¯¼ö
-    public int num = -1; //½ºÅ³ÀÌ ¼±ÅÃµÇ¾úÀ» ¶§, ³ª´Â ¸î¹øÂ° ½ºÅ³ÀÎÁö Á¤Ã¼È­, ban() °ú pardon()¿¡¼­ ¾²ÀÓ
+    public bool skill = false; //ìŠ¤í‚¬ì´ ë°œë™ ì¤‘ì¸ê°€? 
+    public int cool = 0; //ì¿¨íƒ€ì„(í„´), ëª‡ í„´ì„ ì•ìœ¼ë¡œ ë” ê¸°ë‹¤ë ¤ì•¼ í•˜ëŠ”ê°€ì˜ ë³€ìˆ˜
+    public int num = -1; //ìŠ¤í‚¬ì´ ì„ íƒë˜ì—ˆì„ ë•Œ, ë‚˜ëŠ” ëª‡ë²ˆì§¸ ìŠ¤í‚¬ì¸ì§€ ì •ì²´í™”, ban() ê³¼ pardon()ì—ì„œ ì“°ì„
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        activeTurns = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void execute() { //½ºÅ³ ¹ßµ¿
+    public void execute()
+    { //ìŠ¤í‚¬ ë°œë™
         skill = true;
-        Debug.Log("°ú³á Å©±â Áõ°¡");
+        Debug.Log("ê³¼ë… í¬ê¸° ì¦ê°€");
+        gameManager.playerTargetSkills.Add(this);
+
+        target.multiplier = 2;
+        target.parent.transform.localScale = new Vector3(2, 2, 1);
+
         skill = false;
     }
+    public override void disable()
+    {
+        activeTurns = 1;
+        target.multiplier = 1;
+        target.parent.transform.localScale = new Vector3(1, 1, 1);
+    }
 
-    public void setCool(int selected, int cool_time) { //ÄğÅ¸ÀÓ ¼³Á¤
-        cool = cool_time; //ÄğÅ¸ÀÓ (ÀûÅÏÀ» Æ÷ÇÔ½ÃÅ² ¼ö, Ç×»ó È¦¼öÀÏ °Í)
+    public void setCool(int selected, int cool_time)
+    { //ì¿¨íƒ€ì„ ì„¤ì •
+        cool = cool_time; //ì¿¨íƒ€ì„ (ì í„´ì„ í¬í•¨ì‹œí‚¨ ìˆ˜, í•­ìƒ í™€ìˆ˜ì¼ ê²ƒ)
         num = selected;
     }
 
-    public void ban() { //½ºÅ³ ¼±ÅÃ ºñÇã¿ë
-        if (num == 1) { //³»°¡ 1¹ø ½ºÅ³ÀÌ¸é 1¹ø ½ºÅ³ ¹öÆ°À» ºñÈ°¼ºÈ­
+    public void ban()
+    { //ìŠ¤í‚¬ ì„ íƒ ë¹„í—ˆìš©
+        if (num == 1)
+        { //ë‚´ê°€ 1ë²ˆ ìŠ¤í‚¬ì´ë©´ 1ë²ˆ ìŠ¤í‚¬ ë²„íŠ¼ì„ ë¹„í™œì„±í™”
             SkillPanelManager.GetComponent<SkillPanelManager>().buttonA.interactable = false;
         }
         else if (num == 2)
@@ -47,8 +64,10 @@ public class bigTarget : MonoBehaviour
         }
     }
 
-    public void pardon() { //½ºÅ³ ¼±ÅÃ Çã¿ë
-        if (num == 1) { //³»°¡ 1¹ø ½ºÅ³ÀÌ¸é 1¹ø ½ºÅ³ ¹öÆ°À» È°¼ºÈ­
+    public void pardon()
+    { //ìŠ¤í‚¬ ì„ íƒ í—ˆìš©
+        if (num == 1)
+        { //ë‚´ê°€ 1ë²ˆ ìŠ¤í‚¬ì´ë©´ 1ë²ˆ ìŠ¤í‚¬ ë²„íŠ¼ì„ í™œì„±í™”
             SkillPanelManager.GetComponent<SkillPanelManager>().buttonA.interactable = true;
         }
         else if (num == 2)
