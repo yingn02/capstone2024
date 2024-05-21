@@ -34,7 +34,7 @@ public class movingTarget : TargetSkill
     public void execute()
     { //스킬 발동
         skill = true;
-        gameManager.playerTargetSkills.Add(this);
+        gameManager.activatedTargetSkills.Add(this);
         target.moving = true;
         Debug.Log("과녁 움직이기");
         skill = false;

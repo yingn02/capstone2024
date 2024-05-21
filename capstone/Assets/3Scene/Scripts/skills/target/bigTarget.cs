@@ -28,7 +28,7 @@ public class bigTarget : TargetSkill
     { //스킬 발동
         skill = true;
         Debug.Log("과녁 크기 증가");
-        gameManager.playerTargetSkills.Add(this);
+        gameManager.activatedTargetSkills.Add(this);
 
         target.multiplier = 2;
         target.parent.transform.localScale = new Vector3(2, 2, 1);

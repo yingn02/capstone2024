@@ -2017,7 +2017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07847cf9af7207a4685b49b23ba9dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTurns: 0
   parent: {fileID: 1307031168}
   tmp_score: 0
   multiplier: 1
@@ -2577,7 +2576,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c930c43c5773ff94cbed89ec6a7eb4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManagerEnemy: {fileID: 568125985}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 835814197}
   skill: 0
   cool: 0
   num: 1
@@ -3612,7 +3614,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c20fa49cc33de44aae2868c7409d1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManagerEnemy: {fileID: 568125985}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 297661657}
   skill: 0
   cool: 0
   num: 1
@@ -7585,7 +7590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07847cf9af7207a4685b49b23ba9dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTurns: 0
   parent: {fileID: 506157252}
   tmp_score: 0
   multiplier: 1
@@ -12224,7 +12228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8928dc7f5a3bd8b47a81cf1e21bed423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManagerEnemy: {fileID: 568125985}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 297661657}
   skill: 0
   cool: 0
   num: 1
@@ -16647,8 +16654,7 @@ MonoBehaviour:
   count_cool_enemy: 0
   enemy_try_skill: 0
   enemy_add_skill: 0
-  playerTargetSkills: []
-  opponentTargetSkills: []
+  activatedTargetSkills: []
 --- !u!4 &1829368041
 Transform:
   m_ObjectHideFlags: 0

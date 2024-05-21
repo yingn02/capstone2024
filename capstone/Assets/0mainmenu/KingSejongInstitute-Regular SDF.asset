@@ -5507,6 +5507,21 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 1
     m_ClassDefinitionType: 0
+  - m_Index: 2766
+    m_Metrics:
+      m_Width: 16.640625
+      m_Height: 17.703125
+      m_HorizontalBearingX: 0.875
+      m_HorizontalBearingY: 14.6875
+      m_HorizontalAdvance: 18.40625
+    m_GlyphRect:
+      m_X: 35
+      m_Y: 337
+      m_Width: 18
+      m_Height: 19
+    m_Scale: 1
+    m_AtlasIndex: 1
+    m_ClassDefinitionType: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 32
@@ -6940,6 +6955,10 @@ MonoBehaviour:
     m_Unicode: 53356
     m_GlyphIndex: 3066
     m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 51613
+    m_GlyphIndex: 2766
+    m_Scale: 1
   m_AtlasTextures:
   - {fileID: 2111686974236547373}
   - {fileID: 6530148231776363640}
@@ -7115,6 +7134,10 @@ MonoBehaviour:
     m_Y: 29
     m_Width: 29
     m_Height: 25
+  - m_X: 29
+    m_Y: 331
+    m_Width: 29
+    m_Height: 30
   m_FreeGlyphRects:
   - m_X: 28
     m_Y: 58
@@ -7140,10 +7163,6 @@ MonoBehaviour:
     m_Y: 150
     m_Width: 2
     m_Height: 29
-  - m_X: 56
-    m_Y: 241
-    m_Width: 455
-    m_Height: 270
   - m_X: 27
     m_Y: 240
     m_Width: 1
@@ -7152,10 +7171,6 @@ MonoBehaviour:
     m_Y: 209
     m_Width: 26
     m_Height: 1
-  - m_X: 57
-    m_Y: 210
-    m_Width: 454
-    m_Height: 301
   - m_X: 80
     m_Y: 119
     m_Width: 1
@@ -7180,10 +7195,6 @@ MonoBehaviour:
     m_Y: 117
     m_Width: 403
     m_Height: 394
-  - m_X: 28
-    m_Y: 331
-    m_Width: 483
-    m_Height: 1
   - m_X: 29
     m_Y: 300
     m_Width: 482
@@ -7200,14 +7211,6 @@ MonoBehaviour:
     m_Y: 86
     m_Width: 399
     m_Height: 1
-  - m_X: 29
-    m_Y: 331
-    m_Width: 482
-    m_Height: 31
-  - m_X: 55
-    m_Y: 270
-    m_Width: 456
-    m_Height: 92
   - m_X: 27
     m_Y: 391
     m_Width: 484
@@ -7236,6 +7239,34 @@ MonoBehaviour:
     m_Y: 54
     m_Width: 375
     m_Height: 6
+  - m_X: 56
+    m_Y: 241
+    m_Width: 455
+    m_Height: 90
+  - m_X: 56
+    m_Y: 361
+    m_Width: 455
+    m_Height: 150
+  - m_X: 57
+    m_Y: 210
+    m_Width: 454
+    m_Height: 121
+  - m_X: 58
+    m_Y: 210
+    m_Width: 453
+    m_Height: 301
+  - m_X: 28
+    m_Y: 331
+    m_Width: 1
+    m_Height: 1
+  - m_X: 29
+    m_Y: 361
+    m_Width: 482
+    m_Height: 1
+  - m_X: 55
+    m_Y: 270
+    m_Width: 456
+    m_Height: 61
   m_fontInfo:
     Name: 
     PointSize: 0

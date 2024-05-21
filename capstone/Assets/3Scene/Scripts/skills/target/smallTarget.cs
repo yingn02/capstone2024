@@ -28,7 +28,7 @@ public class smallTarget : TargetSkill
     public void execute()
     { //스킬 발동
         skill = true;
-        gameManager.playerTargetSkills.Add(this);
+        gameManager.activatedTargetSkills.Add(this);
         target.multiplier = 0.5f;
         target.parent.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 

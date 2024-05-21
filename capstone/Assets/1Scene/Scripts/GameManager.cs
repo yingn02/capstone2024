@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
     public bool enemy_try_skill = false; //적팀이 스킬을 쓸 것을 허용하겠는가 (적의 턴일 때 true)
     public bool enemy_add_skill = false; //적팀이 스킬을 하나 더 갖도록 허용하겠는가 (스테이지 넘어갈 때 true)
 
-    public List<TargetSkill> playerTargetSkills; //플레이어가 사용중인 과녁 스킬들
-    public List<TargetSkill> opponentTargetSkills; //상대가 사용중인 과녁 스킬들
+    public List<TargetSkill> activatedTargetSkills; //현재 발동중인 과녁 스킬들
 
     // Start is called before the first frame update
     void Start()
@@ -72,21 +71,13 @@ public class GameManager : MonoBehaviour
     }
     void deactivateTargetSkills()
     {
-        for (int i = playerTargetSkills.Count - 1; i >= 0; i--)
+        for (int i = activatedTargetSkills.Count - 1; i >= 0; i--)
         {
-            if (--playerTargetSkills[i].activeTurns == 0)
+            activatedTargetSkills[i].activeTurns--;
+            if (activatedTargetSkills[i].activeTurns == 0)
             {
-                playerTargetSkills[i].disable();
-                playerTargetSkills.RemoveAt(i);
-            }
-        }
-
-        for (int i = opponentTargetSkills.Count - 1; i >= 0; i--)
-        {
-            if (--opponentTargetSkills[i].activeTurns == 0)
-            {
-                opponentTargetSkills[i].disable();
-                opponentTargetSkills.RemoveAt(i);
+                activatedTargetSkills[i].disable();
+                activatedTargetSkills.RemoveAt(i);
             }
         }
     }
@@ -152,7 +143,7 @@ public class GameManager : MonoBehaviour
                 {
                     if(!practice) ViewResult.GetComponent<viewResult>().viewVictory(); //승리 UI
                     Debug.Log("You Win!");
-                    nextStage();
+                    nextStage(false);
                 }
                 else if (playerSet < opponentSet)
                 {
@@ -164,7 +155,8 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("Draw");
                     ViewResult.GetComponent<viewResult>().viewDraw(); //패배 UI
-                    Time.timeScale = 0;
+                    //Time.timeScale = 0;
+                    nextStage(true);
                 }
 
                 return;
@@ -178,17 +170,25 @@ public class GameManager : MonoBehaviour
 
 
     }
-    private void nextStage()
+    private void nextStage(bool draw)
     {
+        if (draw) { currentStage--; }
         if(!practice) Debug.Log("Start of Stage " + (++currentStage));
-        if (skill) { enemy_add_skill = true; } //적팀이 스킬을 하나 더 뽑아서 소지한다. SkillManagerEnemy 스크립트에서 관리함
+        if (skill && !draw) { enemy_add_skill = true; } //적팀이 스킬을 하나 더 뽑아서 소지한다. SkillManagerEnemy 스크립트에서 관리함
 
         playerSet = 0;
         opponentSet = 0;
         currentSet = 1;
         destroyArrows(); // 현재 나와있는 화살 전부 지우기
         changePlayers();
-        
+
+        //과녁 관련 스킬들 모두 해제
+        for (int i = activatedTargetSkills.Count - 1; i >= 0; i--)
+        {
+            activatedTargetSkills[i].disable();
+            activatedTargetSkills.RemoveAt(i);
+        }
+
         StartCoroutine(WaitAndClearAll()); //모든 것을 새스테이지에 맞게 초기화
     }
 
