@@ -7,33 +7,33 @@ using System.Collections.Generic;
 
 public class SkillPanelManager : MonoBehaviour
 {
-    public GameObject smallTarget; //½ºÅ³ ½ºÅ©¸³Æ®1 (°ú³á Å©±â °¨¼Ò)
-    public GameObject bigTarget; //½ºÅ³ ½ºÅ©¸³Æ®2 (°ú³á Å©±â Áõ°¡)
-    public GameObject movingTarget; //½ºÅ³ ½ºÅ©¸³Æ®3 (°ú³á ¿òÁ÷ÀÌ±â)
-    public GameObject reduceCool; //½ºÅ³ ½ºÅ©¸³Æ®4 (ÄğÅ¸ÀÓ °¨¼Ò)
-    public GameObject removeSkill; //½ºÅ³ ½ºÅ©¸³Æ®5 (½ºÅ³ ¹«È¿È­)
-    public GameObject scoreBonus; //½ºÅ³ ½ºÅ©¸³Æ®6 (Á¡¼ö º¸³Ê½º)
-    public GameObject bigArrow; //½ºÅ³ ½ºÅ©¸³Æ®7 (È­»ì °Å´ëÈ­)
-    public GameObject doubleArrow; //½ºÅ³ ½ºÅ©¸³Æ®8 (´õºí¼¦)
-    public GameObject transparent; //½ºÅ³ ½ºÅ©¸³Æ®9 (Åõ¸í È­»ì°ú °ú³á)
-    public GameObject removeWind; //½ºÅ³ ½ºÅ©¸³Æ®10 (Ç³Çâ Á¦°Å)
-    public GameObject typhoon; //½ºÅ³ ½ºÅ©¸³Æ®11 (ÅÂÇ³)
+    public GameObject smallTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸1 (ê³¼ë… í¬ê¸° ê°ì†Œ)
+    public GameObject bigTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸2 (ê³¼ë… í¬ê¸° ì¦ê°€)
+    public GameObject movingTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸3 (ê³¼ë… ì›€ì§ì´ê¸°)
+    public GameObject reduceCool; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸4 (ì¿¨íƒ€ì„ ê°ì†Œ)
+    public GameObject removeSkill; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸5 (ìŠ¤í‚¬ ë¬´íš¨í™”)
+    public GameObject scoreBonus; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸6 (ì ìˆ˜ ë³´ë„ˆìŠ¤)
+    public GameObject bigArrow; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸7 (í™”ì‚´ ê±°ëŒ€í™”)
+    public GameObject doubleArrow; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸8 (ë”ë¸”ìƒ·)
+    public GameObject transparent; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸9 (íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë…)
+    public GameObject removeWind; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸10 (í’í–¥ ì œê±°)
+    public GameObject typhoon; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸11 (íƒœí’)
 
     public TMP_Text skillText;
-    public Button buttonA; //½ºÅ³1 ¹öÆ°
+    public Button buttonA; //ìŠ¤í‚¬1 ë²„íŠ¼
     public Button buttonB;
     public Button buttonC;
 
-    public int selected = 0; //¸î¹øÂ° ½ºÅ³ÀÌ ¼±ÅÃµÇ¾ú´Â°¡ (½ºÅ³¸¶´Ù ÄğÅ¸ÀÓÀÌ ´Ù¸£¹Ç·Î, SkillManager ½ºÅ©¸³Æ®¿¡¼­ »ç¿ëÇÒ º¯¼ö ÇÊ¿ä)
+    public int selected = 0; //ëª‡ë²ˆì§¸ ìŠ¤í‚¬ì´ ì„ íƒë˜ì—ˆëŠ”ê°€ (ìŠ¤í‚¬ë§ˆë‹¤ ì¿¨íƒ€ì„ì´ ë‹¤ë¥´ë¯€ë¡œ, SkillManager ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ì‚¬ìš©í•  ë³€ìˆ˜ í•„ìš”)
 
-    public List<string> skillList = new List<string>(); //½ºÅ³ÅØ½ºÆ® ¼³Á¤È° ¸®½ºÆ®
+    public List<string> skillList = new List<string>(); //ìŠ¤í‚¬í…ìŠ¤íŠ¸ ì„¤ì •í™œ ë¦¬ìŠ¤íŠ¸
 
     void Start()
     {
-        // ButtonSelection¿¡¼­ ¼±ÅÃµÈ ½ºÅ³ ÅØ½ºÆ® ´Ù½Ã skillList¿¡ ÀúÀå
+        // ButtonSelectionì—ì„œ ì„ íƒëœ ìŠ¤í‚¬ í…ìŠ¤íŠ¸ ë‹¤ì‹œ skillListì— ì €ì¥
         skillList = ButtonSelection.GetSelectedButtonTexts();
 
-        // ÃÊ±â ¹öÆ° ¼ø¼­ ¼³Á¤ (¹öÆ° & ÄğÅ¸ÀÓ ¿À·ù ´ëÀÀ)
+        // ì´ˆê¸° ë²„íŠ¼ ìˆœì„œ ì„¤ì • (ë²„íŠ¼ & ì¿¨íƒ€ì„ ì˜¤ë¥˜ ëŒ€ì‘)
         smallTarget.GetComponent<smallTarget>().num = -1;
         bigTarget.GetComponent<bigTarget>().num = -1;
         movingTarget.GetComponent<movingTarget>().num = -1;
@@ -52,7 +52,7 @@ public class SkillPanelManager : MonoBehaviour
         initialSet();
         //
 
-        // ¼±ÅÃµÈ ½ºÅ³ ¾øÀ¸¸é ÅØ½ºÆ® ºñ¿ò
+        // ì„ íƒëœ ìŠ¤í‚¬ ì—†ìœ¼ë©´ í…ìŠ¤íŠ¸ ë¹„ì›€
         if (skillList == null || skillList.Count == 0)
         {
             skillText.text = "";
@@ -66,7 +66,7 @@ public class SkillPanelManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void OnButtonClickA()
@@ -77,7 +77,7 @@ public class SkillPanelManager : MonoBehaviour
 
     public void OnButtonClickB()
     {
-        skillText.text = skillList[1]; 
+        skillText.text = skillList[1];
         selected = 2;
     }
 
@@ -87,23 +87,22 @@ public class SkillPanelManager : MonoBehaviour
         selected = 3;
     }
 
-    public void initialSet() { //ÃÊ±â ¹öÆ° ¼ø¼­ ¼³Á¤ (¹öÆ° & ÄğÅ¸ÀÓ ¿À·ù ´ëÀÀ)
+    public void initialSet()
+    { //ì´ˆê¸° ë²„íŠ¼ ìˆœì„œ ì„¤ì • (ë²„íŠ¼ & ì¿¨íƒ€ì„ ì˜¤ë¥˜ ëŒ€ì‘)
         for (int i = 0; i < 3; i++)
         {
-            if (skillList[i] == "°ú³á Å©±â °¨¼Ò : °ú³á Å©±â °¨¼Ò") smallTarget.GetComponent<smallTarget>().setCool(i + 1, 0);
-            else if (skillList[i] == "°ú³á Å©±â Áõ°¡ : °ú³á Å©±â Áõ°¡") bigTarget.GetComponent<bigTarget>().setCool(i + 1, 0);
-            else if (skillList[i] == "°ú³á ¿òÁ÷ÀÌ±â : °ú³á ¿òÁ÷ÀÌ±â") movingTarget.GetComponent<movingTarget>().setCool(i + 1, 0);
-            else if (skillList[i] == "ÄğÅ¸ÀÓ °¨¼Ò : ÇÃ·¹ÀÌ¾îÀÇ ¸ğµç ½ºÅ³ ÄğÅ¸ÀÓÀÌ 1ÅÏ °¨¼ÒÇÑ´Ù.") reduceCool.GetComponent<reduceCool>().setCool(i + 1, 0);
-            else if (skillList[i] == "½ºÅ³ ¹«È¿È­ : Àû ÆÀÀÌ ¹ßµ¿ ÁßÀÎ ¸ğµç ½ºÅ³À» ¹«È¿È­ ÇÑ´Ù.") removeSkill.GetComponent<removeSkill>().setCool(i + 1, 0);
-            else if (skillList[i] == "Á¡¼ö º¸³Ê½º : ÇöÀç ÅÏ¿¡¼­ Á¡¼ö¸¦ 2¹è·Î ¾òÀ» ¼ö ÀÖ´Ù.") scoreBonus.GetComponent<scoreBonus>().setCool(i + 1, 0);       
-            else if (skillList[i] == "È­»ì °Å´ëÈ­ : È­»ì °Å´ëÈ­") bigArrow.GetComponent<bigArrow>().setCool(i + 1, 0);
-            else if (skillList[i] == "´õºí¼¦ : ´õºí¼¦") doubleArrow.GetComponent<doubleArrow>().setCool(i + 1, 0);
-            else if (skillList[i] == "Åõ¸í È­»ì°ú °ú³á : Åõ¸í È­»ì°ú °ú³á") transparent.GetComponent<transparent>().setCool(i + 1, 0);
-            else if (skillList[i] == "Ç³Çâ Á¦°Å: Ç³Çâ Á¦°Å") removeWind.GetComponent<removeWind>().setCool(i + 1, 0);
-            else if (skillList[i] == "ÅÂÇ³ : ÅÂÇ³") typhoon.GetComponent<typhoon>().setCool(i + 1, 0);
+            if (skillList[i] == "ê³¼ë… í¬ê¸° ê°ì†Œ : ê³¼ë… í¬ê¸° ê°ì†Œ") smallTarget.GetComponent<smallTarget>().setCool(i + 1, 0);
+            else if (skillList[i] == "ê³¼ë… í¬ê¸° ì¦ê°€ : ê³¼ë… í¬ê¸° ì¦ê°€") bigTarget.GetComponent<bigTarget>().setCool(i + 1, 0);
+            else if (skillList[i] == "ê³¼ë… ì›€ì§ì´ê¸° : ê³¼ë… ì›€ì§ì´ê¸°") movingTarget.GetComponent<movingTarget>().setCool(i + 1, 0);
+            else if (skillList[i] == "ì¿¨íƒ€ì„ ê°ì†Œ : í”Œë ˆì´ì–´ì˜ ëª¨ë“  ìŠ¤í‚¬ ì¿¨íƒ€ì„ì´ 1í„´ ê°ì†Œí•œë‹¤.") reduceCool.GetComponent<reduceCool>().setCool(i + 1, 0);
+            else if (skillList[i] == "ìŠ¤í‚¬ ë¬´íš¨í™” : ì  íŒ€ì´ ë°œë™ ì¤‘ì¸ ëª¨ë“  ìŠ¤í‚¬ì„ ë¬´íš¨í™” í•œë‹¤.") removeSkill.GetComponent<removeSkill>().setCool(i + 1, 0);
+            else if (skillList[i] == "ì ìˆ˜ ë³´ë„ˆìŠ¤ : í˜„ì¬ í„´ì—ì„œ ì ìˆ˜ë¥¼ 2ë°°ë¡œ ì–»ì„ ìˆ˜ ìˆë‹¤.") scoreBonus.GetComponent<scoreBonus>().setCool(i + 1, 0);
+            else if (skillList[i] == "í™”ì‚´ ê±°ëŒ€í™” : í™”ì‚´ ê±°ëŒ€í™”") bigArrow.GetComponent<bigArrow>().setCool(i + 1, 0);
+            else if (skillList[i] == "ë”ë¸”ìƒ· : ë”ë¸”ìƒ·") doubleArrow.GetComponent<doubleArrow>().setCool(i + 1, 0);
+            else if (skillList[i] == "íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë… : íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë…") transparent.GetComponent<transparent>().setCool(i + 1, 0);
+            else if (skillList[i] == "í’í–¥ ì œê±°: í’í–¥ ì œê±°") removeWind.GetComponent<removeWind>().setCool(i + 1, 0);
+            else if (skillList[i] == "íƒœí’ : íƒœí’") typhoon.GetComponent<typhoon>().setCool(i + 1, 0);
         }
 
     }
 }
-
-

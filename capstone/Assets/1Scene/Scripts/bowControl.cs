@@ -111,7 +111,7 @@ public class bowControl : MonoBehaviour
             arrow = Instantiate(arrowPrefab, bowPoint.transform.position,
                 bowPoint.transform.rotation);
             arrow.transform.parent = bowPoint.transform;
-            grabpoint.reloadArrow(arrow);
+            grabpoint.reloadArrow(arrow, player);
             haveArrow = true;
         }
         else

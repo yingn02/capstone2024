@@ -1884,6 +1884,7 @@ GameObject:
   - component: {fileID: 297661654}
   - component: {fileID: 297661653}
   - component: {fileID: 297661656}
+  - component: {fileID: 297661657}
   m_Layer: 0
   m_Name: front_target
   m_TagString: Target
@@ -2004,6 +2005,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &297661657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297661651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07847cf9af7207a4685b49b23ba9dbcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1307031168}
+  tmp_score: 0
+  multiplier: 1
+  centerPosition: {x: 0, y: 0, z: 0}
+  yellSnd: {fileID: 0}
+  scoreBonus: {fileID: 0}
+  scoreBonusEnemy: {fileID: 0}
 --- !u!1 &318584196
 GameObject:
   m_ObjectHideFlags: 0
@@ -3538,6 +3558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1961561193}
   - {fileID: 1046077052}
   - {fileID: 835814193}
   m_Father: {fileID: 0}
@@ -4475,7 +4496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: 
-  SkillPanelManager: {fileID: 1187812783}
 --- !u!4 &568125987
 Transform:
   m_ObjectHideFlags: 0
@@ -5416,12 +5436,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660856570}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.9722803, y: 2.873185, z: 36.60956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1307031169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &672985691
 GameObject:
@@ -7090,7 +7110,10 @@ MonoBehaviour:
   buttonB: {fileID: 181208487}
   buttonC: {fileID: 1830205606}
   selected: 0
-  skillList: []
+  skillList:
+  - 
+  - 
+  - 
 --- !u!114 &784648858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7448,6 +7471,7 @@ GameObject:
   - component: {fileID: 835814196}
   - component: {fileID: 835814195}
   - component: {fileID: 835814194}
+  - component: {fileID: 835814197}
   m_Layer: 0
   m_Name: front_target
   m_TagString: EnemyTarget
@@ -7541,6 +7565,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835814192}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &835814197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835814192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07847cf9af7207a4685b49b23ba9dbcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 506157252}
+  tmp_score: 0
+  multiplier: 1
+  centerPosition: {x: 0, y: 0, z: 0}
+  yellSnd: {fileID: 0}
+  scoreBonus: {fileID: 0}
+  scoreBonusEnemy: {fileID: 0}
 --- !u!1001 &844605595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11422,7 +11465,10 @@ MonoBehaviour:
   buttonB: {fileID: 181208487}
   buttonC: {fileID: 1830205606}
   selected: 0
-  skillList: []
+  skillList:
+  - 
+  - 
+  - 
 --- !u!4 &1187812785
 Transform:
   m_ObjectHideFlags: 0
@@ -11881,6 +11927,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 660856571}
   - {fileID: 1796254793}
   - {fileID: 297661652}
   m_Father: {fileID: 0}
@@ -12864,6 +12911,8 @@ MonoBehaviour:
   typhoonEnemy: {fileID: 1838568816}
   selected: 0
   press: 0
+  nextSC: 4
+  maxSC: 11
 --- !u!1 &1364151975
 GameObject:
   m_ObjectHideFlags: 0
@@ -16346,6 +16395,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1912750385589055340, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
+      propertyPath: player
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912750385589055340, guid: 57a1ca3357b41da48a9ba76802b3337b, type: 3}
       propertyPath: ArrowControl
       value: 
       objectReference: {fileID: 0}
@@ -16580,6 +16633,7 @@ MonoBehaviour:
   count_cool: 0
   count_cool_enemy: 0
   enemy_try_skill: 0
+  enemy_add_skill: 0
 --- !u!4 &1829368041
 Transform:
   m_ObjectHideFlags: 0
@@ -17399,12 +17453,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961561192}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9722803, y: 2.873185, z: 36.60956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.82772, y: 2.873185, z: 36.60956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 506157253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1965673501
 GameObject:
@@ -19015,8 +19069,6 @@ SceneRoots:
   - {fileID: 506157253}
   - {fileID: 4468445325022002931}
   - {fileID: 1829368041}
-  - {fileID: 660856571}
-  - {fileID: 1961561193}
   - {fileID: 677292131}
   - {fileID: 7212575307932461686}
   - {fileID: 389043636}

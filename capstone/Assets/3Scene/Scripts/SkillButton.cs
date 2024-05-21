@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class SkillButton : MonoBehaviour
 {
     public GameObject skillPanel;
-    public GameObject SkillManager; //½ºÅ³ ¹ßµ¿ ½ºÅ©¸³Æ®
+    public GameObject SkillManager; //ìŠ¤í‚¬ ë°œë™ ìŠ¤í¬ë¦½íŠ¸
 
     public void OnButtonClick()
     {
@@ -16,8 +16,8 @@ public class SkillButton : MonoBehaviour
             skillPanel.SetActive(!skillPanel.activeSelf);
         }
     }
-    public void OnSelectClick() { //½ºÅ³ »ç¿ë ¹öÆ°(¼±ÅÃ)À» ´­·¶À» ¶§
-        SkillManager.GetComponent<SkillManager>().skillOn(); //½ºÅ³ »ç¿ë ¹öÆ°ÀÌ ´­·ÈÀ½À» È®ÀÎ
+    public void OnSelectClick()
+    { //ìŠ¤í‚¬ ì‚¬ìš© ë²„íŠ¼(ì„ íƒ)ì„ ëˆŒë €ì„ ë•Œ
+        SkillManager.GetComponent<SkillManager>().skillOn(); //ìŠ¤í‚¬ ì‚¬ìš© ë²„íŠ¼ì´ ëˆŒë ¸ìŒì„ í™•ì¸
     }
 }
-
