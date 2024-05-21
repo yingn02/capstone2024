@@ -53,6 +53,8 @@ public class changeWind : MonoBehaviour
         else { 
             changePassTime += Time.deltaTime;
         }
+
+        Debug.Log("현재 풍향 세기 - " + "x" + x + "/" + "y" + y + "/" + "z" + z + "/");
     }
 
     public void view_wind() { //풍향을 재설정하고 UI도 업데이트

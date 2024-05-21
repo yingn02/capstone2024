@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ButtonSelection : MonoBehaviour
 {
     public Color selectedColor; // 선택됐을 때 색
-    private Color originalColor; // 원래 색
+    public Color originalColor; // 원래 색
 
     private Button button; // 현재 버튼
     private bool isSelected = false;
@@ -17,12 +17,28 @@ public class ButtonSelection : MonoBehaviour
     private static List<string> selectedButtonTexts = new List<string>(); // 선택된 버튼의 텍스트를 저장할 리스트
     private const int maxSelectionCount = 3; // 최대 선택 가능한 버튼의 수
 
+    public bool refresh = false;
+
     void Start()
     {
         button = GetComponent<Button>(); 
         originalColor = button.colors.normalColor; //지금 배경색 저장
         button.onClick.AddListener(OnClick); 
         buttonText = GetComponentInChildren<TMP_Text>().text; //버튼 내용 가져오기
+    }
+
+    void Update()
+    {
+        if (refresh) {
+            selectedButtonTexts = new List<string>();
+
+            button = GetComponent<Button>();
+            originalColor = button.colors.normalColor;
+            button.onClick.AddListener(OnClick);
+            buttonText = GetComponentInChildren<TMP_Text>().text;
+
+            refresh = false;
+        }
     }
 
     void OnClick()

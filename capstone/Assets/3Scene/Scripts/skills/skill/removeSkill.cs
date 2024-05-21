@@ -5,6 +5,7 @@ using UnityEngine;
 public class removeSkill : MonoBehaviour
 {
     public GameObject SkillPanelManager; //스킬 패널 스크립트
+    public GameObject changeWind; //changeWind 스크립트
 
     public bool skill = false; //스킬이 발동 중인가? 
     public int cool = 0; //쿨타임(턴), 몇 턴을 앞으로 더 기다려야 하는가의 변수
@@ -25,7 +26,7 @@ public class removeSkill : MonoBehaviour
     public void execute() { //스킬 발동
         skill = true;
         Debug.Log("스킬 무효화");
-        //다른 스킬 스크립트의 skill 값을 false로 변경하는 방식으로 구현하게 될 것 같다
+        typhoonBan(); //적팀이 썼던 태풍 무효화
         skill = false;
     }
 
@@ -60,5 +61,12 @@ public class removeSkill : MonoBehaviour
         {
             SkillPanelManager.GetComponent<SkillPanelManager>().buttonC.interactable = true; 
         }
+    }
+
+    ////////////////////////////////////////////////스킬 무효화////////////////////////////////////////////////
+
+    public void typhoonBan() {
+        changeWind.GetComponent<changeWind>().isTyphoonEnemy = false;
+        changeWind.GetComponent<changeWind>().isChangeEnemy = true;
     }
 }

@@ -16,6 +16,7 @@ public class SkillButton : MonoBehaviour
             skillPanel.SetActive(!skillPanel.activeSelf);
         }
     }
+
     public void OnSelectClick() { //스킬 사용 버튼(선택)을 눌렀을 때
         SkillManager.GetComponent<SkillManager>().skillOn(); //스킬 사용 버튼이 눌렸음을 확인
     }
