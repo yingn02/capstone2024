@@ -2474,7 +2474,7 @@ GameObject:
   - component: {fileID: 297661653}
   - component: {fileID: 297661656}
   - component: {fileID: 297661657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: front_target
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -4440,7 +4440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 506157253}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: target2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8683,7 +8683,7 @@ GameObject:
   - component: {fileID: 835814195}
   - component: {fileID: 835814194}
   - component: {fileID: 835814197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: front_target
   m_TagString: EnemyTarget
   m_Icon: {fileID: 0}
@@ -11721,7 +11721,7 @@ GameObject:
   - component: {fileID: 1046077055}
   - component: {fileID: 1046077054}
   - component: {fileID: 1046077053}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: target_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13863,7 +13863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1307031169}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: target1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18807,7 +18807,7 @@ GameObject:
   - component: {fileID: 1796254796}
   - component: {fileID: 1796254795}
   - component: {fileID: 1796254794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: target_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
