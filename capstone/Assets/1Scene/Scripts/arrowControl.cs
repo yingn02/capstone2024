@@ -35,6 +35,9 @@ public class arrowControl : MonoBehaviour
 
         scoreBonus = GameObject.Find("scoreBonus").GetComponent<scoreBonus>();
         scoreBonusEnemy = GameObject.Find("scoreBonusEnemy").GetComponent<scoreBonusEnemy>();
+
+        bigArrow = GameObject.Find("bigArrow").GetComponent<bigArrow>();
+        bigArrowEnemy = GameObject.Find("bigArrowEnemy").GetComponent<bigArrowEnemy>();
     }
 
     // Update is called once per frame

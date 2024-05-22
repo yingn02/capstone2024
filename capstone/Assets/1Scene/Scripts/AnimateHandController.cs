@@ -9,6 +9,7 @@ public class AnimateHandController : MonoBehaviour
 {
     public InputActionReference gripAction;
     public InputActionReference triggerAction;
+    public GameObject rightHandRayInteractor;
 
     private Animator animator;
     private float gripValue;
@@ -28,6 +29,14 @@ public class AnimateHandController : MonoBehaviour
     void grip()
     {
         gripValue = gripAction.action.ReadValue<float>();
+        if (gripValue > 0f && rightHandRayInteractor != null)
+        {
+            rightHandRayInteractor.SetActive(true);
+        }
+        if (gripValue < 1f && rightHandRayInteractor != null)
+        {
+            rightHandRayInteractor.SetActive(false);
+        }
         animator.SetFloat("Grip", gripValue);
     }
     void trigger()

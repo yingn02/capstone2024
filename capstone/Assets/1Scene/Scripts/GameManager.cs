@@ -105,13 +105,13 @@ public class GameManager : MonoBehaviour
         if ((doubleArrow.activeTurns == 2) && (doubleArrow.skill = true))
         {
             doubleArrow.activeTurns--;
-            return;
+            //return;
         }
 
         if ((doubleArrowEnemy.activeTurns == 2) && (doubleArrowEnemy.skill = true))
         {
             doubleArrowEnemy.activeTurns--;
-            return;
+            //return;
         }
 
         //과녁 스킬들 효과 해제
