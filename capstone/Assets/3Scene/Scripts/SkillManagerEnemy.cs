@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class SkillManagerEnemy : MonoBehaviour
 {
-    private List<int> skills = new List<int>(); //ÀûÆÀÀÇ ÇöÀç ½ºÅ³ ¸®½ºÆ®
+    private List<int> skills = new List<int>(); //ì íŒ€ì˜ í˜„ì¬ ìŠ¤í‚¬ ë¦¬ìŠ¤íŠ¸
 
-    public GameManager gameManager; //GameManager ½ºÅ©¸³Æ®, ÇÃ·¹ÀÌ¾îÀÇ ÅÏÀ» °¨ÁöÇÏ±â À§ÇÔ
-    public GameObject SkillPanelManagerEnemy; //SkillPanelManagerEnemy ½ºÅ©¸³Æ®, ÀûÆÀÀÌ ½ºÅ³ ¹öÆ°À» ´©¸¦ ¼ö ÀÖÀ»Áö °áÁ¤ÇÏ±â À§ÇÔ
+    public GameManager gameManager; //GameManager ìŠ¤í¬ë¦½íŠ¸, í”Œë ˆì´ì–´ì˜ í„´ì„ ê°ì§€í•˜ê¸° ìœ„í•¨
+    public GameObject SkillPanelManagerEnemy; //SkillPanelManagerEnemy ìŠ¤í¬ë¦½íŠ¸, ì íŒ€ì´ ìŠ¤í‚¬ ë²„íŠ¼ì„ ëˆ„ë¥¼ ìˆ˜ ìˆì„ì§€ ê²°ì •í•˜ê¸° ìœ„í•¨
 
-    public GameObject smallTargetEnemy; //½ºÅ³ ½ºÅ©¸³Æ®1 (°ú³á Å©±â °¨¼Ò)
-    public GameObject bigTargetEnemy; //½ºÅ³ ½ºÅ©¸³Æ®2 (°ú³á Å©±â Áõ°¡)
-    public GameObject movingTargetEnemy; //½ºÅ³ ½ºÅ©¸³Æ®3 (°ú³á ¿òÁ÷ÀÌ±â)
-    public GameObject reduceCoolEnemy; //½ºÅ³ ½ºÅ©¸³Æ®4 (ÄğÅ¸ÀÓ °¨¼Ò)
-    public GameObject removeSkillEnemy; //½ºÅ³ ½ºÅ©¸³Æ®5 (½ºÅ³ ¹«È¿È­)
-    public GameObject scoreBonusEnemy; //½ºÅ³ ½ºÅ©¸³Æ®6 (Á¡¼ö º¸³Ê½º)
-    public GameObject bigArrowEnemy; //½ºÅ³ ½ºÅ©¸³Æ®7 (È­»ì °Å´ëÈ­)
-    public GameObject doubleArrowEnemy; //½ºÅ³ ½ºÅ©¸³Æ®8 (´õºí¼¦)
-    public GameObject transparentEnemy; //½ºÅ³ ½ºÅ©¸³Æ®9 (Åõ¸í È­»ì°ú °ú³á)
-    public GameObject removeWindEnemy; //½ºÅ³ ½ºÅ©¸³Æ®10 (Ç³Çâ Á¦°Å)
-    public GameObject typhoonEnemy; //½ºÅ³ ½ºÅ©¸³Æ®11 (ÅÂÇ³)
+    public GameObject smallTargetEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸1 (ê³¼ë… í¬ê¸° ê°ì†Œ)
+    public GameObject bigTargetEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸2 (ê³¼ë… í¬ê¸° ì¦ê°€)
+    public GameObject movingTargetEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸3 (ê³¼ë… ì›€ì§ì´ê¸°)
+    public GameObject reduceCoolEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸4 (ì¿¨íƒ€ì„ ê°ì†Œ)
+    public GameObject removeSkillEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸5 (ìŠ¤í‚¬ ë¬´íš¨í™”)
+    public GameObject scoreBonusEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸6 (ì ìˆ˜ ë³´ë„ˆìŠ¤)
+    public GameObject bigArrowEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸7 (í™”ì‚´ ê±°ëŒ€í™”)
+    public GameObject doubleArrowEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸8 (ë”ë¸”ìƒ·)
+    public GameObject transparentEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸9 (íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë…)
+    public GameObject removeWindEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸10 (í’í–¥ ì œê±°)
+    public GameObject typhoonEnemy; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸11 (íƒœí’)
 
-    public int selected = 0; //ÀûÆÀÀÌ ´©¸£°íÀÚ ÇÏ´Â ½ºÅ³ ¹öÆ°ÀÇ ÀÎµ¦½º
-    public bool press = false; //½ºÅ³ ¹öÆ°À» ´©¸¥´Ù
-    public int nextSC = 4; //´ÙÀ½ ½ºÅ×ÀÌÁöÀÇ ÀûÆÀ ½ºÅ³ º¸À¯ °³¼ö
-    public int maxSC = 11; //ÀûÆÀ ½ºÅ³ º¸À¯ ÃÖ´ë °³¼ö
+    public int selected = 0; //ì íŒ€ì´ ëˆ„ë¥´ê³ ì í•˜ëŠ” ìŠ¤í‚¬ ë²„íŠ¼ì˜ ì¸ë±ìŠ¤
+    public bool press = false; //ìŠ¤í‚¬ ë²„íŠ¼ì„ ëˆ„ë¥¸ë‹¤
+    public int nextSC = 4; //ë‹¤ìŒ ìŠ¤í…Œì´ì§€ì˜ ì íŒ€ ìŠ¤í‚¬ ë³´ìœ  ê°œìˆ˜
+    public int maxSC = 11; //ì íŒ€ ìŠ¤í‚¬ ë³´ìœ  ìµœëŒ€ ê°œìˆ˜
 
     // Start is called before the first frame update
     void Start()
     {
-        //ÀûÆÀµµ ½ºÅ³ 3°³¸¦ °í¸¥´Ù. (Áßº¹X) Áö±İÀº 3°³Áö¸¸ ½ºÅ×ÀÌÁö°¡ ¿Ã¶ó°¥ ¶§¸¶´Ù 1°³¾¿ ´õ °í¸¦ ¿¹Á¤
+        //ì íŒ€ë„ ìŠ¤í‚¬ 3ê°œë¥¼ ê³ ë¥¸ë‹¤. (ì¤‘ë³µX) ì§€ê¸ˆì€ 3ê°œì§€ë§Œ ìŠ¤í…Œì´ì§€ê°€ ì˜¬ë¼ê°ˆ ë•Œë§ˆë‹¤ 1ê°œì”© ë” ê³ ë¥¼ ì˜ˆì •
         while (skills.Count < 3)
         {
-            int skill_num = Random.Range(1, 11 + 1); //ÇÁ·ÎÁ§Æ®¿¡ ÀÖ´Â °Í Áß¿¡¼­ ¾î´À ½ºÅ³À» °í¸¦Áö °áÁ¤
+            int skill_num = Random.Range(1, 11 + 1); //í”„ë¡œì íŠ¸ì— ìˆëŠ” ê²ƒ ì¤‘ì—ì„œ ì–´ëŠ ìŠ¤í‚¬ì„ ê³ ë¥¼ì§€ ê²°ì •
 
             if (!skills.Contains(skill_num))
             {
@@ -44,46 +44,54 @@ public class SkillManagerEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ÅÏ ¹Ù²ñÀ» °¨ÁöÇÏ¿© ½ºÅ³ »ç¿ëÀ» ½Ãµµ
-        if (gameManager.enemy_try_skill == true) {
-            if (gameManager.playerTurn == false) { //ÇÏÁö¸¸ ÀûÆÀÀÇ ÅÏ¿¡¼­¸¸ ½ºÅ³ÀÌ »ç¿ëµÈ´Ù
+        //í„´ ë°”ë€œì„ ê°ì§€í•˜ì—¬ ìŠ¤í‚¬ ì‚¬ìš©ì„ ì‹œë„
+        if (gameManager.enemy_try_skill == true)
+        {
+            if (gameManager.playerTurn == false)
+            { //í•˜ì§€ë§Œ ì íŒ€ì˜ í„´ì—ì„œë§Œ ìŠ¤í‚¬ì´ ì‚¬ìš©ëœë‹¤
                 skillOn();
             }
             gameManager.enemy_try_skill = false;
         }
 
-        //½ºÅ×ÀÌÁö ¹Ù²ñÀ» °¨ÁöÇÏ¿© ½ºÅ³ 1°³ Ãß°¡¸¦ ½Ãµµ
-        if (gameManager.enemy_add_skill == true) {
+        //ìŠ¤í…Œì´ì§€ ë°”ë€œì„ ê°ì§€í•˜ì—¬ ìŠ¤í‚¬ 1ê°œ ì¶”ê°€ë¥¼ ì‹œë„
+        if (gameManager.enemy_add_skill == true)
+        {
 
-            //ÀûÆÀÀÌ ½ºÅ³ 1°³¸¦ ´õ °í¸¥´Ù. (Áßº¹X), ±×¸®°í ÃÖ´ë 11°³±îÁö¸¸ º¸À¯ °¡´É
+            //ì íŒ€ì´ ìŠ¤í‚¬ 1ê°œë¥¼ ë” ê³ ë¥¸ë‹¤. (ì¤‘ë³µX), ê·¸ë¦¬ê³  ìµœëŒ€ 11ê°œê¹Œì§€ë§Œ ë³´ìœ  ê°€ëŠ¥
             while (skills.Count < nextSC && skills.Count < maxSC)
             {
-                int skill_num = Random.Range(1, 11 + 1); //ÇÁ·ÎÁ§Æ®¿¡ ÀÖ´Â °Í Áß¿¡¼­ ¾î´À ½ºÅ³À» °í¸¦Áö °áÁ¤
+                int skill_num = Random.Range(1, 11 + 1); //í”„ë¡œì íŠ¸ì— ìˆëŠ” ê²ƒ ì¤‘ì—ì„œ ì–´ëŠ ìŠ¤í‚¬ì„ ê³ ë¥¼ì§€ ê²°ì •
 
                 if (!skills.Contains(skill_num))
                 {
                     skills.Add(skill_num);
                 }
             }
-            Debug.Log("½ºÅ×ÀÌÁö°¡ ¿Ã¶ó, ÀûÆÀÀÌ ½ºÅ³ ÇÏ³ª¸¦ ´õ °¡Áö°Ô µÇ¾ú½À´Ï´Ù. ÇöÀç ½ºÅ³ ¼ö: " + skills.Count);
+            Debug.Log("ìŠ¤í…Œì´ì§€ê°€ ì˜¬ë¼, ì íŒ€ì´ ìŠ¤í‚¬ í•˜ë‚˜ë¥¼ ë” ê°€ì§€ê²Œ ë˜ì—ˆìŠµë‹ˆë‹¤. í˜„ì¬ ìŠ¤í‚¬ ìˆ˜: " + skills.Count);
             nextSC++;
 
             gameManager.enemy_add_skill = false;
         }
     }
 
-    public void skillOn() { //°ñ¶ú´ø ½ºÅ³Áß¿¡¼­ 1°³¸¦ ·£´ıÀ¸·Î °í¸£°Ô ÇÏ°í(¹öÆ°À¸·Î), if¹®À¸·Î ¾Ë¸ÂÀº ½ºÅ³À» ¹ßµ¿ ½ÃÅ²´Ù
+    public void skillOn()
+    { //ê³¨ëë˜ ìŠ¤í‚¬ì¤‘ì—ì„œ 1ê°œë¥¼ ëœë¤ìœ¼ë¡œ ê³ ë¥´ê²Œ í•˜ê³ (ë²„íŠ¼ìœ¼ë¡œ), ifë¬¸ìœ¼ë¡œ ì•Œë§ì€ ìŠ¤í‚¬ì„ ë°œë™ ì‹œí‚¨ë‹¤
 
         selected = Random.Range(0, skills.Count);
 
-        if (SkillPanelManagerEnemy.GetComponent<SkillPanelManagerEnemy>().buttons[selected]) { //selected´Â ÀûÆÀÀÌ ´©¸£·Á´Â ½ºÅ³ ¹öÆ°ÀÌ È°¼ºÈ­ µÇ¾îÀÖ´Ù¸é 
-            press = true; //±× ¹öÆ°À» ´­·¯¶ó
+        if (SkillPanelManagerEnemy.GetComponent<SkillPanelManagerEnemy>().buttons[selected])
+        { //selectedëŠ” ì íŒ€ì´ ëˆ„ë¥´ë ¤ëŠ” ìŠ¤í‚¬ ë²„íŠ¼ì´ í™œì„±í™” ë˜ì–´ìˆë‹¤ë©´ 
+            press = true; //ê·¸ ë²„íŠ¼ì„ ëˆŒëŸ¬ë¼
         }
-        else if (!SkillPanelManagerEnemy.GetComponent<SkillPanelManagerEnemy>().buttons[selected]) { //´Ü, Áö±İ ´©¸£°íÀÚ ÇÏ´Â ¹öÆ°ÀÌ ºñÈ°¼ºÈ­¶ó¸é ´Ù¸¥ ¹öÆ°À» Ã£´Â´Ù.
-            for (int i = 0; i < skills.Count; i++) {
+        else if (!SkillPanelManagerEnemy.GetComponent<SkillPanelManagerEnemy>().buttons[selected])
+        { //ë‹¨, ì§€ê¸ˆ ëˆ„ë¥´ê³ ì í•˜ëŠ” ë²„íŠ¼ì´ ë¹„í™œì„±í™”ë¼ë©´ ë‹¤ë¥¸ ë²„íŠ¼ì„ ì°¾ëŠ”ë‹¤.
+            for (int i = 0; i < skills.Count; i++)
+            {
                 selected = 0;
 
-                if (SkillPanelManagerEnemy.GetComponent<SkillPanelManagerEnemy>().buttons[selected]) {
+                if (SkillPanelManagerEnemy.GetComponent<SkillPanelManagerEnemy>().buttons[selected])
+                {
                     press = true;
                     break;
                 }
@@ -92,31 +100,31 @@ public class SkillManagerEnemy : MonoBehaviour
             }
         }
 
-        //½ºÅ³1
-        if (skills[selected] == 1 && press) // °ú³á Å©±â °¨¼Ò
+        //ìŠ¤í‚¬1
+        if (skills[selected] == 1 && press) // ê³¼ë… í¬ê¸° ê°ì†Œ
         {
-            smallTargetEnemy.GetComponent<smallTargetEnemy>().execute(); //½ºÅ³ ¹ßµ¿
-            smallTargetEnemy.GetComponent<smallTargetEnemy>().setCool(selected, 5); //ÄğÅ¸ÀÓ ¼³Á¤
+            smallTargetEnemy.GetComponent<smallTargetEnemy>().execute(); //ìŠ¤í‚¬ ë°œë™
+            smallTargetEnemy.GetComponent<smallTargetEnemy>().setCool(selected, 5); //ì¿¨íƒ€ì„ ì„¤ì •
             press = false;
         }
 
-        //½ºÅ³2
-        if (skills[selected] == 2 && press) // °ú³á Å©±â Áõ°¡
+        //ìŠ¤í‚¬2
+        if (skills[selected] == 2 && press) // ê³¼ë… í¬ê¸° ì¦ê°€
         {
             bigTargetEnemy.GetComponent<bigTargetEnemy>().execute();
             bigTargetEnemy.GetComponent<bigTargetEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³3
-        if (skills[selected] == 3 && press) // °ú³á ¿òÁ÷ÀÌ±â
+        //ìŠ¤í‚¬3
+        if (skills[selected] == 3 && press) // ê³¼ë… ì›€ì§ì´ê¸°
         {
             movingTargetEnemy.GetComponent<movingTargetEnemy>().execute();
             movingTargetEnemy.GetComponent<movingTargetEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³4
+        //ìŠ¤í‚¬4
         if (skills[selected] == 4 && press)
         {
             reduceCoolEnemy.GetComponent<reduceCoolEnemy>().execute();
@@ -124,56 +132,56 @@ public class SkillManagerEnemy : MonoBehaviour
             press = false;
         }
 
-        //½ºÅ³5
-        if (skills[selected] == 5 && press) //½ºÅ³ ¹«È¿È­
+        //ìŠ¤í‚¬5
+        if (skills[selected] == 5 && press) //ìŠ¤í‚¬ ë¬´íš¨í™”
         {
             removeSkillEnemy.GetComponent<removeSkillEnemy>().execute();
             removeSkillEnemy.GetComponent<removeSkillEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³6
-        if (skills[selected] == 6 && press) //Á¡¼ö º¸³Ê½º
+        //ìŠ¤í‚¬6
+        if (skills[selected] == 6 && press) //ì ìˆ˜ ë³´ë„ˆìŠ¤
         {
             scoreBonusEnemy.GetComponent<scoreBonusEnemy>().execute();
             scoreBonusEnemy.GetComponent<scoreBonusEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³7
-        if (skills[selected] == 7 && press) // È­»ì °Å´ëÈ­
+        //ìŠ¤í‚¬7
+        if (skills[selected] == 7 && press) // í™”ì‚´ ê±°ëŒ€í™”
         {
             bigArrowEnemy.GetComponent<bigArrowEnemy>().execute();
             bigArrowEnemy.GetComponent<bigArrowEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³8
-        if (skills[selected] == 8 && press) // ´õºí¼¦
+        //ìŠ¤í‚¬8
+        if (skills[selected] == 8 && press) // ë”ë¸”ìƒ·
         {
             doubleArrowEnemy.GetComponent<doubleArrowEnemy>().execute();
             doubleArrowEnemy.GetComponent<doubleArrowEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³9
-        if (skills[selected] == 9 && press) // Åõ¸í È­»ì°ú °ú³á
+        //ìŠ¤í‚¬9
+        if (skills[selected] == 9 && press) // íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë…
         {
             transparentEnemy.GetComponent<transparentEnemy>().execute();
             transparentEnemy.GetComponent<transparentEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³10
-        if (skills[selected] == 10 && press) // Ç³Çâ Á¦°Å
+        //ìŠ¤í‚¬10
+        if (skills[selected] == 10 && press) // í’í–¥ ì œê±°
         {
             removeWindEnemy.GetComponent<removeWindEnemy>().execute();
             removeWindEnemy.GetComponent<removeWindEnemy>().setCool(selected, 5);
             press = false;
         }
 
-        //½ºÅ³11
-        if (skills[selected] == 11 && press) // ÅÂÇ³
+        //ìŠ¤í‚¬11
+        if (skills[selected] == 11 && press) // íƒœí’
         {
             typhoonEnemy.GetComponent<typhoonEnemy>().execute();
             typhoonEnemy.GetComponent<typhoonEnemy>().setCool(selected, 5);
