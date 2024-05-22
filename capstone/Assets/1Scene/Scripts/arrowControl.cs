@@ -21,6 +21,9 @@ public class arrowControl : MonoBehaviour
     public scoreBonus scoreBonus; //스킬 스크립트6 (스킬 보너스)
     public scoreBonusEnemy scoreBonusEnemy; //스킬 스크립트6 (스킬 보너스)
 
+    public bigArrow bigArrow;
+    public bigArrowEnemy bigArrowEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,27 +57,67 @@ public class arrowControl : MonoBehaviour
         {
             targetControl targetcontrol = collision.gameObject.GetComponent<targetControl>();
 
-            //화살이 접촉한 지점의 위치를 가져오기
-            Vector3 contactPoint = collision.contacts[0].point;
+            float final_distance = 0.99f;
 
-            // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
-            float distance = Vector3.Distance(contactPoint, targetcontrol.centerPosition);
+            if (bigArrow.skill)
+            {
+                for (int i = 0; i <= collision.contacts.Length - 1; i++)
+                {
+                    //화살이 접촉한 지점의 위치를 가져오기
+                    Vector3 contactPoints = collision.contacts[i].point;
+
+                    // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
+                    float distance = Vector3.Distance(contactPoints, targetcontrol.centerPosition);
+
+                    if (final_distance > distance)
+                        final_distance = distance;
+                }
+            }
+
+            else
+            {
+                //화살이 접촉한 지점의 위치를 가져오기
+                Vector3 contactPoint = collision.contacts[0].point;
+
+                // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
+                final_distance = Vector3.Distance(contactPoint, targetcontrol.centerPosition);
+            }
 
             //점수 계산
-            score = targetcontrol.CalculateScore(distance);
+            score += targetcontrol.CalculateScore(final_distance);
         }
         else if (collision.gameObject.tag == "EnemyTarget" && !player)
         {
             targetControl targetcontrol = collision.gameObject.GetComponent<targetControl>();
 
-            //화살이 접촉한 지점의 위치를 가져오기
-            Vector3 contactPoint = collision.contacts[0].point;
+            float final_distance = 0.99f;
 
-            // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
-            float distance = Vector3.Distance(contactPoint, targetcontrol.centerPosition);
+            if (bigArrowEnemy.skill)
+            {
+                for (int i = 0; i <= collision.contacts.Length - 1; i++)
+                {
+                    //화살이 접촉한 지점의 위치를 가져오기
+                    Vector3 contactPoints = collision.contacts[i].point;
+
+                    // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
+                    float distance = Vector3.Distance(contactPoints, targetcontrol.centerPosition);
+
+                    if (final_distance > distance)
+                        final_distance = distance;
+                }
+            }
+
+            else
+            {
+                //화살이 접촉한 지점의 위치를 가져오기
+                Vector3 contactPoint = collision.contacts[0].point;
+
+                // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
+                final_distance = Vector3.Distance(contactPoint, targetcontrol.centerPosition);
+            }
 
             //점수 계산
-            score = targetcontrol.CalculateScore(distance);
+            score += targetcontrol.CalculateScore(final_distance);
         }
 
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();

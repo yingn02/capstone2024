@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bigArrow : MonoBehaviour
+public class bigArrow : ArrowSkill
 {
     public GameObject SkillPanelManager; //스킬 패널 스크립트
+    public GameManager gameManager;
+
+    public GameObject arrow;
 
     public bool skill = false; //스킬이 발동 중인가? 
     public int cool = 0; //쿨타임(턴), 몇 턴을 앞으로 더 기다려야 하는가의 변수
@@ -13,7 +16,7 @@ public class bigArrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        activeTurns = 1;
     }
 
     // Update is called once per frame
@@ -24,8 +27,18 @@ public class bigArrow : MonoBehaviour
 
     public void execute() { //스킬 발동
         skill = true;
+
+        gameManager.activatedArrowSkills.Add(this);
+        arrow.transform.localScale = new Vector3(0.5f, 2.0f, 2.0f);
+
         Debug.Log("화살 거대화");
+    }
+
+    public override void disable()
+    {
         skill = false;
+        arrow = null;
+        activeTurns = 1;
     }
 
     public void setCool(int selected, int cool_time) { //쿨타임 설정

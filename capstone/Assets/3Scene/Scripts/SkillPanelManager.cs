@@ -94,9 +94,9 @@ public class SkillPanelManager : MonoBehaviour
             else if (skillList[i] == "쿨타임 감소 : 플레이어의 모든 스킬 쿨타임이 1턴 감소한다.") reduceCool.GetComponent<reduceCool>().setCool(i + 1, 0);
             else if (skillList[i] == "스킬 무효화 : 적 팀이 발동 중인 모든 스킬을 무효화 한다.") removeSkill.GetComponent<removeSkill>().setCool(i + 1, 0);
             else if (skillList[i] == "점수 보너스 : 현재 턴에서 점수를 2배로 얻을 수 있다.") scoreBonus.GetComponent<scoreBonus>().setCool(i + 1, 0);
-            else if (skillList[i] == "화살 거대화 : 화살 거대화") bigArrow.GetComponent<bigArrow>().setCool(i + 1, 0);
-            else if (skillList[i] == "더블샷 : 더블샷") doubleArrow.GetComponent<doubleArrow>().setCool(i + 1, 0);
-            else if (skillList[i] == "투명 화살과 과녁 : 투명 화살과 과녁") transparent.GetComponent<transparent>().setCool(i + 1, 0);
+            else if (skillList[i] == "화살 거대화 : 이번 턴의 화살이 거대화되어 점수 판정 범위가 넓어진다.") bigArrow.GetComponent<bigArrow>().setCool(i + 1, 0);
+            else if (skillList[i] == "더블샷 : 이번 한 턴에 화살을 2발 쏴서 그 2발의 점수를 모두 얻는다.") doubleArrow.GetComponent<doubleArrow>().setCool(i + 1, 0);
+            else if (skillList[i] == "투명 화살과 과녁 : 화살과 과녁이 투명화되어 상대방이 사격 시에 큰 방해가 된다.") transparent.GetComponent<transparent>().setCool(i + 1, 0);
             else if (skillList[i] == "풍향 제거 : 풍향 제거") removeWind.GetComponent<removeWind>().setCool(i + 1, 0);
             else if (skillList[i] == "태풍 : 태풍") typhoon.GetComponent<typhoon>().setCool(i + 1, 0);
         }

@@ -76,24 +76,24 @@ public class SkillManager : MonoBehaviour
         }
 
         //스킬7
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "화살 거대화 : 화살 거대화")
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "화살 거대화 : 이번 턴의 화살이 거대화되어 점수 판정 범위가 넓어진다.")
         {
             bigArrow.GetComponent<bigArrow>().execute();
-            bigArrow.GetComponent<bigArrow>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
+            bigArrow.GetComponent<bigArrow>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 3);
         }
 
         //스킬8
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "더블샷 : 더블샷")
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "더블샷 : 이번 한 턴에 화살을 2발 쏴서 그 2발의 점수를 모두 얻는다.")
         {
             doubleArrow.GetComponent<doubleArrow>().execute();
             doubleArrow.GetComponent<doubleArrow>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
         //스킬9
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "투명 화살과 과녁 : 투명 화살과 과녁")
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "투명 화살과 과녁 : 화살과 과녁이 투명화되어 상대방이 사격 시에 큰 방해가 된다.")
         {
             transparent.GetComponent<transparent>().execute();
-            transparent.GetComponent<transparent>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
+            transparent.GetComponent<transparent>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 7);
         }
 
         //스킬10

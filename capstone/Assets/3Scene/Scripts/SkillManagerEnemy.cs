@@ -152,7 +152,7 @@ public class SkillManagerEnemy : MonoBehaviour
         if (skills[selected] == 7 && press) // 화살 거대화
         {
             bigArrowEnemy.GetComponent<bigArrowEnemy>().execute();
-            bigArrowEnemy.GetComponent<bigArrowEnemy>().setCool(selected, 5);
+            bigArrowEnemy.GetComponent<bigArrowEnemy>().setCool(selected, 3);
             press = false;
         }
 
@@ -168,7 +168,7 @@ public class SkillManagerEnemy : MonoBehaviour
         if (skills[selected] == 9 && press) // 투명 화살과 과녁
         {
             transparentEnemy.GetComponent<transparentEnemy>().execute();
-            transparentEnemy.GetComponent<transparentEnemy>().setCool(selected, 5);
+            transparentEnemy.GetComponent<transparentEnemy>().setCool(selected, 7);
             press = false;
         }
 

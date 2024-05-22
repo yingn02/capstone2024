@@ -259,10 +259,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcfb6f9fa87ed9458eeb05fa17f6c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManagerEnemy: {fileID: 568125985}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 297661651}
+  arrow: {fileID: 0}
   skill: 0
   cool: 0
   num: 1
+  transparency: 0.5
 --- !u!1 &36486799
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,7 +5974,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b123a79f96f3c499e6f3956941f5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManager: {fileID: 1187812783}
+  gameManager: {fileID: 1829368040}
+  arrow: {fileID: 0}
   skill: 0
   cool: 0
   num: 1
@@ -6387,7 +6395,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0612ebc6c0d304d9aa264070f55f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManagerEnemy: {fileID: 568125985}
+  gameManager: {fileID: 1829368040}
+  arrow: {fileID: 0}
   skill: 0
   cool: 0
   num: 1
@@ -13298,7 +13309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8013f8422cb3684bb4ce6b86aa0acfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManager: {fileID: 1187812783}
+  gameManager: {fileID: 1829368040}
   skill: 0
   cool: 0
   num: 1
@@ -18197,10 +18210,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2be9828c003fea4a8e01ca40baea9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManager: {fileID: 1187812783}
+  gameManager: {fileID: 1829368040}
+  target: {fileID: 835814192}
+  arrow: {fileID: 0}
   skill: 0
   cool: 0
   num: 1
+  transparency: 0.5
 --- !u!1 &1719536234
 GameObject:
   m_ObjectHideFlags: 0
@@ -18901,6 +18919,9 @@ MonoBehaviour:
   enemy_try_skill: 0
   enemy_add_skill: 0
   activatedTargetSkills: []
+  activatedArrowSkills: []
+  doubleArrow: {fileID: 0}
+  doubleArrowEnemy: {fileID: 0}
 --- !u!4 &1829368041
 Transform:
   m_ObjectHideFlags: 0
@@ -20615,7 +20636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbbd901e6652fda4d98c9441046843f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTurns: 0
   SkillPanelManagerEnemy: {fileID: 568125985}
+  gameManager: {fileID: 1829368040}
   skill: 0
   cool: 0
   num: 1

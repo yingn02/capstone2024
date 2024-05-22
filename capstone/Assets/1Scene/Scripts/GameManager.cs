@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     public bool enemy_add_skill = false; //적팀이 스킬을 하나 더 갖도록 허용하겠는가 (스테이지 넘어갈 때 true)
 
     public List<TargetSkill> activatedTargetSkills; //현재 발동중인 과녁 스킬들
+    public List<ArrowSkill> activatedArrowSkills; //현재 발동중인 화살 스킬들
+
+    public doubleArrow doubleArrow;
+    public doubleArrowEnemy doubleArrowEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -81,14 +85,39 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    void deactivateArrowSkills()
+    {
+        for (int i = activatedArrowSkills.Count - 1; i >= 0; i--)
+        {
+            activatedArrowSkills[i].activeTurns--;
+            if (activatedArrowSkills[i].activeTurns == 0)
+            {
+                activatedArrowSkills[i].disable();
+                activatedArrowSkills.RemoveAt(i);
+            }
+        }
+    }
     public void calculateScore()
     {
-        //과녁 스킬들 효과 해제
-        deactivateTargetSkills();
-
         //쏘아진 화살을 활의 자식 오브젝트에서 다른 오브젝트의 자식으로 변경
         currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
 
+        if ((doubleArrow.activeTurns == 2) && (doubleArrow.skill = true))
+        {
+            doubleArrow.activeTurns--;
+            return;
+        }
+
+        if ((doubleArrowEnemy.activeTurns == 2) && (doubleArrowEnemy.skill = true))
+        {
+            doubleArrowEnemy.activeTurns--;
+            return;
+        }
+
+        //과녁 스킬들 효과 해제
+        deactivateTargetSkills();
+        //화살 스킬들 효과 해제
+        deactivateArrowSkills();
 
         //턴 종료시
         Debug.Log("End of Turn " + currentTurn);
@@ -188,6 +217,12 @@ public class GameManager : MonoBehaviour
         {
             activatedTargetSkills[i].disable();
             activatedTargetSkills.RemoveAt(i);
+        }
+        //화살 관련 스킬들 모두 해제
+        for (int i = activatedArrowSkills.Count - 1; i >= 0; i--)
+        {
+            activatedArrowSkills[i].disable();
+            activatedArrowSkills.RemoveAt(i);
         }
 
         StartCoroutine(WaitAndClearAll()); //모든 것을 새스테이지에 맞게 초기화

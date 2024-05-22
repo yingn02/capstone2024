@@ -20,6 +20,12 @@ public class bowControl : MonoBehaviour
     public bool haveArrow = false;
     private GameObject arrow;
 
+    public bigArrow bigArrow;
+    public bigArrowEnemy bigArrowEnemy;
+
+    public transparent transparent;
+    public transparentEnemy transparentEnemy;
+
     public bool player = true;
 
 
@@ -113,6 +119,26 @@ public class bowControl : MonoBehaviour
             arrow.transform.parent = bowPoint.transform;
             grabpoint.reloadArrow(arrow, player);
             haveArrow = true;
+            if (player)
+            {
+                bigArrow.arrow = arrow;
+
+                if (transparentEnemy.skill)
+                {
+                    transparentEnemy.arrow = arrow;
+                    transparentEnemy.SetTransparency(transparentEnemy.arrow, transparentEnemy.transparency);
+                }
+            }
+            else
+            {
+                bigArrowEnemy.arrow = arrow;
+
+                if (transparent.skill)
+                {
+                    transparent.arrow = arrow;
+                    transparent.SetTransparency(transparent.arrow, transparent.transparency);
+                }
+            }
         }
         else
         {
