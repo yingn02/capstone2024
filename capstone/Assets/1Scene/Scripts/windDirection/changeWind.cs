@@ -7,35 +7,36 @@ using UnityEngine;
 
 public class changeWind : MonoBehaviour
 {
-    public GameObject ArrowControl; //È­»ì ÇÁ¸®ÆÕ ½ºÅ©¸³Æ®
+    public GameObject ArrowControl; //í™”ì‚´ í”„ë¦¬íŒ¹ ìŠ¤í¬ë¦½íŠ¸
 
-    public GameObject windDirection; //Ç³Çâ Ç¥½Ã
-    public Vector3 windVector; // ¹Ù¶÷ÀÇ Èû º¤ÅÍ¸¦ arrowControl ½ºÅ©¸³Æ®·Î Àü´ŞÇÒ °ÍÀÓ
-    public Vector3 imgWindVector; //¹Ù¶÷ÀÇ Èû º¤ÅÍ¸¦ °¡Á®¿Í¼­ UI¿¡ Ç¥½ÃÇÒ °ÍÀÓ
-    public float changeTime = 3.0f; //Ç³ÇâÀÌ 3ÃÊ¸¶´Ù º¯È­
-    public float changePassTime = 0.0f; //¸îÃÊ Áö³µ´ÂÁö ¼¼´Â º¯¼ö
+    public GameObject windDirection; //í’í–¥ í‘œì‹œ
+    public Vector3 windVector; // ë°”ëŒì˜ í˜ ë²¡í„°ë¥¼ arrowControl ìŠ¤í¬ë¦½íŠ¸ë¡œ ì „ë‹¬í•  ê²ƒì„
+    public Vector3 imgWindVector; //ë°”ëŒì˜ í˜ ë²¡í„°ë¥¼ ê°€ì ¸ì™€ì„œ UIì— í‘œì‹œí•  ê²ƒì„
+    public float changeTime = 3.0f; //í’í–¥ì´ 3ì´ˆë§ˆë‹¤ ë³€í™”
+    public float changePassTime = 0.0f; //ëª‡ì´ˆ ì§€ë‚¬ëŠ”ì§€ ì„¸ëŠ” ë³€ìˆ˜
 
-    public bool isRemove = false; //Ç³ÇâÀ» Á¦°ÅÇÏ°Ú´Â°¡ (removeWind ½ºÅ©¸³Æ®¿¡¼­ °ü¸®)
-    public bool isTyphoon = false; //Ç³ÇâÀÇ ¿µÇâÀ» 2¹è·Î Áõ°¡½ÃÅ°°Ú´Â°¡ (typhoon ½ºÅ©¸³Æ®¿¡¼­ °ü¸®)
-    public bool isRemoveEnemy = false; //Ç³ÇâÀ» Á¦°ÅÇÏ°Ú´Â°¡ (removeWindEnemy ½ºÅ©¸³Æ®¿¡¼­ °ü¸®)
-    public bool isTyphoonEnemy = false; //Ç³ÇâÀÇ ¿µÇâÀ» 2¹è·Î Áõ°¡½ÃÅ°°Ú´Â°¡ (typhoonEnemy ½ºÅ©¸³Æ®¿¡¼­ °ü¸®)
-    public bool isChange = false; //Ç³ÇâÀ» Áï½Ã ¾÷µ¥ÀÌÆ®ÇÏ¶ó (½ºÅ³ ¶§¹®¿¡ ÇÊ¿ä)
-    public bool isChangeEnemy = false; //Ç³ÇâÀ» Áï½Ã ¾÷µ¥ÀÌÆ®ÇÏ¶ó (½ºÅ³ ¶§¹®¿¡ ÇÊ¿ä)
+    public bool isRemove = false; //í’í–¥ì„ ì œê±°í•˜ê² ëŠ”ê°€ (removeWind ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ê´€ë¦¬)
+    public bool isTyphoon = false; //í’í–¥ì˜ ì˜í–¥ì„ 2ë°°ë¡œ ì¦ê°€ì‹œí‚¤ê² ëŠ”ê°€ (typhoon ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ê´€ë¦¬)
+    public bool isRemoveEnemy = false; //í’í–¥ì„ ì œê±°í•˜ê² ëŠ”ê°€ (removeWindEnemy ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ê´€ë¦¬)
+    public bool isTyphoonEnemy = false; //í’í–¥ì˜ ì˜í–¥ì„ 2ë°°ë¡œ ì¦ê°€ì‹œí‚¤ê² ëŠ”ê°€ (typhoonEnemy ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ê´€ë¦¬)
+    public bool isChange = false; //í’í–¥ì„ ì¦‰ì‹œ ì—…ë°ì´íŠ¸í•˜ë¼ (ìŠ¤í‚¬ ë•Œë¬¸ì— í•„ìš”)
+    public bool isChangeEnemy = false; //í’í–¥ì„ ì¦‰ì‹œ ì—…ë°ì´íŠ¸í•˜ë¼ (ìŠ¤í‚¬ ë•Œë¬¸ì— í•„ìš”)
 
-    private float x; // ¿ŞÂÊ ¶Ç´Â ¿À¸¥ÂÊ ¹Ù¶÷
-    private float y; // À§ ¶Ç´Â ¾Æ·¡ ¹Ù¶÷Àº Á¦¿ÜÇßÀ½
-    private float z; // ¾Õ ¶Ç´Â µÚ ¹Ù¶÷, ÀÌ °ªÀº ÀÌ¹Ì arrowControl ½ºÅ©¸³Æ®ÀÇ diff°ªÀÌ Á¶ÀıÇÏ¹Ç·Î °íÁ¤ÇßÀ½
+    private float x; // ì™¼ìª½ ë˜ëŠ” ì˜¤ë¥¸ìª½ ë°”ëŒ
+    private float y; // ìœ„ ë˜ëŠ” ì•„ë˜ ë°”ëŒì€ ì œì™¸í–ˆìŒ
+    private float z; // ì• ë˜ëŠ” ë’¤ ë°”ëŒ, ì´ ê°’ì€ ì´ë¯¸ arrowControl ìŠ¤í¬ë¦½íŠ¸ì˜ diffê°’ì´ ì¡°ì ˆí•˜ë¯€ë¡œ ê³ ì •í–ˆìŒ
 
     // Start is called before the first frame update
     void Start()
     {
-        view_wind(); // ÃÖÃÊÀÇ Ç³Çâ Ç¥½Ã
+        view_wind(); // ìµœì´ˆì˜ í’í–¥ í‘œì‹œ
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isChange) {
+        if (isChange)
+        {
             view_wind();
             isChange = false;
         }
@@ -46,42 +47,47 @@ public class changeWind : MonoBehaviour
             isChangeEnemy = false;
         }
 
-        if (changePassTime >= changeTime) { //Ç³ÇâÀÌ ¹Ù²ïÁö 3ÃÊ°¡ Áö³ª¸é
-            view_wind();//Ç³ÇâÀ» Àç¼³Á¤ÇÏ°í UIµµ ¾÷µ¥ÀÌÆ®
+        if (changePassTime >= changeTime)
+        { //í’í–¥ì´ ë°”ë€ì§€ 3ì´ˆê°€ ì§€ë‚˜ë©´
+            view_wind();//í’í–¥ì„ ì¬ì„¤ì •í•˜ê³  UIë„ ì—…ë°ì´íŠ¸
             changePassTime = 0.0f;
         }
-        else { 
+        else
+        {
             changePassTime += Time.deltaTime;
         }
 
-        Debug.Log("ÇöÀç Ç³Çâ ¼¼±â - " + "x" + x + "/" + "y" + y + "/" + "z" + z + "/");
+        Debug.Log("í˜„ì¬ í’í–¥ ì„¸ê¸° - " + "x" + x + "/" + "y" + y + "/" + "z" + z + "/");
     }
 
-    public void view_wind() { //Ç³ÇâÀ» Àç¼³Á¤ÇÏ°í UIµµ ¾÷µ¥ÀÌÆ®
-        // Ç³ÇâÀ» ·£´ıÀ¸·Î ¼³Á¤
-        windVector = random_wind(); 
+    public void view_wind()
+    { //í’í–¥ì„ ì¬ì„¤ì •í•˜ê³  UIë„ ì—…ë°ì´íŠ¸
+        // í’í–¥ì„ ëœë¤ìœ¼ë¡œ ì„¤ì •
+        windVector = random_wind();
         imgWindVector = windVector;
 
-        //zÃàÀÇ ¹Ù¶÷À» »ı·«ÇÏ¿´À¸³ª, ÀÌ¹ÌÁö »óÀ¸·Î´Â Ç¥½ÃÇÒ ÇÊ¿ä°¡ ÀÖ´Ù. ·£´ıÀ¸·Î Ç¥½ÃÇÒ °ÍÀÓ
-        if (Random.Range(-1.0f, 1.0f) < 0) {
+        //zì¶•ì˜ ë°”ëŒì„ ìƒëµí•˜ì˜€ìœ¼ë‚˜, ì´ë¯¸ì§€ ìƒìœ¼ë¡œëŠ” í‘œì‹œí•  í•„ìš”ê°€ ìˆë‹¤. ëœë¤ìœ¼ë¡œ í‘œì‹œí•  ê²ƒì„
+        if (Random.Range(-1.0f, 1.0f) < 0)
+        {
             imgWindVector.z *= -1.0f;
-        } 
+        }
 
-        // x¿Í z ÄÄÆ÷³ÍÆ®¸¦ »ç¿ëÇÏ¿© Æò¸é °¢µµ °è»ê
+        // xì™€ z ì»´í¬ë„ŒíŠ¸ë¥¼ ì‚¬ìš©í•˜ì—¬ í‰ë©´ ê°ë„ ê³„ì‚°
         float angle = Mathf.Atan2(imgWindVector.z, imgWindVector.x) * Mathf.Rad2Deg;
 
-        //È­»ìÇ¥ ÀÌ¹ÌÁö È¸Àü
-        windDirection.transform.rotation = Quaternion.Euler(-45, -30+180, 90-angle);
+        //í™”ì‚´í‘œ ì´ë¯¸ì§€ íšŒì „
+        windDirection.transform.rotation = Quaternion.Euler(-45, -30 + 180, 90 - angle);
     }
 
-    public Vector3 random_wind() { //Ç³ÇâÀ» ·£´ıÀ¸·Î ¼³Á¤ÇÏ°í º¤ÅÍ¸¦ ¹İÈ¯
-        x = Random.Range(-1.0f, 1.0f); // ¿ŞÂÊ ¶Ç´Â ¿À¸¥ÂÊ ¹Ù¶÷
-        y = Random.Range(0.0f, 0.0f); // À§ ¶Ç´Â ¾Æ·¡ ¹Ù¶÷Àº Á¦¿ÜÇßÀ½
-        z = Random.Range(0.3f, 0.3f); // ¾Õ ¶Ç´Â µÚ ¹Ù¶÷, ÀÌ °ªÀº ÀÌ¹Ì arrowControl ½ºÅ©¸³Æ®ÀÇ diff°ªÀÌ Á¶ÀıÇÏ¹Ç·Î °íÁ¤ÇßÀ½
+    public Vector3 random_wind()
+    { //í’í–¥ì„ ëœë¤ìœ¼ë¡œ ì„¤ì •í•˜ê³  ë²¡í„°ë¥¼ ë°˜í™˜
+        x = Random.Range(-1.0f, 1.0f); // ì™¼ìª½ ë˜ëŠ” ì˜¤ë¥¸ìª½ ë°”ëŒ
+        y = Random.Range(0.0f, 0.0f); // ìœ„ ë˜ëŠ” ì•„ë˜ ë°”ëŒì€ ì œì™¸í–ˆìŒ
+        z = Random.Range(0.3f, 0.3f); // ì• ë˜ëŠ” ë’¤ ë°”ëŒ, ì´ ê°’ì€ ì´ë¯¸ arrowControl ìŠ¤í¬ë¦½íŠ¸ì˜ diffê°’ì´ ì¡°ì ˆí•˜ë¯€ë¡œ ê³ ì •í–ˆìŒ
 
-        //¹Ù¶÷ ¼¼±â Á¶Àı (Ç³Çâ °ü·Ã ½ºÅ³)
+        //ë°”ëŒ ì„¸ê¸° ì¡°ì ˆ (í’í–¥ ê´€ë ¨ ìŠ¤í‚¬)
         if (isRemove) { x *= 0; y *= 0; z *= 0; }
-        else if(isTyphoon) { x *= 2; y *= 2; z *= 2; }
+        else if (isTyphoon) { x *= 2; y *= 2; z *= 2; }
 
         if (isRemoveEnemy) { x *= 0; y *= 0; z *= 0; }
         else if (isTyphoonEnemy) { x *= 2; y *= 2; z *= 2; }

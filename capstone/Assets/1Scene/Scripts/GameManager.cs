@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public bool enemy_try_skill = false; //적팀이 스킬을 쓸 것을 허용하겠는가 (적의 턴일 때 true)
     public bool enemy_add_skill = false; //적팀이 스킬을 하나 더 갖도록 허용하겠는가 (스테이지 넘어갈 때 true)
 
+    public List<TargetSkill> activatedTargetSkills; //현재 발동중인 과녁 스킬들
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,13 +67,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(obj);
         }
-        
+
+    }
+    void deactivateTargetSkills()
+    {
+        for (int i = activatedTargetSkills.Count - 1; i >= 0; i--)
+        {
+            activatedTargetSkills[i].activeTurns--;
+            if (activatedTargetSkills[i].activeTurns == 0)
+            {
+                activatedTargetSkills[i].disable();
+                activatedTargetSkills.RemoveAt(i);
+            }
+        }
     }
     public void calculateScore()
     {
+        //과녁 스킬들 효과 해제
+        deactivateTargetSkills();
+
         //쏘아진 화살을 활의 자식 오브젝트에서 다른 오브젝트의 자식으로 변경
         currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
-        
+
 
         //턴 종료시
         Debug.Log("End of Turn " + currentTurn);
@@ -82,7 +99,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if(practice) { currentGrabPoint.ArrowControl.score = 0; }
+            if (practice) { currentGrabPoint.ArrowControl.score = 0; }
             opponentPoint = opponentPoint + currentGrabPoint.ArrowControl.score;
             Debug.Log("Opponent: " + opponentPoint);
         }
@@ -92,12 +109,13 @@ public class GameManager : MonoBehaviour
 
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
-
-        if (skill) {
+        if (skill)
+        {
             count_cool = true; //모든 스킬에 대해서, 쿨타임 1턴을 넘긴다. CoolManager 스크립트에서 관리함
             count_cool_enemy = true; //모든 스킬에 대해서, '적' 쿨타임 1턴을 넘긴다. CoolManagerEnemy 스크립트에서 관리함
             enemy_try_skill = true; //적팀이 스킬 사용 시도하도록 한다. 단, 적팀의 턴에서만 스킬이 발동된다. SkillManagerEnemy 스크립트에서 관리함
         }
+
 
         //세트 종료시
         if (currentTurn > 6)
@@ -110,7 +128,7 @@ public class GameManager : MonoBehaviour
 
             currentTurn = 1;
 
-            if(!practice) currentSet++;
+            if (!practice) currentSet++;
             else destroyArrows(); //연습모드는 1세트마다 화살을 지움
 
             playerPoint = 0;
@@ -124,9 +142,9 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Game Over, Set score - Player : " + playerSet + " Opponent : " + opponentSet);
                 if (playerSet > opponentSet)
                 {
-                    if(!practice) ViewResult.GetComponent<viewResult>().viewVictory(); //승리 UI
+                    if (!practice) ViewResult.GetComponent<viewResult>().viewVictory(); //승리 UI
                     Debug.Log("You Win!");
-                    nextStage();
+                    nextStage(false);
                 }
                 else if (playerSet < opponentSet)
                 {
@@ -138,7 +156,8 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("Draw");
                     ViewResult.GetComponent<viewResult>().viewDraw(); //패배 UI
-                    Time.timeScale = 0;
+                    //Time.timeScale = 0;
+                    nextStage(true);
                 }
 
                 return;
@@ -146,23 +165,31 @@ public class GameManager : MonoBehaviour
             else Debug.Log("Current Set score - Player : " + playerSet + " Opponent : " + opponentSet);
         }
 
-        
+
         changePlayers();//플레이어 변경
         ScoreBoard.GetComponent<writeScore>().write_turn(playerTurn);//점수판 UI 누구의 턴인지 표시
 
 
     }
-    private void nextStage()
+    private void nextStage(bool draw)
     {
-        if(!practice) Debug.Log("Start of Stage " + (++currentStage));
-        if (skill) { enemy_add_skill = true; } //적팀이 스킬을 하나 더 뽑아서 소지한다. SkillManagerEnemy 스크립트에서 관리함
+        if (draw) { currentStage--; }
+        if (!practice) Debug.Log("Start of Stage " + (++currentStage));
+        if (skill && !draw) { enemy_add_skill = true; } //적팀이 스킬을 하나 더 뽑아서 소지한다. SkillManagerEnemy 스크립트에서 관리함
 
         playerSet = 0;
         opponentSet = 0;
         currentSet = 1;
         destroyArrows(); // 현재 나와있는 화살 전부 지우기
         changePlayers();
-        
+
+        //과녁 관련 스킬들 모두 해제
+        for (int i = activatedTargetSkills.Count - 1; i >= 0; i--)
+        {
+            activatedTargetSkills[i].disable();
+            activatedTargetSkills.RemoveAt(i);
+        }
+
         StartCoroutine(WaitAndClearAll()); //모든 것을 새스테이지에 맞게 초기화
     }
 
@@ -210,11 +237,12 @@ public class GameManager : MonoBehaviour
         }
         currentBowControl.reloadArrow();
         currentGrabPoint = currentBowControl.grabpoint;
-        
+
     }
 
     //setSelect 함수는 게임시작 전 세트 수 선택에 대한 것임
-    public void setSelect1() {
+    public void setSelect1()
+    {
         setLimit = 1;
     }
 

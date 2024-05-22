@@ -4,106 +4,107 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public GameObject SkillPanelManager; //½ºÅ³ ÆĞ³Î ½ºÅ©¸³Æ®
+    public GameObject SkillPanelManager; //ìŠ¤í‚¬ íŒ¨ë„ ìŠ¤í¬ë¦½íŠ¸
 
-    public GameObject smallTarget; //½ºÅ³ ½ºÅ©¸³Æ®1 (°ú³á Å©±â °¨¼Ò)
-    public GameObject bigTarget; //½ºÅ³ ½ºÅ©¸³Æ®2 (°ú³á Å©±â Áõ°¡)
-    public GameObject movingTarget; //½ºÅ³ ½ºÅ©¸³Æ®3 (°ú³á ¿òÁ÷ÀÌ±â)
-    public GameObject reduceCool; //½ºÅ³ ½ºÅ©¸³Æ®4 (ÄğÅ¸ÀÓ °¨¼Ò)
-    public GameObject removeSkill; //½ºÅ³ ½ºÅ©¸³Æ®5 (½ºÅ³ ¹«È¿È­)
-    public GameObject scoreBonus; //½ºÅ³ ½ºÅ©¸³Æ®6 (Á¡¼ö º¸³Ê½º)
-    public GameObject bigArrow; //½ºÅ³ ½ºÅ©¸³Æ®7 (È­»ì °Å´ëÈ­)
-    public GameObject doubleArrow; //½ºÅ³ ½ºÅ©¸³Æ®8 (´õºí¼¦)
-    public GameObject transparent; //½ºÅ³ ½ºÅ©¸³Æ®9 (Åõ¸í È­»ì°ú °ú³á)
-    public GameObject removeWind; //½ºÅ³ ½ºÅ©¸³Æ®10 (Ç³Çâ Á¦°Å)
-    public GameObject typhoon; //½ºÅ³ ½ºÅ©¸³Æ®11 (ÅÂÇ³)
+    public GameObject smallTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸1 (ê³¼ë… í¬ê¸° ê°ì†Œ)
+    public GameObject bigTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸2 (ê³¼ë… í¬ê¸° ì¦ê°€)
+    public GameObject movingTarget; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸3 (ê³¼ë… ì›€ì§ì´ê¸°)
+    public GameObject reduceCool; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸4 (ì¿¨íƒ€ì„ ê°ì†Œ)
+    public GameObject removeSkill; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸5 (ìŠ¤í‚¬ ë¬´íš¨í™”)
+    public GameObject scoreBonus; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸6 (ì ìˆ˜ ë³´ë„ˆìŠ¤)
+    public GameObject bigArrow; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸7 (í™”ì‚´ ê±°ëŒ€í™”)
+    public GameObject doubleArrow; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸8 (ë”ë¸”ìƒ·)
+    public GameObject transparent; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸9 (íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë…)
+    public GameObject removeWind; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸10 (í’í–¥ ì œê±°)
+    public GameObject typhoon; //ìŠ¤í‚¬ ìŠ¤í¬ë¦½íŠ¸11 (íƒœí’)
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void skillOn() { //text·Î ¾î¶² ½ºÅ³À» »ç¿ëÇÑ °ÍÀÎÁö °¨ÁöÇÏ¿©, if¹®À¸·Î ¾Ë¸ÂÀº ½ºÅ³À» ¹ßµ¿ ½ÃÅ²´Ù
+    public void skillOn()
+    { //textë¡œ ì–´ë–¤ ìŠ¤í‚¬ì„ ì‚¬ìš©í•œ ê²ƒì¸ì§€ ê°ì§€í•˜ì—¬, ifë¬¸ìœ¼ë¡œ ì•Œë§ì€ ìŠ¤í‚¬ì„ ë°œë™ ì‹œí‚¨ë‹¤
 
-        //½ºÅ³1
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "°ú³á Å©±â °¨¼Ò : °ú³á Å©±â °¨¼Ò")
+        //ìŠ¤í‚¬1
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ê³¼ë… í¬ê¸° ê°ì†Œ : ìƒëŒ€ í„´ì— ìƒëŒ€ë°©ì˜ ê³¼ë… í¬ê¸°ê°€ ê°ì†Œí•œë‹¤.")
         {
-            smallTarget.GetComponent<smallTarget>().execute(); //½ºÅ³ ¹ßµ¿
-            smallTarget.GetComponent<smallTarget>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5); //ÄğÅ¸ÀÓ ¼³Á¤
+            smallTarget.GetComponent<smallTarget>().execute(); //ìŠ¤í‚¬ ë°œë™
+            smallTarget.GetComponent<smallTarget>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5); //ì¿¨íƒ€ì„ ì„¤ì •
         }
 
-        //½ºÅ³2
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "°ú³á Å©±â Áõ°¡ : °ú³á Å©±â Áõ°¡")
+        //ìŠ¤í‚¬2
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ê³¼ë… í¬ê¸° ì¦ê°€ : í„´ì´ ì¢…ë£Œë  ë•Œê¹Œì§€ ê³¼ë…ì˜ í¬ê¸°ê°€ ì¦ê°€í•œë‹¤.")
         {
             bigTarget.GetComponent<bigTarget>().execute();
             bigTarget.GetComponent<bigTarget>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³3
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "°ú³á ¿òÁ÷ÀÌ±â : °ú³á ¿òÁ÷ÀÌ±â")
+        //ìŠ¤í‚¬3
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ê³¼ë… ì›€ì§ì´ê¸° : ìƒëŒ€ í„´ì— ìƒëŒ€ë°©ì˜ ê³¼ë…ì´ ì¢Œìš°ë¡œ ì›€ì§ì¸ë‹¤.")
         {
             movingTarget.GetComponent<movingTarget>().execute();
             movingTarget.GetComponent<movingTarget>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³4
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ÄğÅ¸ÀÓ °¨¼Ò : ÇÃ·¹ÀÌ¾îÀÇ ¸ğµç ½ºÅ³ ÄğÅ¸ÀÓÀÌ 1ÅÏ °¨¼ÒÇÑ´Ù.")
+        //ìŠ¤í‚¬4
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ì¿¨íƒ€ì„ ê°ì†Œ : í”Œë ˆì´ì–´ì˜ ëª¨ë“  ìŠ¤í‚¬ ì¿¨íƒ€ì„ì´ 1í„´ ê°ì†Œí•œë‹¤.")
         {
-            reduceCool.GetComponent<reduceCool>().execute(); 
+            reduceCool.GetComponent<reduceCool>().execute();
             reduceCool.GetComponent<reduceCool>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³5
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "½ºÅ³ ¹«È¿È­ : Àû ÆÀÀÌ ¹ßµ¿ ÁßÀÎ ¸ğµç ½ºÅ³À» ¹«È¿È­ ÇÑ´Ù.")
+        //ìŠ¤í‚¬5
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ìŠ¤í‚¬ ë¬´íš¨í™” : ì  íŒ€ì´ ë°œë™ ì¤‘ì¸ ëª¨ë“  ìŠ¤í‚¬ì„ ë¬´íš¨í™” í•œë‹¤.")
         {
             removeSkill.GetComponent<removeSkill>().execute();
             removeSkill.GetComponent<removeSkill>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³6
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "Á¡¼ö º¸³Ê½º : ÇöÀç ÅÏ¿¡¼­ Á¡¼ö¸¦ 2¹è·Î ¾òÀ» ¼ö ÀÖ´Ù.") 
+        //ìŠ¤í‚¬6
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ì ìˆ˜ ë³´ë„ˆìŠ¤ : í˜„ì¬ í„´ì—ì„œ ì ìˆ˜ë¥¼ 2ë°°ë¡œ ì–»ì„ ìˆ˜ ìˆë‹¤.")
         {
             scoreBonus.GetComponent<scoreBonus>().execute();
             scoreBonus.GetComponent<scoreBonus>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³7
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "È­»ì °Å´ëÈ­ : È­»ì °Å´ëÈ­")
+        //ìŠ¤í‚¬7
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "í™”ì‚´ ê±°ëŒ€í™” : í™”ì‚´ ê±°ëŒ€í™”")
         {
             bigArrow.GetComponent<bigArrow>().execute();
             bigArrow.GetComponent<bigArrow>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³8
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "´õºí¼¦ : ´õºí¼¦")
+        //ìŠ¤í‚¬8
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ë”ë¸”ìƒ· : ë”ë¸”ìƒ·")
         {
             doubleArrow.GetComponent<doubleArrow>().execute();
             doubleArrow.GetComponent<doubleArrow>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³9
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "Åõ¸í È­»ì°ú °ú³á : Åõ¸í È­»ì°ú °ú³á")
+        //ìŠ¤í‚¬9
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë… : íˆ¬ëª… í™”ì‚´ê³¼ ê³¼ë…")
         {
             transparent.GetComponent<transparent>().execute();
             transparent.GetComponent<transparent>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³10
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "Ç³Çâ Á¦°Å : Ç³Çâ Á¦°Å")
+        //ìŠ¤í‚¬10
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "í’í–¥ ì œê±° : í’í–¥ ì œê±°")
         {
             removeWind.GetComponent<removeWind>().execute();
             removeWind.GetComponent<removeWind>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);
         }
 
-        //½ºÅ³11
-        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "ÅÂÇ³ : ÅÂÇ³")
+        //ìŠ¤í‚¬11
+        if (SkillPanelManager.GetComponent<SkillPanelManager>().skillText.text == "íƒœí’ : íƒœí’")
         {
             typhoon.GetComponent<typhoon>().execute();
             typhoon.GetComponent<typhoon>().setCool(SkillPanelManager.GetComponent<SkillPanelManager>().selected, 5);

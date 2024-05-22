@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class ExitButton : MonoBehaviour
 {
     public GameObject exitPanel;
-    public GameObject ButtonSelection; //ButtonSelection ½ºÅ©¸³Æ®
-    public GameObject GameManager; //GameManager ½ºÅ©¸³Æ®
+    public GameObject ButtonSelection; //ButtonSelection ï¿½ï¿½Å©ï¿½ï¿½Æ®
+    public GameObject GameManager; //GameManager ï¿½ï¿½Å©ï¿½ï¿½Æ®
 
     public void OnButtonClick()
     {

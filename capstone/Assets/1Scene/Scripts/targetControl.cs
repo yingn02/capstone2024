@@ -8,6 +8,11 @@ public class targetControl : MonoBehaviour
     public int tmp_score = 0;
     public float multiplier = 1;//과녁 확대/축소 수치 표시
     public Vector3 centerPosition;
+
+    public bool moving = false;
+    float speed;
+    float range;
+
     public AudioSource yellSnd; //고득점 함성 효과음
 
     public scoreBonus scoreBonus; //스킬 스크립트6 (스킬 보너스)
@@ -15,6 +20,8 @@ public class targetControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed = 0.01f;
+        range = 0.007f;
         yellSnd = GameObject.Find("yellSnd").GetComponent<AudioSource>();
 
         scoreBonus = GameObject.Find("scoreBonus").GetComponent<scoreBonus>();
@@ -24,6 +31,11 @@ public class targetControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (moving)
+        {
+            float newX = parent.transform.position.x + Mathf.PingPong(Time.time * speed, range * 2) - range;
+            parent.transform.position = new Vector3(newX, parent.transform.position.y, parent.transform.position.z);
+        }
         centerPosition = this.transform.position;
     }
 
