@@ -28,7 +28,7 @@ public class grabPoint : MonoBehaviour
 
     private bool shot = false;
 
-    AudioSource bowSnd;//Ȱ ���� ���� ȿ����
+    AudioSource bowSnd;//활시위 당기는 사운드
    
 
     void Start()
@@ -66,11 +66,12 @@ public class grabPoint : MonoBehaviour
     }
 
 
-    public void reloadArrow(GameObject arrow)
+    public void reloadArrow(GameObject arrow, bool isPlayer)
     {
         shot = false;
         this.arrow = arrow;
         ArrowControl = arrow.GetComponent<arrowControl>();
+        ArrowControl.player = isPlayer;
         transform.position = bowpoint2.position;
         startPosition = bowpoint2.position;
         startControllerPosition = rightController.transform.position;

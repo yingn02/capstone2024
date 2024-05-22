@@ -16,9 +16,10 @@ public class arrowControl : MonoBehaviour
     public changeWind ChangeWind; //풍향 스크립트
     AudioSource arrowSnd; // 화살 발사 효과음
     AudioSource yellSnd; //고득점 함성 효과음
+    public bool player = true; //플레이어의 화살인지 여부, bowControl에서 가져와 grabPoint에서 수정됨
 
-    public scoreBonus scoreBonus; //스킬 스크립트6 (점수 보너스)
-    public scoreBonusEnemy scoreBonusEnemy; //스킬 스크립트6 (점수 보너스)
+    public scoreBonus scoreBonus; //스킬 스크립트6 (스킬 보너스)
+    public scoreBonusEnemy scoreBonusEnemy; //스킬 스크립트6 (스킬 보너스)
 
     // Start is called before the first frame update
     void Start()
@@ -49,33 +50,31 @@ public class arrowControl : MonoBehaviour
     }
     private void OnCollisionEnter(UnityEngine.Collision collision)
     {
-        if (collision.gameObject.tag == "Target")
+        if (collision.gameObject.tag == "Target" && player)
         {
+            targetControl targetcontrol = collision.gameObject.GetComponent<targetControl>();
+
             //화살이 접촉한 지점의 위치를 가져오기
             Vector3 contactPoint = collision.contacts[0].point;
 
-            // 과녁 중심
-            Vector3 targetCenter = new Vector3(0.0f, 2.0f, 35.0f);
-
             // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
-            float distance = Vector3.Distance(contactPoint, targetCenter);
+            float distance = Vector3.Distance(contactPoint, targetcontrol.centerPosition);
 
             //점수 계산
-            score = CalculateScore(distance);
+            score = targetcontrol.CalculateScore(distance);
         }
-        else if (collision.gameObject.tag == "EnemyTarget")
+        else if (collision.gameObject.tag == "EnemyTarget" && !player)
         {
+            targetControl targetcontrol = collision.gameObject.GetComponent<targetControl>();
+
             //화살이 접촉한 지점의 위치를 가져오기
             Vector3 contactPoint = collision.contacts[0].point;
 
-            // 과녁 중심
-            Vector3 targetCenter = new Vector3(5.8f, 2.0f, 35.0f);
-
             // 과녁 중심과 접촉 지점 사이의 거리를 계산하여 점수를 업데이트
-            float distance = Vector3.Distance(contactPoint, targetCenter);
+            float distance = Vector3.Distance(contactPoint, targetcontrol.centerPosition);
 
             //점수 계산
-            score = CalculateScore(distance);
+            score = targetcontrol.CalculateScore(distance);
         }
 
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
@@ -85,76 +84,6 @@ public class arrowControl : MonoBehaviour
     }
 
 
-    private int CalculateScore(float distance)
-    {// 거리에 따라 점수를 계산하는 함수
-        // 거리에 따른 점수 계산, 중심과 가까울수록 높은 점수
-        if (distance <= 0.11f)
-        {
-            if (scoreBonus.skill == true) { yellSnd.Play(); scoreBonus.skill = false; return (10 * 2); }
-            else if (scoreBonusEnemy.skill == true) { yellSnd.Play(); scoreBonusEnemy.skill = false; return (10 * 2); }
-            else { yellSnd.Play(); return 10; }
-        }
-        else if (distance <= 0.21f)
-        {
-            if (scoreBonus.skill == true) { yellSnd.Play(); scoreBonus.skill = false; return (9 * 2); }
-            else if (scoreBonusEnemy.skill == true) { yellSnd.Play(); scoreBonusEnemy.skill = false; return (9 * 2); }
-            else { yellSnd.Play(); return 9; }
-        }
-        else if (distance <= 0.31f)
-        {
-            if (scoreBonus.skill == true) { yellSnd.Play(); scoreBonus.skill = false; return (8 * 2); }
-            else if (scoreBonusEnemy.skill == true) { yellSnd.Play(); scoreBonusEnemy.skill = false; return (8 * 2); }
-            else { yellSnd.Play(); return 8; }
-        }
-        else if (distance <= 0.4f)
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (7 * 2); }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (7 * 2); }
-            else { return 7; }
-        }
-        else if (distance <= 0.5f)
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (6 * 2); }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (6 * 2); }
-            else { return 6; }
-        }
-        else if (distance <= 0.59f)
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (5 * 2); }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (5 * 2); }
-            else { return 5; }
-        }
-        else if (distance <= 0.69f)
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (4 * 2); }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (4 * 2); }
-            else { return 4; }
-        }
-        else if (distance <= 0.78f)
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (3 * 2); }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (3 * 2); }
-            else { return 3; }
-        }
-        else if (distance <= 0.88f)
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (2 * 2); }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (2 * 2); }
-            else { return 2; }
-        }
-        else if (distance <= 0.98f)
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return (1 * 2); }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return (1 * 2); }
-            else { return 1; }
-        }
-        else
-        {
-            if (scoreBonus.skill == true) { scoreBonus.skill = false; return 0; }
-            else if (scoreBonusEnemy.skill == true) { scoreBonusEnemy.skill = false; return 0; }
-            else { return 0; }
-        }
 
-    }
 
 }

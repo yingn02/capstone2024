@@ -7,29 +7,30 @@ using UnityEngine.UI;
 
 public class ButtonSelection : MonoBehaviour
 {
-    public Color selectedColor; // ¼±ÅÃµÆÀ» ¶§ »ö
-    public Color originalColor; // ¿ø·¡ »ö
+    public Color selectedColor; // ì„ íƒëì„ ë•Œ ìƒ‰
+    public Color originalColor; // ì›ë˜ ìƒ‰
 
-    private Button button; // ÇöÀç ¹öÆ°
+    private Button button; // í˜„ì¬ ë²„íŠ¼
     private bool isSelected = false;
-    private string buttonText; // ¹öÆ°ÀÇ ÅØ½ºÆ® ³»¿ë ÀúÀå
+    private string buttonText; // ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ ë‚´ìš© ì €ì¥
 
-    private static List<string> selectedButtonTexts = new List<string>(); // ¼±ÅÃµÈ ¹öÆ°ÀÇ ÅØ½ºÆ®¸¦ ÀúÀåÇÒ ¸®½ºÆ®
-    private const int maxSelectionCount = 3; // ÃÖ´ë ¼±ÅÃ °¡´ÉÇÑ ¹öÆ°ÀÇ ¼ö
+    private static List<string> selectedButtonTexts = new List<string>(); // ì„ íƒëœ ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ë¥¼ ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
+    private const int maxSelectionCount = 3; // ìµœëŒ€ ì„ íƒ ê°€ëŠ¥í•œ ë²„íŠ¼ì˜ ìˆ˜
 
     public bool refresh = false;
 
     void Start()
     {
-        button = GetComponent<Button>(); 
-        originalColor = button.colors.normalColor; //Áö±İ ¹è°æ»ö ÀúÀå
-        button.onClick.AddListener(OnClick); 
-        buttonText = GetComponentInChildren<TMP_Text>().text; //¹öÆ° ³»¿ë °¡Á®¿À±â
+        button = GetComponent<Button>();
+        originalColor = button.colors.normalColor; //ì§€ê¸ˆ ë°°ê²½ìƒ‰ ì €ì¥
+        button.onClick.AddListener(OnClick);
+        buttonText = GetComponentInChildren<TMP_Text>().text; //ë²„íŠ¼ ë‚´ìš© ê°€ì ¸ì˜¤ê¸°
     }
 
     void Update()
     {
-        if (refresh) {
+        if (refresh)
+        {
             selectedButtonTexts = new List<string>();
 
             button = GetComponent<Button>();
@@ -45,12 +46,12 @@ public class ButtonSelection : MonoBehaviour
     {
         if (isSelected)
         {
-            //ÀÌ¹Ì ¼±ÅÃµÇ¾î ÀÖÀ¸¸é ¼±ÅÃ Ãë¼Ò, ¿ø·¡»öÀ¸·Î
+            //ì´ë¯¸ ì„ íƒë˜ì–´ ìˆìœ¼ë©´ ì„ íƒ ì·¨ì†Œ, ì›ë˜ìƒ‰ìœ¼ë¡œ
             isSelected = false;
             ColorBlock colors = button.colors;
-            colors.normalColor = originalColor; // ¿ø·¡ÀÇ ¹è°æ»öÀ¸·Î º¯°æ
+            colors.normalColor = originalColor; // ì›ë˜ì˜ ë°°ê²½ìƒ‰ìœ¼ë¡œ ë³€ê²½
             button.colors = colors;
-            selectedButtonTexts.Remove(buttonText); // ¼±ÅÃµÈ ¹öÆ° ¸®½ºÆ®¿¡¼­ Á¦°Å
+            selectedButtonTexts.Remove(buttonText); // ì„ íƒëœ ë²„íŠ¼ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
         }
         else
         {
@@ -58,9 +59,9 @@ public class ButtonSelection : MonoBehaviour
             {
                 isSelected = true;
                 ColorBlock colors = button.colors;
-                colors.normalColor = selectedColor; //»ö»óº¯°æ
+                colors.normalColor = selectedColor; //ìƒ‰ìƒë³€ê²½
                 button.colors = colors;
-                selectedButtonTexts.Add(buttonText); //¸®½ºÆ®¿¡ Ãß°¡
+                selectedButtonTexts.Add(buttonText); //ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
             }
         }
     }
@@ -68,7 +69,7 @@ public class ButtonSelection : MonoBehaviour
 
     public static List<string> GetSelectedButtonTexts()
     {
-        //¼±ÅÃµÈ ¹öÆ°ÀÇ ³»¿ëÀ» ¹İÈ¯
+        //ì„ íƒëœ ë²„íŠ¼ì˜ ë‚´ìš©ì„ ë°˜í™˜
         return selectedButtonTexts;
     }
 }

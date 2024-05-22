@@ -22,7 +22,7 @@ public class bowControl : MonoBehaviour
 
     public bool player = true;
 
-    
+
     void OnEnable()
     {
         leftGrabAction.action.performed += GrabPerformed;
@@ -30,7 +30,7 @@ public class bowControl : MonoBehaviour
         leftGrabAction.action.Enable();
     }
 
-    
+
     void OnDisable()
     {
         leftGrabAction.action.performed -= GrabPerformed;
@@ -85,7 +85,7 @@ public class bowControl : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -100,7 +100,7 @@ public class bowControl : MonoBehaviour
             Invoke("reloadArrow", 2f);
             haveArrow = true;
         }*/
-        
+
     }
 
     //재장전
@@ -111,7 +111,7 @@ public class bowControl : MonoBehaviour
             arrow = Instantiate(arrowPrefab, bowPoint.transform.position,
                 bowPoint.transform.rotation);
             arrow.transform.parent = bowPoint.transform;
-            grabpoint.reloadArrow(arrow);
+            grabpoint.reloadArrow(arrow, player);
             haveArrow = true;
         }
         else
