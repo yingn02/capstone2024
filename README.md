@@ -38,22 +38,22 @@
 
 |                메인화면                |
 |:-------------------------------------:|
-|![testgif](https://github.com/yingn02/capstone2024/assets/86876440/dae2803b-94a4-4ddf-bc38-93dce7156edf)|
+|![g1](https://github.com/yingn02/capstone2024/assets/86876440/048dd699-cebc-41f3-b5f5-0009442a071c)|
 |모드 선택, 환경 설정, 나가기 버튼으로 구성되어 있습니다.|
 
 |                튜토리얼                |
 |:-------------------------------------:|
-|![testgif](https://github.com/yingn02/capstone2024/assets/86876440/dae2803b-94a4-4ddf-bc38-93dce7156edf)|
+|![g2](https://github.com/yingn02/capstone2024/assets/86876440/6405f641-da5c-4c00-87c5-2387a79e7021)|
 |양궁의 룰을 소개하는 창입니다.|
 
 |                동작화면                |
 |:-------------------------------------:|
-|![testgif](https://github.com/yingn02/capstone2024/assets/86876440/dae2803b-94a4-4ddf-bc38-93dce7156edf)|
+|![g3](https://github.com/yingn02/capstone2024/assets/86876440/b532d80f-cfab-47a1-a549-7be5572e1ee8)|
 |실제 동작 화면입니다.|
 
 |                스킬선택                |
 |:-------------------------------------:|
-|![testgif](https://github.com/yingn02/capstone2024/assets/86876440/dae2803b-94a4-4ddf-bc38-93dce7156edf)|
+|![g4](https://github.com/yingn02/capstone2024/assets/86876440/066e4252-3f65-42be-9070-7c5c602a95b4)|
 |스킬을 선택하는 모습입니다.|
 
 ## 🎬[유튜브 영상 링크]
