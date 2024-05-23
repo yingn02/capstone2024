@@ -26,6 +26,8 @@ public class doubleArrow : ArrowSkill
     public void execute() { //스킬 발동
         skill = true;
 
+        gameManager.activatedArrowSkills.Add(this);
+
         Debug.Log("더블샷");
     }
 

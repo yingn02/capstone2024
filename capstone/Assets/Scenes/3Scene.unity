@@ -267,7 +267,7 @@ MonoBehaviour:
   skill: 0
   cool: 0
   num: 1
-  transparency: 0.5
+  transparency: 0
 --- !u!1 &36486799
 GameObject:
   m_ObjectHideFlags: 0
@@ -6414,6 +6414,10 @@ PrefabInstance:
     - target: {fileID: 521905308768072769, guid: 1450319862995d04f867e139c684a9b3, type: 3}
       propertyPath: m_Name
       value: Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322438256507688419, guid: 1450319862995d04f867e139c684a9b3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2322438256507688419, guid: 1450319862995d04f867e139c684a9b3, type: 3}
       propertyPath: m_ProbeAnchor
@@ -18225,7 +18229,7 @@ MonoBehaviour:
   skill: 0
   cool: 0
   num: 1
-  transparency: 0.5
+  transparency: 0
 --- !u!1 &1719536234
 GameObject:
   m_ObjectHideFlags: 0

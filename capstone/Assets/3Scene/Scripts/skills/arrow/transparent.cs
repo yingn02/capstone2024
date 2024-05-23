@@ -16,8 +16,12 @@ public class transparent : ArrowSkill
 
     public float transparency = 0.5f; //0은 완전 투명, 1은 완전 불투명
 
-    private Material originalTargetMaterial;
-    private Material originalArrowMaterial;
+    private Renderer originalTargetRenderer;
+    private Renderer originalArrowRenderer;
+    private Color originalTargetColor;
+    private Color originalArrowColor;
+
+    private Renderer renderer;
 
     // Start is called before the first frame update
     void Start()
@@ -54,14 +58,20 @@ public class transparent : ArrowSkill
     {
         if ((obj.CompareTag("Target")) || (obj.CompareTag("EnemyTarget")))
         {
-            originalTargetMaterial = target.GetComponent<Renderer>().material;
+            //originalTargetMaterial = target.GetComponent<Renderer>().material;
+            originalTargetRenderer = obj.GetComponent<Renderer>();
+            originalTargetColor = originalTargetRenderer.material.color;
+            renderer = obj.GetComponent<Renderer>();
         }
         else if (obj.CompareTag("Arrow"))
         {
-            originalArrowMaterial = arrow.GetComponent<Renderer>().material;
+            //originalArrowMaterial = arrow.GetComponent<Renderer>().material;
+            originalArrowRenderer = obj.GetComponentInChildren<Renderer>();
+            originalArrowColor = originalArrowRenderer.material.color;
+            renderer = obj.GetComponentInChildren<Renderer>();
         }
 
-        Renderer renderer = obj.GetComponent<Renderer>();
+        //Renderer renderer = obj.GetComponent<Renderer>();
 
         if (renderer != null)
         {
@@ -83,18 +93,22 @@ public class transparent : ArrowSkill
 
     public void RestoreOriginalState()
     {
-        if (target != null && originalTargetMaterial != null)
+        if (target != null && originalTargetColor != null)
         {
-            target.GetComponent<Renderer>().material = originalTargetMaterial;
+            //target.GetComponent<Renderer>().material = originalTargetMaterial;
+            renderer = target.GetComponent<Renderer>();
+            renderer.material.color = originalTargetColor;
         }
         else
         {
             Debug.LogWarning("Target object or original material not found");
         }
 
-        if (arrow != null && originalArrowMaterial != null)
+        if (arrow != null && originalArrowColor != null)
         {
-            arrow.GetComponent<Renderer>().material = originalArrowMaterial;
+            //arrow.GetComponent<Renderer>().material = originalArrowMaterial;
+            renderer = arrow.GetComponentInChildren<Renderer>();
+            renderer.material.color = originalArrowColor;
         }
         else
         {

@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a2f87bb95489c14398ace0ad2c5464c, type: 2}
+  - {fileID: 2100000, guid: ea351b69f84406340aed2fd64f3e6c91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,6 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMinutes: 15
   currentTimeText: {fileID: 3467827807658433161}
+  timer: 0
+  gameManager: {fileID: 0}
 --- !u!222 &5433460059979958177
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class bigArrow : ArrowSkill
         skill = true;
 
         gameManager.activatedArrowSkills.Add(this);
-        arrow.transform.localScale = new Vector3(0.5f, 2.0f, 2.0f);
+        arrow.transform.localScale = new Vector3(0.5f, 3.0f, 3.0f);
 
         Debug.Log("화살 거대화");
     }

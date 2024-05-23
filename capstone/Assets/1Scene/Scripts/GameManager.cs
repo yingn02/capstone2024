@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public bool count_cool_enemy = false; //적팀의 쿨타임을 1턴 넘길 것을 허용하겠는가 (턴이 넘어갈 때 true)
     public bool enemy_try_skill = false; //적팀이 스킬을 쓸 것을 허용하겠는가 (적의 턴일 때 true)
     public bool enemy_add_skill = false; //적팀이 스킬을 하나 더 갖도록 허용하겠는가 (스테이지 넘어갈 때 true)
+    private int temp_score = 0;
 
     public List<TargetSkill> activatedTargetSkills; //현재 발동중인 과녁 스킬들
     public List<ArrowSkill> activatedArrowSkills; //현재 발동중인 화살 스킬들
@@ -102,16 +103,38 @@ public class GameManager : MonoBehaviour
         //쏘아진 화살을 활의 자식 오브젝트에서 다른 오브젝트의 자식으로 변경
         currentGrabPoint.arrow.transform.parent = currentBowControl.arrowPoint.transform;
 
-        if ((doubleArrow.activeTurns == 2) && (doubleArrow.skill = true))
+        if ((doubleArrow.activeTurns == 2) && (doubleArrow.skill))
         {
             doubleArrow.activeTurns--;
-            //return;
+
+            temp_score += currentGrabPoint.ArrowControl.score;
+            playerPoint = playerPoint + currentGrabPoint.ArrowControl.score;
+            Debug.Log("Player : " + playerPoint);
+
+            ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //점수판 UI 턴 점수 갱신
+            ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint, currentTurn); //점수판 UI 턴 점수 총점 갱신
+
+            currentBowControl.reloadArrow();
+            //currentGrabPoint = currentBowControl.grabpoint;
+
+            return;
         }
 
-        if ((doubleArrowEnemy.activeTurns == 2) && (doubleArrowEnemy.skill = true))
+        if ((doubleArrowEnemy.activeTurns == 2) && (doubleArrowEnemy.skill))
         {
             doubleArrowEnemy.activeTurns--;
-            //return;
+
+            temp_score += currentGrabPoint.ArrowControl.score;
+            opponentPoint = opponentPoint + currentGrabPoint.ArrowControl.score;
+            Debug.Log("Opponent: " + opponentPoint);
+
+            ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //점수판 UI 턴 점수 갱신
+            ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint, currentTurn); //점수판 UI 턴 점수 총점 갱신
+
+            currentBowControl.reloadArrow();
+            //currentGrabPoint = currentBowControl.grabpoint;
+
+            return;
         }
 
         //과녁 스킬들 효과 해제
@@ -123,19 +146,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("End of Turn " + currentTurn);
         if (playerTurn)
         {
+            temp_score += currentGrabPoint.ArrowControl.score;
             playerPoint = playerPoint + currentGrabPoint.ArrowControl.score;
             Debug.Log("Player : " + playerPoint);
         }
         else
         {
             if (practice) { currentGrabPoint.ArrowControl.score = 0; }
+            temp_score += currentGrabPoint.ArrowControl.score;
             opponentPoint = opponentPoint + currentGrabPoint.ArrowControl.score;
             Debug.Log("Opponent: " + opponentPoint);
         }
 
-        ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //점수판 UI 턴 점수 갱신
+        //ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //점수판 UI 턴 점수 갱신
+        ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, temp_score); //점수판 UI 턴 점수 갱신
         ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint, currentTurn); //점수판 UI 턴 점수 총점 갱신
 
+        temp_score = 0;
         currentGrabPoint.ArrowControl.score = 0;
         currentTurn++;
         if (skill)
