@@ -57,7 +57,7 @@
 |스킬을 선택하는 모습입니다.|
 
 ## 🎬[유튜브 영상 링크]
-**발표 영상 링크 >>** <a href="https://www.youtube.com/">https://www.youtube.com/</a>
+<a href="https://drive.google.com/file/d/1-8zSd-Nmm4gfzGY_LbB-ISY0Ho7xpEGv/view?usp=drivesdk">발표 영상 링크</a>
 
 ## 🛠[프로젝트 구조 및 적용 기술]
 
