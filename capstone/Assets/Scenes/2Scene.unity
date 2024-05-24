@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 72749482}
   - component: {fileID: 72749481}
   - component: {fileID: 72749480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: target_stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1598,7 +1598,7 @@ GameObject:
   - component: {fileID: 318584200}
   - component: {fileID: 318584199}
   - component: {fileID: 318584198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Carpet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7100,7 +7100,7 @@ GameObject:
   - component: {fileID: 990068877}
   - component: {fileID: 990068876}
   - component: {fileID: 990068875}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7205,7 +7205,7 @@ GameObject:
   - component: {fileID: 1006211828}
   - component: {fileID: 1006211827}
   - component: {fileID: 1006211826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
