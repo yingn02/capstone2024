@@ -89,7 +89,13 @@ public class grabPoint : MonoBehaviour
     {
         bowSnd?.Play();
         charging = true;
-        distance = Random.Range(0.1f, 6f);
+        distance = Random.Range(35, 180) / 100f;
+        Debug.Log(distance);
+        if (distance < 0.5f) { distance = Random.Range(0.65f, 0.75f); }
+        else if (distance < 1.5f) { distance *= 0.7f; }
+        
+        if(distance > 1.7f) { distance = distance / 1.7f * 3; }
+        Debug.Log(distance);
         //shootArrow(Random.Range(0.01f, 6f));
     }
     // Update is called once per frame
