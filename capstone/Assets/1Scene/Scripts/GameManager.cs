@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("You Lose..");
                     ViewResult.GetComponent<viewResult>().viewDefeat(); //패배 UI
-                    Time.timeScale = 0;
+                    //Time.timeScale = 0;
                 }
                 else
                 {
