@@ -34,8 +34,6 @@ public class SkillManagerEnemy : MonoBehaviour
 
             if (!skills.Contains(skill_num))
             {
-                if(skills.Count == 0)
-                    skills.Add(9);
                 skills.Add(skill_num);
             }
         }
