@@ -132,6 +132,10 @@ public class GameManager : MonoBehaviour
             ScoreBoard.GetComponent<writeScore>().write_score(currentTurn, currentGrabPoint.ArrowControl.score); //점수판 UI 턴 점수 갱신
             ScoreBoard.GetComponent<writeScore>().write_total(playerPoint, opponentPoint, currentTurn); //점수판 UI 턴 점수 총점 갱신
 
+            opponentBowControl.grabpoint.Invoke("invokeArrow", 1.4f);
+            if (enemyAnimator != null) Invoke("startAnimation", 1); // enemy 모션 출력
+            Debug.Log("Opponent will shoot arrow after 2 seconds");
+
             currentBowControl.reloadArrow();
             //currentGrabPoint = currentBowControl.grabpoint;
 

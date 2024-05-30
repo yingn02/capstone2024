@@ -37,6 +37,7 @@ public class SkillManagerEnemy : MonoBehaviour
                 skills.Add(skill_num);
             }
         }
+        Debug.Log("적팀이 시작 스킬을 선택하였습니다." + "현재 적 스킬 번호: " + skills[0] + ", " + skills[1] + ", " + skills[2]);
     }
 
     // Update is called once per frame

@@ -57,7 +57,7 @@ public class changeWind : MonoBehaviour
             changePassTime += Time.deltaTime;
         }
 
-        Debug.Log("현재 풍향 세기 - " + "x" + x + "/" + "y" + y + "/" + "z" + z + "/");
+        //Debug.Log("현재 풍향 세기 - " + "x" + x + "/" + "y" + y + "/" + "z" + z + "/");
     }
 
     public void view_wind()
