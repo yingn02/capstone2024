@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3801454748471662245}
   - component: {fileID: 5176376778937818359}
   - component: {fileID: 216928575750620312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Backside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 4965145636808919275}
   - component: {fileID: 1484209558599658694}
   - component: {fileID: 2405468657386615016}
+  - component: {fileID: 2286763699763869082}
   m_Layer: 0
   m_Name: ScoreCheckCamera2
   m_TagString: Untagged
@@ -242,6 +243,22 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &2286763699763869082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811710439066544568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b37afe936ab054f8aa8a59cbf806d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  offset: {x: 0, y: 0, z: -1}
+  smoothSpeed: 0.125
+  sizePadding: 0.5
 --- !u!1 &1140664752423573608
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +271,7 @@ GameObject:
   - component: {fileID: 8000871610266377351}
   - component: {fileID: 6939928353799953214}
   - component: {fileID: 3439430474169431519}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MyTargetCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +377,7 @@ GameObject:
   - component: {fileID: 5758078854034528423}
   - component: {fileID: 2837836356874459356}
   - component: {fileID: 549498842111814074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MyTargetCameraToOpponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +516,7 @@ GameObject:
   - component: {fileID: 5998631722076536846}
   - component: {fileID: 6920419846489888535}
   - component: {fileID: 2224491565020171247}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Backside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +621,7 @@ GameObject:
   - component: {fileID: 8360436741606888377}
   - component: {fileID: 5904562904268877455}
   - component: {fileID: 4269875187317620630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Backside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +759,7 @@ GameObject:
   - component: {fileID: 793718868008384662}
   - component: {fileID: 1102802503524646450}
   - component: {fileID: 2463953726590012036}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OpponentTargetCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,6 +865,7 @@ GameObject:
   - component: {fileID: 3590623520717022988}
   - component: {fileID: 2322146337940732501}
   - component: {fileID: 1657583137842726591}
+  - component: {fileID: 5574247860746584712}
   m_Layer: 0
   m_Name: ScoreCheckCamera1
   m_TagString: Untagged
@@ -973,6 +991,22 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &5574247860746584712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158033251119690740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b37afe936ab054f8aa8a59cbf806d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  offset: {x: 0, y: 0, z: -1}
+  smoothSpeed: 0.125
+  sizePadding: 0.5
 --- !u!1 &8528700433085645500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1054,7 @@ GameObject:
   - component: {fileID: 3275975328318039498}
   - component: {fileID: 1307438796230779819}
   - component: {fileID: 8059455936186671421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OpponentTargetCameraToMe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1160,7 @@ GameObject:
   - component: {fileID: 5803374430259957717}
   - component: {fileID: 4211752961744167209}
   - component: {fileID: 7148135437177419930}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Backside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
